@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obras — Yana Yavorskaya</title>
+  <link rel="stylesheet" href="css/museum.css">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <script src="js/db.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>setTimeout(function(){MuseoI18n.init();},50);</script>
+  <style>
+    .shop-page { padding: 8rem 0 4rem; min-height: 100vh; }
+    .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-lg); }
+    .shop-card { border: 1px solid var(--border); background: var(--bg); transition: transform var(--transition-medium), box-shadow var(--transition-medium); display: flex; flex-direction: column; }
+    .shop-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .shop-card__image { aspect-ratio: 3/4; overflow: hidden; position: relative; cursor: pointer; }
+    .shop-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+    .shop-card:hover .shop-card__image img { transform: scale(1.05); }
+    .shop-card__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity var(--transition-medium); }
+    .shop-card:hover .shop-card__overlay { opacity: 1; }
+    .shop-card__overlay span { color: #fff; font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.05em; border: 1px solid rgba(255,255,255,0.5); padding: 0.5rem 1.5rem; }
+    .shop-card__badge { position: absolute; top: 1rem; left: 1rem; background: var(--accent); color: #fff; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.2rem 0.6rem; }
+    .shop-card__badge--vendida { background: #999; }
+    .shop-card__badge--reservada { background: var(--text-tertiary); }
+    .shop-card__body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .shop-card__title { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.3rem; }
+    .shop-card__collection { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem; }
+    .shop-card__meta { font-size: 0.7rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.6rem; }
+    .shop-card__desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+    .shop-card__footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+    .shop-card__price { font-family: var(--serif); font-size: 1.15rem; color: var(--text); }
+    .shop-card__price-note { font-size: 0.6rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; }
+    .shop-card__action { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.45rem 1rem; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; transition: all var(--transition-fast); font-family: var(--sans); }
+    .shop-card__action:hover { background: var(--accent); color: #fff; }
+    .shop-intro { max-width: 650px; margin-top: 0.5rem; }
+    .shop-intro p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
+    .shop-intro__note { margin-top: 1rem; padding: 1.2rem; border-left: 2px solid var(--accent); background: var(--bg-alt); font-size: 0.85rem; color: var(--text-tertiary); line-height: 1.6; }
+    .shop-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: var(--spacing-md); }
+    .shop-filter { padding: 0.35rem 0.9rem; border: 1px solid var(--border); background: none; cursor: pointer; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); transition: all var(--transition-fast); font-family: var(--sans); }
+    .shop-filter:hover, .shop-filter.active { border-color: var(--accent); color: var(--accent); }
+    /* Lightbox premium */
+    .lb-overlay { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(10,10,10,0.95); align-items: center; justify-content: center; flex-direction: column; }
+    .lb-overlay.is-open { display: flex; }
+    .lb-close { position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); }
+    .lb-close:hover { background: rgba(255,255,255,0.2); }
+    .lb-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; width: 90%; max-width: 1200px; max-height: 85vh; align-items: center; padding: 2rem; }
+    .lb-image { width: 100%; height: min(70vh, 600px); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .lb-image img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s ease; cursor: zoom-in; }
+    .lb-image img.zoomed { transform: scale(1.8); cursor: zoom-out; }
+    .lb-info { color: #fff; overflow-y: auto; max-height: 70vh; padding-right: 1rem; }
+    .lb-info h2 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .lb-info .lb-collection { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.8rem; }
+    .lb-info .lb-meta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+    .lb-info .lb-price { font-family: var(--serif); font-size: 1.4rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .lb-info .lb-status { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; }
+    .lb-info .lb-desc { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #fff; width: 48px; height: 48px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); z-index: 10; }
+    .lb-nav:hover { background: rgba(255,255,255,0.18); }
+    .lb-prev { left: 1rem; }
+    .lb-next { right: 1rem; }
+    .lb-counter { position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.4); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .back-link { display: inline-block; margin-bottom: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
+    .back-link:hover { color: var(--accent); }
+    .cert-block { margin-top: var(--spacing-lg); padding: 1.2rem; border: 1px solid var(--border); font-size: 0.8rem; color: var(--text-tertiary); text-align: center; }
+    @media(max-width:768px){ .shop-grid { grid-template-columns: 1fr; } .lb-content { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; } .lb-image { height: 40vh; } .lb-nav { width: 38px; height: 38px; font-size: 1rem; } }
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="nav__inner">
+  <a href="index.html" class="nav__brand"><img src="assets/logo.png" alt="Yana" class="nav__brand-logo" width="48" height="45">Yana Yavorskaya</a>
+  <ul class="nav__links">
+    <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
+    <li><a href="obras-disponibles.html">Obras</a></li>
+    <li><a href="noticias.html">Noticias</a></li>
+    <li><a href="sobre-mi.html">Bio</a></li>
+    <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+  </ul>
+</div></nav>
+
+<main class="container shop-page">
+  <a href="index.html" class="back-link" data-i18n="legal.back">← Volver al inicio</a>
+  <p class="section__label" data-i18n="shop.galeria">Galería privada</p>
+  <h1 data-i18n="shop.title">Obras disponibles</h1>
+  <div class="shop-intro reveal">
+    <p data-i18n="shop.intro">Cada obra incluye certificado de autenticidad firmado por la artista. Para adquirir cualquiera de estas piezas, contacta directamente con Yana.</p>
+    <div class="shop-intro__note" data-i18n="shop.howto">✦ Cómo adquirir una obra: pulsa en cualquier imagen para verla a pantalla completa con toda su historia. Después, si te interesa, contacta con Yana. Sin intermediarios. Directamente desde el estudio.</div>
+  </div>
+  <div class="shop-filters reveal">
+    <button class="shop-filter active" data-filter="all" data-i18n="shop.filterAll">Todas</button>
+    <button class="shop-filter" data-filter="disponible" data-i18n="shop.filterAvail">Disponibles</button>
+    <button class="shop-filter" data-filter="reservada" data-i18n="shop.filterReserv">Reservadas</button>
+  </div>
+
+  <div class="shop-grid reveal">
+
+    <!-- Obra 1: Amanecer en la Bruma -->
+    <article class="shop-card" data-status="disponible" data-title="Amanecer en la Bruma" data-price="4.800" data-year="2024" data-tech="Óleo sobre lienzo" data-size="180 × 220 cm" data-collection="Luz y Sombra" data-status-text="Disponible" data-desc="Esta obra nace de una mañana de invierno en la sierra de Madrid. La bruma se levantaba lentamente mientras los primeros rayos de sol atravesaban la niebla. Quise capturar ese instante exacto en que la luz empieza a revelar lo que la oscuridad escondía. Trabajé con veladuras muy finas, aplicando capa tras capa hasta conseguir esa sensación de profundidad atmosférica. El resultado es un cuadro que cambia según la luz de la habitación donde se encuentre: por la mañana muestra unos tonos, por la tarde revela otros. Es una obra viva.">
+      <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
+        <img src="assets/obras/amanecer-bruma.jpg" alt="Amanecer en la Bruma" loading="lazy">
+        <div class="shop-card__overlay"><span>Ver obra</span></div>
+        <span class="shop-card__badge" data-i18n="shop.disponible">Disponible</span>
+      </div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Amanecer en la Bruma</h3>
+        <div class="shop-card__collection">Colección Luz y Sombra</div>
+        <div class="shop-card__meta">2024 · Óleo sobre lienzo · 180 × 220 cm</div>
+        <p class="shop-card__desc">Veladuras de luz que capturan el instante exacto entre la noche y el día. Una obra que cambia según la luz de la habitación.</p>
+        <div class="shop-card__footer">
+          <div><div class="shop-card__price">4.800 €</div><div class="shop-card__price-note" data-i18n="shop.certificado">Certificado incluido</div></div>
+          <button class="shop-card__action" onclick="openInquiry('Amanecer en la Bruma','4.800')" data-i18n="shop.consulta">Consulta</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Obra 2: Espiral Áurea -->
+    <article class="shop-card" data-status="disponible" data-title="Espiral Áurea" data-price="5.200" data-year="2022" data-tech="Acrílico sobre lienzo" data-size="200 × 200 cm" data-collection="Geometría Sagrada" data-status-text="Disponible" data-desc="Esta pieza representa dos años de investigación sobre la proporción áurea y su presencia en la naturaleza. Desde las conchas marinas hasta las galaxias, la espiral aparece como un patrón universal. Quise trasladar esa sensación de orden oculto al lienzo. Utilicé acrílicos translúcidos superpuestos para crear profundidad y movimiento. El espectador puede recorrer la espiral con la mirada y descubrir nuevos detalles en cada capa. Es una obra que invita a la contemplación pausada.">
+      <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
+        <img src="assets/obras/espiral-aurea.jpg" alt="Espiral Áurea" loading="lazy">
+        <div class="shop-card__overlay"><span>Ver obra</span></div>
+        <span class="shop-card__badge" data-i18n="shop.disponible">Disponible</span>
+      </div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Espiral Áurea</h3>
+        <div class="shop-card__collection">Colección Geometría Sagrada</div>
+        <div class="shop-card__meta">2022 · Acrílico sobre lienzo · 200 × 200 cm</div>
+        <p class="shop-card__desc">Dos años de estudio de la proporción áurea. Capas de acrílico translúcido que crean profundidad hipnótica.</p>
+        <div class="shop-card__footer">
+          <div><div class="shop-card__price">5.200 €</div><div class="shop-card__price-note" data-i18n="shop.edUnica">Edición única</div></div>
+          <button class="shop-card__action" onclick="openInquiry('Espiral Áurea','5.200')" data-i18n="shop.consulta">Consulta</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Obra 3: Memoria del Horizonte -->
+    <article class="shop-card" data-status="reservada" data-title="Memoria del Horizonte" data-price="" data-year="2020" data-tech="Óleo sobre lienzo" data-size="190 × 240 cm" data-collection="Horizontes Interiores" data-status-text="Reservada" data-desc="Esta es quizás la obra más personal de la serie. Nació durante un viaje solitario a la costa gallega. Pasé días enteros mirando el horizonte desde el mismo acantilado, viendo cómo cambiaba con las horas. Quise pintar no lo que veía, sino lo que sentía al mirar: esa mezcla de pequeñez y plenitud, de nostalgia y presencia. La técnica combina veladuras de óleo con empastes en las zonas de luz. Es una meditación sobre la memoria, sobre cómo guardamos los paisajes dentro.">
+      <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
+        <img src="assets/obras/memoria-horizonte.jpg" alt="Memoria del Horizonte" loading="lazy">
+        <div class="shop-card__overlay"><span>Ver obra</span></div>
+        <span class="shop-card__badge shop-card__badge--reservada" data-i18n="shop.reservada">Reservada</span>
+      </div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Memoria del Horizonte</h3>
+        <div class="shop-card__collection">Colección Horizontes Interiores</div>
+        <div class="shop-card__meta">2020 · Óleo sobre lienzo · 190 × 240 cm</div>
+        <p class="shop-card__desc">Nacida en un acantilado gallego. Una meditación sobre la memoria, el paisaje interior y la nostalgia.</p>
+        <div class="shop-card__footer">
+          <div><div class="shop-card__price">Reservada</div><div class="shop-card__price-note">Disponible jul 2026</div></div>
+          <button class="shop-card__action" onclick="openInquiry('Memoria del Horizonte','')" data-i18n="shop.consultar">Consultar</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Obra 4: Vesica Piscis -->
+    <article class="shop-card" data-status="disponible" data-title="Vesica Piscis" data-price="6.500" data-year="2021" data-tech="Óleo y pan de oro" data-size="140 × 180 cm" data-collection="Geometría Sagrada" data-status-text="Disponible" data-desc="La vesica piscis es uno de los símbolos más antiguos de la humanidad. Representa la intersección de dos círculos, el punto donde lo divino y lo terrenal se tocan. Para esta obra quise usar pan de oro de 24 quilates como metáfora de esa luz que surge del encuentro entre dos mundos. Aplicar el oro fue un proceso casi ceremonial: cada lámina se coloca a mano, en silencio, respetando el ritmo que el material impone. El resultado es una pieza que vibra con luz propia, cambiante según el ángulo desde el que se mira.">
+      <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
+        <img src="assets/obras/vesica-piscis.jpg" alt="Vesica Piscis" loading="lazy">
+        <div class="shop-card__overlay"><span>Ver obra</span></div>
+        <span class="shop-card__badge" data-i18n="shop.disponible">Disponible</span>
+      </div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Vesica Piscis</h3>
+        <div class="shop-card__collection">Colección Geometría Sagrada</div>
+        <div class="shop-card__meta">2021 · Óleo y pan de oro 24K · 140 × 180 cm</div>
+        <p class="shop-card__desc">Símbolo ancestral de la intersección entre dos mundos. Pan de oro aplicado hoja a hoja en un proceso ceremonial.</p>
+        <div class="shop-card__footer">
+          <div><div class="shop-card__price">6.500 €</div><div class="shop-card__price-note" data-i18n="shop.oro24k">Pan de oro 24K</div></div>
+          <button class="shop-card__action" onclick="openInquiry('Vesica Piscis','6.500')" data-i18n="shop.consulta">Consulta</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Obra 5: Tierra Callada -->
+    <article class="shop-card" data-status="disponible" data-title="Tierra Callada" data-price="3.900" data-year="2019" data-tech="Óleo sobre lienzo" data-size="160 × 200 cm" data-collection="Horizontes Interiores" data-status-text="Disponible" data-desc="Pinté esta obra durante un octubre especialmente seco en el campo castellano. La tierra agrietada, los ocres, los silencios largos. Quise transmitir esa sensación de espera que tiene la tierra cuando no llueve: no es tristeza, es paciencia. Usé una paleta muy reducida — solo cinco colores — para forzarme a encontrar todos los matices dentro de esa limitación. Cada grieta del cuadro es real: mezclé arena con óleo para dar textura a la superficie. Es una obra que se disfruta más de cerca que de lejos.">
+      <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
+        <img src="assets/obras/tierra-callada.jpg" alt="Tierra Callada" loading="lazy">
+        <div class="shop-card__overlay"><span>Ver obra</span></div>
+        <span class="shop-card__badge" data-i18n="shop.disponible">Disponible</span>
+      </div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Tierra Callada</h3>
+        <div class="shop-card__collection">Colección Horizontes Interiores</div>
+        <div class="shop-card__meta">2019 · Óleo sobre lienzo · 160 × 200 cm</div>
+        <p class="shop-card__desc">Pintada en el campo castellano. Solo cinco colores. Arena mezclada con óleo para una textura que se disfruta de cerca.</p>
+        <div class="shop-card__footer">
+          <div><div class="shop-card__price">3.900 €</div><div class="shop-card__price-note" data-i18n="shop.certificado">Certificado incluido</div></div>
+          <button class="shop-card__action" onclick="openInquiry('Tierra Callada','3.900')" data-i18n="shop.consulta">Consulta</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Obra 6: La Flor de la Vida -->
+    <article class="shop-card" data-status="disponible" data-title="La Flor de la Vida" data-price="4.200" data-year="2021" data-tech="Técnica mixta" data-size="160 × 160 cm" data-collection="Geometría Sagrada" data-status-text="Disponible" data-desc="La Flor de la Vida es un patrón geométrico que aparece en culturas de todo el mundo, desde el antiguo Egipto hasta la India. Representa la conexión de todo lo vivo. Preparé los pigmentos yo misma en el estudio — azul ultramar, tierra de sombra tostada, blanco de titanio — mezclados con aglutinante de aceite de linaza. Cada círculo se trazó a mano, sin regla, guiada solo por el ritmo de la respiración. La imperfección de cada trazo es lo que da humanidad al patrón.">
+      <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
+        <img src="assets/obras/flor-de-la-vida.jpg" alt="La Flor de la Vida" loading="lazy">
+        <div class="shop-card__overlay"><span>Ver obra</span></div>
+        <span class="shop-card__badge" data-i18n="shop.disponible">Disponible</span>
+      </div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">La Flor de la Vida</h3>
+        <div class="shop-card__collection">Colección Geometría Sagrada</div>
+        <div class="shop-card__meta">2021 · Técnica mixta · 160 × 160 cm</div>
+        <p class="shop-card__desc">Patrón universal pintado a mano, círculo a círculo. Pigmentos preparados en el estudio. La imperfección como humanidad.</p>
+        <div class="shop-card__footer">
+          <div><div class="shop-card__price">4.200 €</div><div class="shop-card__price-note" data-i18n="shop.edUnica">Edición única</div></div>
+          <button class="shop-card__action" onclick="openInquiry('La Flor de la Vida','4.200')" data-i18n="shop.consulta">Consulta</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Bloques de certificado y envíos -->
+  <div class="cert-block reveal" style="text-align:center;max-width:700px;margin:var(--spacing-lg) auto 0;">
+    ✦ Todas las obras originales incluyen certificado de autenticidad firmado por la artista.<br>
+    Se realizan envíos nacionales e internacionales con embalaje profesional y seguro. Los gastos de envío se informarán durante el proceso de consulta.
+  </div>
+</main>
+
+<!-- ===== LIGHTBOX PREMIUM ===== -->
+<div class="lb-overlay" id="lb-overlay" role="dialog" aria-hidden="true">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+  <span class="lb-counter" id="lb-counter">1 / 6</span>
+  <button class="lb-nav lb-prev" onclick="lbPrev()" aria-label="Anterior">←</button>
+  <button class="lb-nav lb-next" onclick="lbNext()" aria-label="Siguiente">→</button>
+  <div class="lb-content">
+    <div class="lb-image" id="lb-image"><img src="" alt="" id="lb-img"></div>
+    <div class="lb-info" id="lb-info"></div>
+  </div>
+</div>
+
+<!-- ===== MODAL DE CONSULTA (legacy) ===== -->
+<div class="shop-modal" id="shop-modal" role="dialog" aria-hidden="true">
+  <div class="shop-modal__inner">
+    <button class="shop-modal__close" onclick="closeInquiry()" aria-label="Cerrar">✕</button>
+    <div class="invitation__crest">✦</div>
+    <h3 class="shop-modal__title" id="shop-modal-title" data-i18n="shop.modalTitle">Consulta privada</h3>
+    <p class="shop-modal__text" id="shop-modal-text" data-i18n="shop.modalText">Contacta con Yana para recibir toda la información.</p>
+    <div class="shop-modal__buttons">
+      <a href="https://wa.me/34600000000" class="soc-icon soc-ig" style="padding:0.6rem 1.5rem;font-size:0.8rem;border-radius:100px;width:auto;height:auto;" target="_blank" rel="noopener" data-i18n="shop.whatsapp">WhatsApp</a>
+      <a href="mailto:estudio@yanayavorskaya.com" style="padding:0.6rem 1.5rem;border:1px solid var(--accent);color:var(--accent);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;border-radius:100px;text-decoration:none;" data-i18n="shop.email">Email</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container">
+  <div class="footer__social">
+    <a href="#" class="soc-icon soc-ig" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="#" class="soc-icon soc-x" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" class="soc-icon soc-pin" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+  </div>
+  <div class="footer__inner"><p class="footer__copy" data-i18n="footer.copy">© 2026 Yana Yavorskaya</p>
+  <ul class="footer__links"><li><a href="sobre-mi.html">Bio</a></li><li><a href="noticias.html">Noticias</a></li><li><a href="obras-disponibles.html">Obras</a></li><li><a href="legal/aviso-legal.html" data-i18n="footer.legal">Aviso Legal</a></li><li><a href="legal/privacidad.html" data-i18n="footer.privacy">Privacidad</a></li><li><a href="legal/cookies.html" data-i18n="footer.cookies">Cookies</a></li><li><a href="legal/terminos.html" data-i18n="footer.terms">Términos</a></li></ul></div>
+</div></footer>
+
+<script>
+/* ===== LIGHTBOX PREMIUM ===== */
+var allCards = [];
+var lbIndex = 0;
+
+function collectCards() {
+  allCards = Array.from(document.querySelectorAll('.shop-card'));
+}
+
+function openLightbox(card) {
+  collectCards();
+  lbIndex = allCards.indexOf(card);
+  if (lbIndex < 0) lbIndex = 0;
+  renderLightbox();
+  document.getElementById('lb-overlay').classList.add('is-open');
+  document.getElementById('lb-overlay').setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lb-overlay').classList.remove('is-open');
+  document.getElementById('lb-overlay').setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  document.getElementById('lb-img').classList.remove('zoomed');
+}
+
+function renderLightbox() {
+  var c = allCards[lbIndex];
+  if (!c) return;
+  var img = c.querySelector('.shop-card__image img');
+  var src = img ? img.src : '';
+  var title = c.dataset.title || '';
+  var price = c.dataset.price || '';
+  var year = c.dataset.year || '';
+  var tech = c.dataset.tech || '';
+  var size = c.dataset.size || '';
+  var collection = c.dataset.collection || '';
+  var statusText = c.dataset.statusText || '';
+  var desc = c.dataset.desc || '';
+
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-img').alt = title;
+  document.getElementById('lb-img').classList.remove('zoomed');
+  document.getElementById('lb-counter').textContent = (lbIndex + 1) + ' / ' + allCards.length;
+
+  var infoHtml = '';
+  infoHtml += '<h2>' + title + '</h2>';
+  infoHtml += '<div class=\"lb-collection\">Colección ' + collection + '</div>';
+  infoHtml += '<div class=\"lb-meta-row\"><span>' + year + '</span><span>' + tech + '</span><span>' + size + '</span></div>';
+  if (price) { infoHtml += '<div class=\"lb-price\">' + price + ' €</div>'; }
+  var statusColor = (c.dataset.status === 'disponible') ? 'var(--accent)' : '#999';
+  infoHtml += '<div class=\"lb-status\" style=\"color:' + statusColor + '\">' + statusText + '</div>';
+  infoHtml += '<div class=\"lb-desc\">' + desc + '</div>';
+  infoHtml += '<button class=\"btn btn--primary\" onclick=\"openInquiry(\'' + title + '\',\'' + price + '\')\" style=\"margin-bottom:0.5rem;\">Solicitar información</button>';
+  document.getElementById('lb-info').innerHTML = infoHtml;
+}
+
+function lbPrev() { if (lbIndex > 0) { lbIndex--; renderLightbox(); } }
+function lbNext() { if (lbIndex < allCards.length - 1) { lbIndex++; renderLightbox(); } }
+
+document.getElementById('lb-overlay').addEventListener('click', function(e){ if (e.target === this) closeLightbox(); });
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') { closeLightbox(); closeInquiry(); }
+  var lbOpen = document.getElementById('lb-overlay').classList.contains('is-open');
+  if (lbOpen && e.key === 'ArrowRight') lbNext();
+  if (lbOpen && e.key === 'ArrowLeft') lbPrev();
+});
+
+/* Zoom en lightbox */
+document.getElementById('lb-img').addEventListener('click', function(e){
+  e.stopPropagation();
+  this.classList.toggle('zoomed');
+});
+
+/* ===== MODAL INQUIRY ===== */
+function openInquiry(obra, precio) {
+  document.getElementById('shop-modal-title').textContent = obra;
+  var precioStr = precio ? ' (' + precio + ' €)' : '';
+  document.getElementById('shop-modal-text').textContent = 'Para recibir información sobre «' + obra + '»' + precioStr + ', contacta con Yana.';
+  document.getElementById('shop-modal').classList.add('is-open');
+  document.getElementById('shop-modal').setAttribute('aria-hidden','false');
+  closeLightbox();
+}
+function closeInquiry() {
+  document.getElementById('shop-modal').classList.remove('is-open');
+  document.getElementById('shop-modal').setAttribute('aria-hidden','true');
+}
+document.getElementById('shop-modal').addEventListener('click', function(e){ if (e.target === this) closeInquiry(); });
+
+/* ===== FILTROS ===== */
+document.querySelectorAll('.shop-filter').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.shop-filter').forEach(function(x){ x.classList.remove('active'); });
+    this.classList.add('active');
+    var f = this.dataset.filter;
+    document.querySelectorAll('.shop-card').forEach(function(c){
+      c.style.display = (f === 'all' || c.dataset.status === f) ? '' : 'none';
+    });
+  });
+});
+
+collectCards();
+</script>
+</body>
+</html>

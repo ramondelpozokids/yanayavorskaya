@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre mí — Yana Yavorskaya</title>
+  <link rel="stylesheet" href="css/museum.css">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <script src="js/db.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>setTimeout(function(){MuseoI18n.init();},50);</script>
+  <style>
+    .bio-page { padding: 8rem 0 4rem; min-height: 100vh; }
+    .bio-hero { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center; margin-bottom: var(--spacing-xl); }
+    .bio-hero__image { aspect-ratio: 3/4; overflow: hidden; }
+    .bio-hero__image img { width: 100%; height: 100%; object-fit: cover; }
+    .bio-hero__text h1 { margin-bottom: 1rem; }
+    .bio-hero__text .lead { font-family: var(--serif); font-size: 1.3rem; font-style: italic; color: var(--accent); margin-bottom: 1.5rem; line-height: 1.5; }
+    .bio-section { margin-top: var(--spacing-xl); max-width: 750px; }
+    .bio-section h2 { margin-bottom: 1.2rem; }
+    .bio-section p { font-size: 1rem; line-height: 2; color: var(--text-secondary); margin-bottom: 1.2rem; }
+    .bio-section blockquote { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--accent); border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2.5rem 0; line-height: 1.6; }
+    .bio-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: var(--spacing-xl) 0; }
+    .bio-gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .back-link { display: inline-block; margin-bottom: 3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
+    .back-link:hover { color: var(--accent); }
+    @media(max-width:768px){ .bio-hero { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="nav__inner">
+  <a href="index.html" class="nav__brand"><img src="assets/logo.png" alt="Yana" class="nav__brand-logo" width="48" height="45">Yana Yavorskaya</a>
+  <ul class="nav__links">
+    <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
+    <li><a href="obras-disponibles.html">Obras</a></li>
+    <li><a href="noticias.html">Noticias</a></li>
+    <li><a href="sobre-mi.html">Bio</a></li>
+    <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+  </ul>
+</div></nav>
+
+<main class="container container-wide bio-page">
+  <a href="index.html" class="back-link" data-i18n="legal.back">← Volver al inicio</a>
+
+  <div class="bio-hero reveal">
+    <div class="bio-hero__image">
+      <img src="assets/obras/hero-bg.jpg" alt="Yana Yavorskaya en su estudio" loading="lazy">
+    </div>
+    <div class="bio-hero__text">
+      <p class="section__label" data-i18n="bio.label">Bio</p>
+      <h1 data-i18n="bio.title">Yana Yavorskaya</h1>
+      <p class="lead">Mi camino a través del arte</p>
+      <p>Pintar nunca ha sido solo una forma de crear imágenes. Para mí, siempre ha sido una manera de expresar emociones, de encontrar calma en los momentos difíciles y de transformar experiencias en color.</p>
+    </div>
+  </div>
+
+  <div class="bio-section reveal">
+    <p>Cada obra nace de una historia, de un instante vivido o de una emoción que merece permanecer. Trabajo con paciencia, dejando que cada pincelada encuentre su lugar, porque creo que el arte auténtico no se puede acelerar.</p>
+
+    <p>A lo largo de los años he descubierto que una pintura puede hacer mucho más que decorar una pared. Puede despertar recuerdos, transmitir serenidad o crear una conexión especial con quien la contempla. Esa es la verdadera razón por la que sigo pintando.</p>
+
+    <blockquote>«El arte auténtico no se puede acelerar. Cada obra nace de una historia, de un instante vivido o de una emoción que merece permanecer.»</blockquote>
+
+    <p>Mi inspiración proviene de la naturaleza, de las personas y de la belleza que a menudo pasa desapercibida en la vida cotidiana. Intento capturar esos pequeños detalles que nos invitan a detenernos unos segundos y mirar el mundo con otros ojos.</p>
+
+    <p>Cada cuadro que comparto lleva una parte de mí. Espero que, al contemplarlo, también encuentre un lugar en tu historia y despierte una emoción única, porque el arte cobra vida cuando alguien se identifica con él.</p>
+  </div>
+
+  <!-- Galería visual del estudio -->
+  <div class="bio-gallery reveal">
+    <img src="assets/obras/amanecer-bruma.jpg" alt="Obra" loading="lazy">
+    <img src="assets/obras/interludio.jpg" alt="Pigmentos" loading="lazy">
+    <img src="assets/obras/espiral-aurea.jpg" alt="Detalle" loading="lazy">
+    <img src="assets/obras/tierra-callada.jpg" alt="Estudio" loading="lazy">
+  </div>
+
+  <div class="bio-section reveal">
+    <h2>Desde muy pequeña</h2>
+    <p><strong>Desde muy pequeña ya sentí una fortísima atracción por la pintura.</strong> Recuerdo con cinco años la impresión que me causó ponerme delante de estos dos cuadros de Velázquez en el Museo del Prado: «El Cristo» y «La Infanta Margarita».</p>
+
+    <p>Visitaba todos los museos con mi padre, al que perdí con doce años. La pintura era su vocación frustrada pero las circunstancias de esa época le hicieron decantarse por Derecho.</p>
+
+    <p>Recuerdo también cómo se me pasó el dolor después de una operación de anginas cuando me regalaron un caballete de campo y un estuche de acuarelas.</p>
+
+    <blockquote>«Para mí la Pintura es una terapia, una medicina, una evasión y una forma de vida, siempre en conexión con otras formas de Arte como la Música, Literatura, Teatro, Cine…»</blockquote>
+
+    <h2>Formación</h2>
+    <p>Con 18 años, y animada por mi madre, ingresé en la Facultad de Bellas Artes de la Complutense (Madrid). El tercer año me especialicé en grabado calcográfico, xilografía y litografía para aprender nuevas técnicas. No quise seguir la escuela de pintura del momento, consciente de que luego tendría que empezar de cero al terminar la carrera.</p>
+
+    <p>Me licencié en 1993 y empecé a exponer desde el primer momento. Un garaje era mi estudio y, además, allí di clases durante quince años.</p>
+
+    <p>Mi dedicación y pasión ha sido absoluta hasta hoy mismo. A pesar de que el camino no ha sido nada fácil he podido hacer <strong>más de veinte exposiciones individuales</strong> además de numerosas colectivas, ferias y concursos.</p>
+  </div>
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer__social">
+    <a href="#" class="soc-icon soc-ig" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="#" class="soc-icon soc-x" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" class="soc-icon soc-pin" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+  </div>
+  <div class="footer__inner"><p class="footer__copy" data-i18n="footer.copy">© 2026 Yana Yavorskaya</p>
+  <ul class="footer__links"><li><a href="sobre-mi.html">Bio</a></li><li><a href="noticias.html">Noticias</a></li><li><a href="obras-disponibles.html">Obras</a></li><li><a href="legal/aviso-legal.html" data-i18n="footer.legal">Aviso Legal</a></li><li><a href="legal/privacidad.html" data-i18n="footer.privacy">Privacidad</a></li><li><a href="legal/cookies.html" data-i18n="footer.cookies">Cookies</a></li><li><a href="legal/terminos.html" data-i18n="footer.terms">Términos</a></li></ul></div>
+</div></footer>
+</body>
+</html>

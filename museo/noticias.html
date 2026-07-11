@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias — Yana Yavorskaya</title>
+  <link rel="stylesheet" href="css/museum.css">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <script src="js/db.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>setTimeout(function(){MuseoI18n.init();},50);</script>
+  <style>
+    .news-page { padding: 8rem 0 4rem; min-height: 100vh; }
+    .news-hero { margin-bottom: var(--spacing-xl); }
+    .news-hero h1 { margin-bottom: 0.5rem; }
+    .back-link { display: inline-block; margin-bottom: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
+    .back-link:hover { color: var(--accent); }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: var(--spacing-lg); }
+    .news-card { border: 1px solid var(--border); background: var(--bg); transition: transform var(--transition-medium), box-shadow var(--transition-medium); }
+    .news-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .news-card__image { aspect-ratio: 16/9; overflow: hidden; background: var(--bg-alt); }
+    .news-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+    .news-card:hover .news-card__image img { transform: scale(1.03); }
+    .news-card__body { padding: 1.8rem; }
+    .news-card__date { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
+    .news-card__category { display: inline-block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.15rem 0.5rem; border: 1px solid var(--border); margin-bottom: 0.8rem; color: var(--text-tertiary); }
+    .news-card__title { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.6rem; }
+    .news-card__text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; }
+    @media(max-width:768px){ .news-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="nav__inner">
+  <a href="index.html" class="nav__brand"><img src="assets/logo.png" alt="Yana" class="nav__brand-logo" width="48" height="45">Yana Yavorskaya</a>
+  <ul class="nav__links">
+    <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
+    <li><a href="obras-disponibles.html">Obras</a></li>
+    <li><a href="noticias.html">Noticias</a></li>
+    <li><a href="sobre-mi.html">Bio</a></li>
+    <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+  </ul>
+</div></nav>
+
+<main class="container container-wide news-page">
+  <a href="index.html" class="back-link" data-i18n="legal.back">← Volver al inicio</a>
+  <div class="news-hero reveal">
+    <p class="section__label" data-i18n="news.label">Noticias & Eventos</p>
+    <h1 data-i18n="news.title">Próximas citas</h1>
+    <p class="text-secondary" style="max-width:600px;" data-i18n="news.subtitle">Ferias, exposiciones y eventos de arte en Madrid y Europa.</p>
+  </div>
+
+  <div class="news-grid reveal">
+
+    <!-- Artículo 1: ARCO Madrid -->
+    <article class="news-card">
+      <div class="news-card__image"><img src="assets/obras/memoria-horizonte.jpg" alt="ARCO Madrid" loading="lazy"></div>
+      <div class="news-card__body">
+        <div class="news-card__date">Julio 2026</div>
+        <span class="news-card__category" data-i18n="news.tagFerias">Ferias</span>
+        <h3 class="news-card__title">ARCO Madrid, el gran encuentro del arte contemporáneo</h3>
+        <p class="news-card__text">Cada primavera, Madrid se convierte en uno de los grandes centros del arte contemporáneo gracias a ARCO Madrid. Galerías, coleccionistas, artistas y amantes del arte de todo el mundo se reúnen para descubrir nuevas propuestas creativas y establecer conexiones internacionales. Para mí, estos encuentros representan mucho más que una feria. Son una oportunidad para conocer nuevas tendencias, intercambiar experiencias con otros artistas y seguir creciendo profesionalmente. Mi objetivo es que, en un futuro próximo, mi obra pueda formar parte de espacios donde el arte dialogue con personas de diferentes culturas y sensibilidades.</p>
+      </div>
+    </article>
+
+    <!-- Artículo 2: Art Madrid -->
+    <article class="news-card">
+      <div class="news-card__image"><img src="assets/obras/espiral-aurea.jpg" alt="Art Madrid" loading="lazy"></div>
+      <div class="news-card__body">
+        <div class="news-card__date">Junio 2026</div>
+        <span class="news-card__category" data-i18n="news.tagArt">Art Madrid</span>
+        <h3 class="news-card__title">Art Madrid: creatividad en el corazón de la ciudad</h3>
+        <p class="news-card__text">Durante la Semana del Arte, Madrid ofrece mucho más que una única feria. Art Madrid reúne galerías y artistas nacionales e internacionales en un espacio único donde conviven pintura, escultura, fotografía y nuevas formas de expresión artística. Visitar este tipo de eventos siempre resulta inspirador. Cada exposición es una oportunidad para descubrir nuevas técnicas, conocer artistas emergentes y encontrar ideas que enriquecen mi propio proceso creativo.</p>
+      </div>
+    </article>
+
+    <!-- Artículo 3: PHotoEspaña -->
+    <article class="news-card">
+      <div class="news-card__image"><img src="assets/obras/amanecer-bruma.jpg" alt="PHotoEspaña" loading="lazy"></div>
+      <div class="news-card__body">
+        <div class="news-card__date">Mayo 2026</div>
+        <span class="news-card__category" data-i18n="news.tagMuseos">Museos Madrid</span>
+        <h3 class="news-card__title">La fotografía como fuente de inspiración</h3>
+        <p class="news-card__text">El festival PHotoEspaña demuestra cada año cómo la fotografía continúa evolucionando y dialogando con otras disciplinas artísticas. Aunque mi trabajo se centra principalmente en la pintura, siempre encuentro inspiración en la luz, las composiciones y las historias que transmiten las grandes exposiciones fotográficas. El arte no entiende de fronteras entre disciplinas; todo puede convertirse en inspiración.</p>
+      </div>
+    </article>
+
+    <!-- Artículo 4: Europa -->
+    <article class="news-card">
+      <div class="news-card__image"><img src="assets/obras/tierra-callada.jpg" alt="Ferias europeas" loading="lazy"></div>
+      <div class="news-card__body">
+        <div class="news-card__date">Abril 2026</div>
+        <span class="news-card__category">Europa</span>
+        <h3 class="news-card__title">Europa, un espacio para descubrir nuevas tendencias</h3>
+        <p class="news-card__text">Europa acoge algunas de las ferias y bienales más importantes del mundo. Cada ciudad aporta una identidad propia y una forma diferente de entender el arte contemporáneo. Seguir de cerca estos acontecimientos permite conocer nuevas corrientes creativas, descubrir artistas internacionales y comprender hacia dónde evoluciona el panorama artístico europeo. Mi intención es continuar participando en este diálogo cultural y compartir ese aprendizaje a través de mis próximas colecciones.</p>
+      </div>
+    </article>
+
+    <!-- Artículo 5: Encuentros -->
+    <article class="news-card">
+      <div class="news-card__image"><img src="assets/obras/interludio.jpg" alt="Encuentros" loading="lazy"></div>
+      <div class="news-card__body">
+        <div class="news-card__date">Marzo 2026</div>
+        <span class="news-card__category">Reflexiones</span>
+        <h3 class="news-card__title">El valor de encontrarnos a través del arte</h3>
+        <p class="news-card__text">Cada exposición es mucho más que un lugar donde mostrar cuadros. Es un espacio para conversar, escuchar historias y descubrir cómo una misma obra puede despertar emociones completamente distintas en cada persona. Ese intercambio humano es una de las partes más valiosas de mi trabajo como artista. Pintar es un acto íntimo, pero compartir la obra con quienes la contemplan es lo que realmente le da vida.</p>
+      </div>
+    </article>
+
+    <!-- Artículo 6: Feriarte -->
+    <article class="news-card">
+      <div class="news-card__image"><img src="assets/obras/vesica-piscis.jpg" alt="Feriarte" loading="lazy"></div>
+      <div class="news-card__body">
+        <div class="news-card__date">Febrero 2026</div>
+        <span class="news-card__category" data-i18n="news.tagIfema">IFEMA</span>
+        <h3 class="news-card__title">Feriarte, el arte que une generaciones</h3>
+        <p class="news-card__text">Feriarte es mucho más que una feria de antigüedades. Es un puente entre el arte clásico y las expresiones más contemporáneas. Cada noviembre, IFEMA reúne a anticuarios, galeristas y artistas en un diálogo que trasciende épocas y estilos. Para una pintora como yo, visitar Feriarte es redescubrir la historia del arte desde una perspectiva viva, viendo cómo piezas centenarias dialogan con la creación actual.</p>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer__social">
+    <a href="#" class="soc-icon soc-ig" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="#" class="soc-icon soc-x" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" class="soc-icon soc-pin" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+  </div>
+  <div class="footer__inner"><p class="footer__copy" data-i18n="footer.copy">© 2026 Yana Yavorskaya</p>
+  <ul class="footer__links"><li><a href="sobre-mi.html">Bio</a></li><li><a href="noticias.html">Noticias</a></li><li><a href="obras-disponibles.html">Obras</a></li><li><a href="legal/aviso-legal.html" data-i18n="footer.legal">Aviso Legal</a></li><li><a href="legal/privacidad.html" data-i18n="footer.privacy">Privacidad</a></li><li><a href="legal/cookies.html" data-i18n="footer.cookies">Cookies</a></li><li><a href="legal/terminos.html" data-i18n="footer.terms">Términos</a></li></ul></div>
+</div></footer>
+</body>
+</html>

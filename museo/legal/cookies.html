@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Política de Cookies — Yana Yavorskaya</title>
+  <link rel="stylesheet" href="../css/museum.css">
+  <style>
+    .legal-page { padding: 8rem 0 4rem; min-height: 100vh; }
+    .legal-page h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; margin-bottom: 0.5rem; }
+    .legal-page h2 { font-size: 1.6rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; font-family: var(--serif); }
+    .legal-page h3 { font-size: 1.2rem; margin-top: 1.5rem; }
+    .legal-page p, .legal-page li { font-size: 1rem; line-height: 1.8; color: var(--text-secondary); max-width: 680px; }
+    .legal-page ul { padding-left: 1.5rem; margin: 1rem 0; }
+    .legal-page li { margin-bottom: 0.5rem; }
+    .legal-page .back-link { display: inline-block; margin-bottom: 3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
+    .legal-page .back-link:hover { color: var(--accent); }
+    .legal-page .last-update { font-size: 0.8rem; color: var(--text-tertiary); margin-top: 4rem; }
+    .cookie-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .cookie-table th, .cookie-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .cookie-table th { font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.75rem; color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <div class="nav"><div class="nav__inner"><a href="../index.html" class="nav__brand" data-i18n="nav.brand">Yana Yavorskaya</a></div></div>
+
+  <main class="container container-narrow legal-page">
+    <a href="../index.html" class="back-link" data-i18n="legal.back">← Volver al inicio</a>
+    <h1 data-i18n="legal.cookies.title">Política de Cookies</h1>
+    <p class="text-secondary"><span data-i18n="legal.update">Última actualización</span>: 11 de julio de 2026</p>
+
+    <h2>1. ¿Qué son las Cookies?</h2>
+    <p>Las cookies son pequeños archivos de texto que los sitios web instalan en el dispositivo del usuario cuando este los visita. Permiten que el sitio web recuerde información sobre la visita, como el idioma preferido y otras opciones.</p>
+
+    <h2>2. Tipos de Cookies Utilizadas</h2>
+    <h3>2.1. Cookies Técnicas (Necesarias)</h3>
+    <p>Son esenciales para el funcionamiento del Sitio Web. Permiten la navegación básica y la funcionalidad principal.</p>
+    <table class="cookie-table">
+      <thead><tr><th>Nombre</th><th>Propósito</th><th>Duración</th></tr></thead>
+      <tbody>
+        <tr><td>museo_session</td><td>Gestión de sesión de navegación</td><td>Sesión</td></tr>
+        <tr><td>museo_prefs</td><td>Preferencias de visualización</td><td>1 año</td></tr>
+        <tr><td>cookie_consent</td><td>Registro del consentimiento de cookies</td><td>1 año</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2.2. Cookies Analíticas</h3>
+    <p>Nos ayudan a comprender cómo interactúan los visitantes con el Sitio Web. Utilizamos herramientas de análisis que anonimizan las direcciones IP.</p>
+    <table class="cookie-table">
+      <thead><tr><th>Nombre</th><th>Propósito</th><th>Duración</th></tr></thead>
+      <tbody>
+        <tr><td>_ga</td><td>Identificador anónimo (Google Analytics)</td><td>2 años</td></tr>
+        <tr><td>_ga_*</td><td>Identificador de sesión anónimo</td><td>2 años</td></tr>
+      </tbody>
+    </table>
+
+    <h2>3. Almacenamiento Local (IndexedDB y localStorage)</h2>
+    <p>Además de las cookies tradicionales, este Sitio Web utiliza tecnologías de almacenamiento local del navegador (IndexedDB y localStorage) para guardar preferencias del usuario como favoritos, historial de obras visitadas y modo de visualización. Estos datos se almacenan exclusivamente en el dispositivo del usuario, no se transmiten a ningún servidor externo, y son controlados en todo momento por el usuario.</p>
+
+    <h2>4. Gestión de Cookies</h2>
+    <p>El usuario puede permitir, bloquear o eliminar las cookies instaladas mediante la configuración de su navegador: Chrome (Configuración → Privacidad y seguridad), Safari (Preferencias → Privacidad), Firefox (Opciones → Privacidad y Seguridad), Edge (Configuración → Cookies y permisos del sitio).</p>
+
+    <h2>5. Modificaciones</h2>
+    <p>Nos reservamos el derecho a modificar la presente Política de Cookies en cualquier momento. Las modificaciones entrarán en vigor desde su publicación en el Sitio Web.</p>
+
+    <p class="last-update" data-i18n="legal.copyright">© 2026 Yana Yavorskaya. Todos los derechos reservados.</p>
+  </main>
+
+  <script src="../js/db.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script>MuseoI18n.init();</script>
+</body>
+</html>
