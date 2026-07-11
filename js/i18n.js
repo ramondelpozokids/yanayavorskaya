@@ -16,7 +16,7 @@ const MuseoI18n = (() => {
   const DICT = {
 
     /* ============ NAVEGACIÓN ============ */
-    'nav.brand':           { es:'Museo Digital', en:'Digital Museum', fr:'Musée Numérique', de:'Digitales Museum', ru:'Цифровой Музей', it:'Museo Digitale' },
+    'nav.brand':           { es:'Yana Yavorskaya', en:'Yana Yavorskaya', fr:'Yana Yavorskaya', de:'Yana Yavorskaya', ru:'Яна Яворская', it:'Yana Yavorskaya' },
     'nav.colecciones':     { es:'Colecciones', en:'Collections', fr:'Collections', de:'Sammlungen', ru:'Коллекции', it:'Collezioni' },
     'nav.estudio':         { es:'Estudio', en:'Studio', fr:'Atelier', de:'Atelier', ru:'Студия', it:'Studio' },
     'nav.exposiciones':    { es:'Exposiciones', en:'Exhibitions', fr:'Expositions', de:'Ausstellungen', ru:'Выставки', it:'Mostre' },
@@ -128,11 +128,11 @@ const MuseoI18n = (() => {
     'obra.10.title': { es:'Umbral', en:'Threshold', fr:'Seuil', de:'Schwelle', ru:'Порог', it:'Soglia' },
 
     /* ============ PÁGINA (meta) ============ */
-    'page.title':       { es:'Museo Digital — Colección de Arte', en:'Digital Museum — Art Collection', fr:'Musée Numérique — Collection d\'Art', de:'Digitales Museum — Kunstsammlung', ru:'Цифровой Музей — Коллекция Искусства', it:'Museo Digitale — Collezione d\'Arte' },
-    'page.description': { es:'Museo Digital — Colección de arte contemporáneo. Obra original, exposiciones, galería virtual.', en:'Digital Museum — Contemporary art collection.', fr:'Musée Numérique — Collection d\'art contemporain.', de:'Digitales Museum — Zeitgenössische Kunstsammlung.', ru:'Цифровой Музей — Коллекция современного искусства.', it:'Museo Digitale — Collezione d\'arte contemporanea.' },
+    'page.title':       { es:'Yana Yavorskaya — Colección de Arte', en:'Yana Yavorskaya — Art Collection', fr:'Yana Yavorskaya — Collection d\'Art', de:'Yana Yavorskaya — Kunstsammlung', ru:'Яна Яворская — Коллекция Искусства', it:'Yana Yavorskayae — Collezione d\'Arte' },
+    'page.description': { es:'Yana Yavorskaya — Colección de arte contemporáneo. Obra original, exposiciones, galería virtual.', en:'Yana Yavorskaya — Contemporary art collection.', fr:'Yana Yavorskaya — Collection d\'art contemporain.', de:'Yana Yavorskaya — Zeitgenössische Kunstsammlung.', ru:'Яна Яворская — Коллекция современного искусства.', it:'Yana Yavorskayae — Collezione d\'arte contemporanea.' },
 
     /* ============ LEGALES ============ */
-    'legal.back':           { es:'← Volver al Museo', en:'← Back to Museum', fr:'← Retour au Musée', de:'← Zurück zum Museum', ru:'← Вернуться в Музей', it:'← Torna al Museo' },
+    'legal.back':           { es:'← Volver al inicio', en:'← Back', fr:'← Retour', de:'← Zurück', ru:'← Назад', it:'← Indietro' },
     'legal.update':         { es:'Última actualización', en:'Last updated', fr:'Dernière mise à jour', de:'Zuletzt aktualisiert', ru:'Последнее обновление', it:'Ultimo aggiornamento' },
     'legal.copyright':      { es:'© 2026 Yana Yavorskaya. Todos los derechos reservados.', en:'© 2026 Yana Yavorskaya. All rights reserved.', fr:'© 2026 Yana Yavorskaya. Tous droits réservés.', de:'© 2026 Yana Yavorskaya. Alle Rechte vorbehalten.', ru:'© 2026 Яна Яворская. Все права защищены.', it:'© 2026 Yana Yavorskaya. Tutti i diritti riservati.' },
     'legal.aviso.title':    { es:'Aviso Legal', en:'Legal Notice', fr:'Mentions Légales', de:'Impressum', ru:'Правовая информация', it:'Note Legali' },
@@ -150,7 +150,7 @@ const MuseoI18n = (() => {
     'chat.q2':          { es:'Técnica', en:'Technique', fr:'Technique', de:'Technik', ru:'Техника', it:'Tecnica' },
     'chat.q3':          { es:'Disponibilidad', en:'Availability', fr:'Disponibilité', de:'Verfügbarkeit', ru:'Доступность', it:'Disponibilità' },
     'chat.q4':          { es:'Exposiciones', en:'Exhibitions', fr:'Expositions', de:'Ausstellungen', ru:'Выставки', it:'Mostre' },
-    'chat.greeting':    { es:'Bienvenida al Museo Digital. Soy la comisaria virtual de Yana Yavorskaya. ¿En qué puedo ayudarte?', en:'Welcome to the Digital Museum. I\'m the virtual curator. How may I help you?', fr:'Bienvenue au Musée Numérique. Je suis la commissaire virtuelle. Puis-je vous aider ?', de:'Willkommen im Digitalen Museum. Ich bin die virtuelle Kuratorin. Wie kann ich helfen?', ru:'Добро пожаловать в Цифровой Музей. Я виртуальный куратор. Чем могу помочь?', it:'Benvenuta al Museo Digitale. Sono la curatrice virtuale. Come posso aiutarti?' },
+    'chat.greeting':    { es:'Bienvenida al Yana Yavorskaya. Soy la comisaria virtual de Yana Yavorskaya. ¿En qué puedo ayudarte?', en:'Welcome to the Yana Yavorskaya. I\'m the virtual curator. How may I help you?', fr:'Bienvenue au Yana Yavorskaya. Je suis la commissaire virtuelle. Puis-je vous aider ?', de:'Willkommen im Digitalen Museum. Ich bin die virtuelle Kuratorin. Wie kann ich helfen?', ru:'Добро пожаловать в Яна Яворская. Я виртуальный куратор. Чем могу помочь?', it:'Benvenuta al Yana Yavorskayae. Sono la curatrice virtuale. Come posso aiutarti?' },
 
     /* ============ WHATSAPP ============ */
     'whatsapp.tooltip': { es:'Consultar por WhatsApp', en:'Inquire via WhatsApp', fr:'Consulter par WhatsApp', de:'Per WhatsApp anfragen', ru:'Связаться через WhatsApp', it:'Consulta via WhatsApp' }

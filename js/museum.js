@@ -48,8 +48,9 @@
     try { const mp = await MuseoDB.getPreferencia('museumMode'); if (mp === 'true') state.museumMode = true; } catch (_) {}
     setupNavigation(); setupScrollReveal(); setupMuseumMode(); setupFavorites();
     setupContactForm(); setupSmoothScroll(); setupMuseumModeTrigger(); setupChatAssistant();
+    setupScrollUp();
     updateFavButtons();
-    console.log('🏛️ Museo Digital inicializado');
+    console.log('🏛️ Yana Yavorskaya inicializado');
   }
 
   function loadFavsLS() { try { const r = localStorage.getItem('museo_favoritos'); if (r) JSON.parse(r).forEach(id => state.favoritos.add(id)); } catch (_) {} }
@@ -176,6 +177,14 @@
     inp?.addEventListener('keydown', e => { if (e.key === 'Enter') sendMsg(); });
     qk?.querySelectorAll('.chat-panel__quick-reply').forEach(b => { b.addEventListener('click', () => { addMsg(b.getAttribute('data-msg'), 'user'); setTimeout(() => addMsg(reply(b.getAttribute('data-msg')), 'bot'), 500); }); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && pn.classList.contains('is-open')) { pn.classList.remove('is-open'); pn.setAttribute('aria-hidden', 'true'); } });
+  }
+
+  /* ============ SCROLL UP ============ */
+  function setupScrollUp() {
+    const btn = document.getElementById('scroll-up');
+    if (!btn) return;
+    window.addEventListener('scroll', () => { btn.classList.toggle('is-visible', window.scrollY > 500); }, {passive:true});
+    btn.addEventListener('click', () => { window.scrollTo({top:0,behavior:'smooth'}); });
   }
 
   /* ============ GO ============ */

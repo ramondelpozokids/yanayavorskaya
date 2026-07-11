@@ -3,318 +3,259 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Museo Digital — Colección de arte contemporáneo. Obra original, exposiciones, galería virtual.">
-  <meta property="og:title" content="Museo Digital — Colección de Arte Contemporáneo">
-  <meta property="og:description" content="Una experiencia inmersiva en el estudio y la obra de una pintora internacional.">
+  <meta name="description" content="Yana Yavorskaya — Pintora contemporánea. Obra original, exposiciones internacionales, galería privada.">
+  <meta property="og:title" content="Yana Yavorskaya — Pintura Contemporánea">
+  <meta property="og:description" content="Colección de arte contemporáneo. Obras disponibles, exposiciones, consulta privada.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#fafaf8">
-  <title>Museo Digital — Colección de Arte</title>
+  <meta name="theme-color" content="#111">
+  <title>Yana Yavorskaya — Pintura Contemporánea</title>
   <link rel="stylesheet" href="css/museum.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>✦</text></svg>">
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "VisualArtwork",
-    "name": "Colección de Arte — Yana Yavorskaya",
-    "artist": { "@type": "Person", "name": "Yana Yavorskaya", "nationality": "ES" },
-    "artform": "Painting",
-    "artMedium": ["Oil on canvas", "Mixed media", "Acrylic"],
-    "description": "Colección de arte contemporáneo con obras originales, exposiciones internacionales y galería virtual.",
-    "image": "assets/logo.png",
-    "url": "https://museo-digital.vercel.app"
-  }
-  </script>
+  <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body>
 
-  <!-- ============================================================
-       NAVEGACIÓN — Limpia, discreta, elegante
-       ============================================================ -->
-  <nav class="nav" role="navigation" aria-label="Navegación principal">
-    <div class="nav__inner">
-      <a href="#" class="nav__brand" aria-label="Ir al inicio">
-        <img src="assets/logo.png" alt="Logo Yana Yavorskaya" class="nav__brand-logo" width="44" height="41">
-        <span data-i18n="nav.brand">Museo Digital</span>
+<!-- ===== NAV ===== -->
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="#" class="nav__brand">
+      <img src="assets/logo.png" alt="Yana Yavorskaya" class="nav__brand-logo" width="48" height="45">
+      Yana Yavorskaya
+    </a>
+    <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
+      <li><a href="#estudio" data-i18n="nav.estudio">Estudio</a></li>
+      <li><a href="#exposiciones" data-i18n="nav.exposiciones">Exposiciones</a></li>
+      <li><a href="obras-disponibles.html">Obras</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="sobre-mi.html">Bio</a></li>
+      <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO — Imagen grande a pantalla completa ===== -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="assets/obras/hero-bg.jpg" alt="" aria-hidden="true" loading="eager">
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content reveal">
+    <img src="assets/logo.png" alt="Yana Yavorskaya" class="hero__logo" width="518" height="482">
+    <p class="hero__artist">Yana Yavorskaya</p>
+    <h1 class="hero__title">Arte que<br>transforma</h1>
+    <p class="hero__quote">«La pintura es una terapia, una medicina, una evasión y una forma de vida.»</p>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <span data-i18n="hero.scroll">Descubrir</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== COLECCIONES — 3 tarjetas exactas ===== -->
+<section id="colecciones" class="section section--light">
+  <div class="container">
+    <div class="section__header reveal">
+      <p class="section__label" data-i18n="collections.label">Colecciones</p>
+      <h2 class="section__title" data-i18n="collections.subtitle">Cada serie es una historia</h2>
+    </div>
+    <div class="collections-grid">
+
+      <article class="collection-card reveal" data-museum-open data-collection="luz-y-sombra">
+        <div class="collection-card__image">
+          <img src="assets/obras/amanecer-bruma.jpg" alt="Luz y Sombra" loading="lazy">
+        </div>
+        <h3 class="collection-card__title" data-i18n="col1.title">Luz y Sombra</h3>
+        <p class="collection-card__desc" data-i18n="col1.desc">2022–2024 · 4 obras</p>
+      </article>
+
+      <article class="collection-card reveal" data-museum-open data-collection="geometria-sagrada">
+        <div class="collection-card__image">
+          <img src="assets/obras/espiral-aurea.jpg" alt="Geometría Sagrada" loading="lazy">
+        </div>
+        <h3 class="collection-card__title" data-i18n="col2.title">Geometría Sagrada</h3>
+        <p class="collection-card__desc" data-i18n="col2.desc">2020–2022 · 3 obras</p>
+      </article>
+
+      <article class="collection-card reveal" data-museum-open data-collection="horizontes-interiores">
+        <div class="collection-card__image">
+          <img src="assets/obras/memoria-horizonte.jpg" alt="Horizontes Interiores" loading="lazy">
+        </div>
+        <h3 class="collection-card__title" data-i18n="col3.title">Horizontes Interiores</h3>
+        <p class="collection-card__desc" data-i18n="col3.desc">2018–2020 · 3 obras</p>
+      </article>
+
+    </div>
+
+    <!-- Obra destacada -->
+    <div class="artwork-detail reveal" style="margin-top: var(--spacing-xl);">
+      <div class="artwork-detail__image">
+        <img src="assets/obras/amanecer-bruma.jpg" alt="Amanecer en la Bruma" loading="lazy">
+      </div>
+      <div class="artwork-detail__info">
+        <p class="section__label">Obra destacada</p>
+        <h3 data-i18n="featured.title">Amanecer en la Bruma</h3>
+        <div class="artwork-detail__meta">
+          <span>2024</span><span>Óleo sobre lienzo</span><span>180 × 220 cm</span>
+        </div>
+        <p class="artwork-detail__desc">Colección «Luz y Sombra». El amanecer capturado no como momento, sino como sensación: la bruma que se disipa y los primeros rayos que acarician la tierra.</p>
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <button class="btn btn--primary" data-museum-open data-collection="luz-y-sombra" data-obra-index="0">Ver en modo inmersivo</button>
+          <button class="btn btn--favorite" data-obra-id="obra-1" aria-label="Añadir a favoritos">☆</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ESTUDIO ===== -->
+<section id="estudio" class="section section--alt">
+  <div class="container">
+    <div class="section__header reveal">
+      <p class="section__label" data-i18n="studio.label">El Estudio</p>
+      <h2 class="section__title" data-i18n="studio.subtitle">Donde nace cada obra</h2>
+    </div>
+    <div class="studio-grid">
+      <div class="studio-card reveal"><img src="assets/obras/hero-bg.jpg" alt="" loading="lazy"><div class="studio-card__caption">El caballete</div></div>
+      <div class="studio-card reveal"><img src="assets/obras/interludio.jpg" alt="" loading="lazy"><div class="studio-card__caption">Los pigmentos</div></div>
+      <div class="studio-card reveal"><img src="assets/obras/espiral-aurea.jpg" alt="" loading="lazy"><div class="studio-card__caption">Técnica mixta</div></div>
+      <div class="studio-card reveal"><img src="assets/obras/ultimo-rayo.jpg" alt="" loading="lazy"><div class="studio-card__caption">Luz del norte</div></div>
+    </div>
+    <p class="reveal" style="text-align:center;max-width:650px;margin:var(--spacing-lg) auto 0;font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--text-secondary);" data-i18n="studio.quote">«Cada mañana entro al estudio sin expectativas. El lienzo me dice lo que necesita. Yo solo escucho.»</p>
+  </div>
+</section>
+
+<!-- ===== EXPOSICIONES ===== -->
+<section id="exposiciones" class="section section--light">
+  <div class="container container-narrow">
+    <div class="section__header reveal">
+      <p class="section__label" data-i18n="exhibitions.label">Exposiciones</p>
+      <h2 class="section__title">Más de 40 exposiciones en 15 países</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline__item"><div class="timeline__year">2026</div><div class="timeline__title">Hauser & Wirth</div><div class="timeline__place">Londres — Individual</div></div>
+      <div class="timeline__item"><div class="timeline__year">2025</div><div class="timeline__title">Luz y Sombra</div><div class="timeline__place">Gagosian Gallery, Nueva York</div></div>
+      <div class="timeline__item"><div class="timeline__year">2024</div><div class="timeline__title">Art Basel Miami</div><div class="timeline__place">Miami Beach — Feria</div></div>
+      <div class="timeline__item"><div class="timeline__year">2023</div><div class="timeline__title">Geometría Sagrada</div><div class="timeline__place">Tate Modern, Londres</div></div>
+      <div class="timeline__item"><div class="timeline__year">2022</div><div class="timeline__title">Horizontes Interiores</div><div class="timeline__place">Fondation Louis Vuitton, París</div></div>
+      <div class="timeline__item"><div class="timeline__year">2021</div><div class="timeline__title">Bienal de Venecia</div><div class="timeline__place">Giardini, Venecia</div></div>
+      <div class="timeline__item"><div class="timeline__year">2020</div><div class="timeline__title">ARCOmadrid</div><div class="timeline__place">IFEMA, Madrid</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section id="contacto" class="section section--alt">
+  <div class="container">
+    <div class="invitation reveal">
+      <div class="invitation__crest">✦</div>
+      <h3 style="font-family:var(--serif);font-weight:300;font-size:2rem;margin-bottom:0.5rem;">Consulta Privada</h3>
+      <p class="invitation__text">Para información sobre obras disponibles, precios, encargos personalizados o visitas al estudio.</p>
+      <form id="contact-form" class="invitation__form" autocomplete="on">
+        <input type="text" name="nombre" placeholder="Su nombre completo" required>
+        <input type="email" name="email" placeholder="Su correo electrónico" required>
+        <textarea name="mensaje" placeholder="¿Sobre qué obra o colección desea consultar?" required></textarea>
+        <button type="submit" class="btn btn--primary" style="align-self:flex-start;">Enviar consulta</button>
+      </form>
+      <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1rem;">Todas las consultas son confidenciales. Respondemos en 24–48 horas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER con redes sociales SVG ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__social">
+      <!-- Instagram -->
+      <a href="https://instagram.com/yanayavorskaya" class="soc-icon soc-ig" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
-      <button class="nav__toggle" data-i18n-attr="aria-label:nav.toggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links">
-        <li><a href="#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
-        <li><a href="#estudio" data-i18n="nav.estudio">Estudio</a></li>
-        <li><a href="#exposiciones" data-i18n="nav.exposiciones">Exposiciones</a></li>
-        <li><a href="#contacto" data-i18n="nav.contacto">Consulta Privada</a></li>
+      <!-- X / Twitter -->
+      <a href="https://x.com/yanayavorskaya" class="soc-icon soc-x" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <!-- Pinterest -->
+      <a href="https://pinterest.com/yanayavorskaya" class="soc-icon soc-pin" target="_blank" rel="noopener" aria-label="Pinterest">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+      </a>
+      <!-- YouTube -->
+      <a href="https://youtube.com/@yanayavorskaya" class="soc-icon soc-yt" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/yanayavorskaya" class="soc-icon soc-li" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- Facebook -->
+      <a href="https://facebook.com/yanayavorskaya" class="soc-icon soc-fb" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <div class="footer__inner">
+      <p class="footer__copy">© 2026 Yana Yavorskaya</p>
+      <ul class="footer__links">
+        <li><a href="sobre-mi.html">Bio</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="obras-disponibles.html">Obras</a></li>
+        <li><a href="legal/aviso-legal.html">Aviso Legal</a></li>
+        <li><a href="legal/privacidad.html">Privacidad</a></li>
+        <li><a href="legal/cookies.html">Cookies</a></li>
+        <li><a href="legal/terminos.html">Términos</a></li>
       </ul>
     </div>
-  </nav>
-
-  <!-- ============================================================
-       HERO — Pantalla completa. Solo el cuadro.
-       ============================================================ -->
-  <section class="hero" aria-label="Inicio">
-    <div class="hero__bg"></div>
-    <div class="hero__artwork">
-      <div class="hero__artwork-inner"></div>
-    </div>
-    <div class="hero__content reveal">
-      <img src="assets/logo.png" alt="Logo Yana Yavorskaya" class="hero__logo" width="518" height="482">
-      <p class="hero__artist" data-i18n="hero.artist">Yana Yavorskaya</p>
-      <h1 class="hero__title"><span data-i18n="hero.title.line1">La luz</span><br><span data-i18n="hero.title.line2">que nos habita</span></h1>
-      <p class="hero__quote" data-i18n="hero.quote">«No pinto lo que veo. Pinto lo que siento cuando cierro los ojos.»</p>
-    </div>
-    <div class="hero__scroll" aria-hidden="true">
-      <span data-i18n="hero.scroll">Descubrir</span>
-      <div class="hero__scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       COLECCIONES — Exposiciones digitales, no miniaturas
-       ============================================================ -->
-  <section id="colecciones" class="section section--light">
-    <div class="container">
-      <div class="section__header reveal">
-        <p class="section__label" data-i18n="collections.label">Colecciones</p>
-        <h2 class="section__title"><span data-i18n="collections.title.line1">Tres miradas,</span><br><span data-i18n="collections.title.line2">un universo</span></h2>
-        <p class="section__subtitle" data-i18n="collections.subtitle">Cada colección es una exposición digital con su propia historia, proceso y emoción.</p>
-      </div>
-
-      <div class="collections-grid">
-
-        <!-- Colección 1 -->
-        <article class="collection-card reveal" data-museum-open data-collection="luz-y-sombra">
-          <div class="collection-card__image">
-            <img src="assets/obras/amanecer-bruma.jpg" alt="Luz y Sombra" class="collection-card__image-inner" style="object-fit:cover;width:100%;height:100%;" loading="lazy">
-          </div>
-          <h3 class="collection-card__title" data-i18n="col1.title">Luz y Sombra</h3>
-          <p class="collection-card__desc" data-i18n="col1.desc">2022–2024 · 4 obras</p>
-        </article>
-
-        <!-- Colección 2 -->
-        <article class="collection-card reveal" data-museum-open data-collection="geometria-sagrada">
-          <div class="collection-card__image">
-            <img src="assets/obras/espiral-aurea.jpg" alt="Geometría Sagrada" class="collection-card__image-inner" style="object-fit:cover;width:100%;height:100%;" loading="lazy">
-          </div>
-          <h3 class="collection-card__title" data-i18n="col2.title">Geometría Sagrada</h3>
-          <p class="collection-card__desc" data-i18n="col2.desc">2020–2022 · 3 obras</p>
-        </article>
-
-        <!-- Colección 3 -->
-        <article class="collection-card reveal" data-museum-open data-collection="horizontes-interiores">
-          <div class="collection-card__image">
-            <img src="assets/obras/memoria-horizonte.jpg" alt="Horizontes Interiores" class="collection-card__image-inner" style="object-fit:cover;width:100%;height:100%;" loading="lazy">
-          </div>
-          <h3 class="collection-card__title" data-i18n="col3.title">Horizontes Interiores</h3>
-          <p class="collection-card__desc" data-i18n="col3.desc">2018–2020 · 3 obras</p>
-        </article>
-
-      </div>
-
-      <!-- Obra destacada -->
-      <div class="artwork-detail reveal" style="margin-top: var(--spacing-xl);">
-        <div class="artwork-detail__image">
-          <img src="assets/obras/amanecer-bruma.jpg" alt="Amanecer en la Bruma" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
-        </div>
-        <div class="artwork-detail__info">
-          <p class="section__label" data-i18n="featured.label">Obra destacada</p>
-          <h3 data-i18n="featured.title">Amanecer en la Bruma</h3>
-          <div class="artwork-detail__meta">
-            <span>2024</span>
-            <span data-i18n="featured.technique">Óleo sobre lienzo</span>
-            <span>180 × 220 cm</span>
-          </div>
-          <p class="artwork-detail__desc" data-i18n="featured.desc">Una exploración de la luz en su estado más efímero...</p>
-          <div style="display:flex;gap:0.5rem;align-items:center;">
-            <button class="btn btn--primary" data-museum-open data-collection="luz-y-sombra" data-obra-index="0" data-i18n="featured.museum">Ver en Modo Museo</button>
-            <button class="btn btn--favorite" data-obra-id="obra-1" data-obra-titulo="Amanecer en la Bruma" data-i18n-attr="aria-label:featured.fav" aria-label="Añadir a favoritos">☆</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       ESTUDIO — Un documental interactivo
-       ============================================================ -->
-  <section id="estudio" class="section section--alt">
-    <div class="container">
-      <div class="section__header reveal">
-        <p class="section__label" data-i18n="studio.label">El Estudio</p>
-        <h2 class="section__title"><span data-i18n="studio.title.line1">Donde nace</span><br><span data-i18n="studio.title.line2">la luz</span></h2>
-        <p class="section__subtitle" data-i18n="studio.subtitle">Un espacio de silencio, materiales y contemplación. Así trabaja Yana.</p>
-      </div>
-
-      <div class="studio-grid">
-        <div class="studio-card reveal" style="background: radial-gradient(circle at 40% 50%, #d5cec2 0%, #c8c0b4 60%, #bbb3a7 100%);">
-          <div class="studio-card__inner" style="background: radial-gradient(circle at 40% 50%, #d5cec2 0%, #c8c0b4 60%, #bbb3a7 100%);"></div>
-          <div class="studio-card__caption" data-i18n="studio.easel">El caballete</div>
-        </div>
-        <div class="studio-card reveal" style="background: radial-gradient(circle at 60% 40%, #e0d9cd 0%, #d0c8bb 50%, #c5bdb0 100%);">
-          <div class="studio-card__inner" style="background: radial-gradient(circle at 60% 40%, #e0d9cd 0%, #d0c8bb 50%, #c5bdb0 100%);"></div>
-          <div class="studio-card__caption" data-i18n="studio.pigments">Los pigmentos</div>
-        </div>
-        <div class="studio-card reveal" style="background: radial-gradient(circle at 50% 60%, #ddd7cb 0%, #cfc7ba 55%, #c0b8ab 100%);">
-          <div class="studio-card__inner" style="background: radial-gradient(circle at 50% 60%, #ddd7cb 0%, #cfc7ba 55%, #c0b8ab 100%);"></div>
-          <div class="studio-card__caption" data-i18n="studio.library">La biblioteca</div>
-        </div>
-        <div class="studio-card reveal" style="background: radial-gradient(circle at 35% 35%, #e8e2d7 0%, #d8d0c3 50%, #cbc3b6 100%);">
-          <div class="studio-card__inner" style="background: radial-gradient(circle at 35% 35%, #e8e2d7 0%, #d8d0c3 50%, #cbc3b6 100%);"></div>
-          <div class="studio-card__caption" data-i18n="studio.light">Luz del norte</div>
-        </div>
-      </div>
-
-      <p class="text-center mt-4 reveal" style="max-width:600px;margin-left:auto;margin-right:auto;font-family:var(--serif);font-style:italic;font-size:1.15rem;" data-i18n="studio.quote">«Cada mañana entro al estudio sin expectativas. El lienzo me dice lo que necesita. Yo solo escucho.»</p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       EXPOSICIONES — Timeline interactiva
-       ============================================================ -->
-  <section id="exposiciones" class="section section--light">
-    <div class="container container-narrow">
-      <div class="section__header reveal">
-        <p class="section__label" data-i18n="exhibitions.label">Exposiciones</p>
-        <h2 class="section__title"><span data-i18n="exhibitions.title.line1">Un recorrido</span><br><span data-i18n="exhibitions.title.line2">internacional</span></h2>
-      </div>
-
-      <div class="timeline reveal">
-        <div class="timeline__item">
-          <div class="timeline__year">2025</div>
-          <div class="timeline__title" data-i18n="exh1.title">Luz y Sombra</div>
-          <div class="timeline__place" data-i18n="exh1.place">Gagosian Gallery, Nueva York — Individual</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__year">2024</div>
-          <div class="timeline__title" data-i18n="exh2.title">Art Basel Miami</div>
-          <div class="timeline__place" data-i18n="exh2.place">Miami Beach Convention Center — Feria</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__year">2023</div>
-          <div class="timeline__title" data-i18n="exh3.title">Geometría Sagrada</div>
-          <div class="timeline__place" data-i18n="exh3.place">Tate Modern, Londres — Individual</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__year">2022</div>
-          <div class="timeline__title" data-i18n="exh4.title">Horizontes Interiores</div>
-          <div class="timeline__place" data-i18n="exh4.place">Fondation Louis Vuitton, París — Individual</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__year">2021</div>
-          <div class="timeline__title" data-i18n="exh5.title">Bienal de Venecia</div>
-          <div class="timeline__place" data-i18n="exh5.place">Giardini, Venecia — Bienal</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__year">2020</div>
-          <div class="timeline__title" data-i18n="exh6.title">ARCOmadrid</div>
-          <div class="timeline__place" data-i18n="exh6.place">IFEMA, Madrid — Feria</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__year">2019</div>
-          <div class="timeline__title" data-i18n="exh7.title">Nuevas Voces</div>
-          <div class="timeline__place" data-i18n="exh7.place">Pace Gallery, Londres — Colectiva</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       CONTACTO — Una invitación privada, no un formulario
-       ============================================================ -->
-  <section id="contacto" class="section section--alt">
-    <div class="container">
-      <div class="invitation reveal">
-        <div class="invitation__crest">✦</div>
-        <h3 style="font-family:var(--serif);font-weight:300;font-size:2rem;margin-bottom:0.5rem;" data-i18n="contact.title">Consulta Privada</h3>
-        <p class="invitation__text" data-i18n="contact.text">Para información sobre obras disponibles, precios, encargos personalizados o visitas al estudio.</p>
-        <form id="contact-form" class="invitation__form" autocomplete="on">
-          <input type="text" name="nombre" data-i18n="contact.name" placeholder="Su nombre completo" required>
-          <input type="email" name="email" data-i18n="contact.email" placeholder="Su correo electrónico" required>
-          <textarea name="mensaje" data-i18n="contact.message" placeholder="¿Sobre qué obra o colección desea consultar?" required></textarea>
-          <button type="submit" class="btn btn--primary" style="align-self:flex-start;" data-i18n="contact.send">Enviar consulta</button>
-        </form>
-        <p style="font-size:0.75rem;color:var(--text-tertiary);margin-top:1rem;" data-i18n="contact.confidential">Todas las consultas son confidenciales. Respondemos en un plazo de 24–48 horas.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       FOOTER — Mínimo, editorial
-       ============================================================ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <p class="footer__copy" data-i18n="footer.copy">© 2026 Yana Yavorskaya. Todos los derechos reservados.</p>
-        <ul class="footer__links">
-          <li><a href="legal/aviso-legal.html" data-i18n="footer.legal">Aviso Legal</a></li>
-          <li><a href="legal/privacidad.html" data-i18n="footer.privacy">Privacidad</a></li>
-          <li><a href="legal/cookies.html" data-i18n="footer.cookies">Cookies</a></li>
-          <li><a href="legal/terminos.html" data-i18n="footer.terms">Términos</a></li>
-          <li><a href="#" onclick="window.museoExport();return false;" data-i18n="footer.export">Exportar datos</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ============================================================
-       MODO MUSEO — Fullscreen, sin interfaz, solo arte
-       ============================================================ -->
-  <div class="museum-mode" role="dialog" aria-label="Modo Museo" aria-hidden="true">
-    <button class="museum-mode__close" data-i18n-attr="aria-label:museum.close" aria-label="Cerrar modo museo">✕</button>
-    <div class="museum-mode__artwork"></div>
-    <div class="museum-mode__nav">
-      <button class="museum-mode__prev" data-i18n-attr="aria-label:museum.prev" aria-label="Obra anterior">←</button>
-      <span class="museum-mode__counter">1 / 10</span>
-      <button class="museum-mode__next" data-i18n-attr="aria-label:museum.next" aria-label="Obra siguiente">→</button>
-    </div>
   </div>
+</footer>
 
-  <!-- ============================================================
-       CHAT ASSISTANT — Comisario virtual del museo
-       ============================================================ -->
-  <div class="chat-assistant" aria-label="Asistente del museo">
-    <button class="chat-assistant__trigger" aria-label="Abrir chat del museo" id="chat-trigger">
-      <img src="assets/logo.png" alt="Asistente Yana Yavorskaya" width="34" height="34">
-      <span class="chat-assistant__tooltip" data-i18n="chat.tooltip">Hablar con la comisaria</span>
-    </button>
+<!-- ===== MODO MUSEO ===== -->
+<div class="museum-mode" role="dialog" aria-hidden="true">
+  <button class="museum-mode__close" aria-label="Cerrar">✕</button>
+  <div class="museum-mode__artwork"></div>
+  <div class="museum-mode__nav">
+    <button class="museum-mode__prev" aria-label="Anterior">←</button>
+    <span class="museum-mode__counter">1 / 10</span>
+    <button class="museum-mode__next" aria-label="Siguiente">→</button>
   </div>
+</div>
 
-  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat del museo" aria-hidden="true">
-    <div class="chat-panel__header">
-      <img src="assets/logo.png" alt="Asistente" width="36" height="36">
-      <div class="chat-panel__header-info">
-        <div class="chat-panel__header-name" data-i18n="chat.name">Comisaria Digital</div>
-        <div class="chat-panel__header-status" data-i18n="chat.status">Disponible</div>
-      </div>
-      <button class="chat-panel__close" id="chat-close" aria-label="Cerrar chat">✕</button>
-    </div>
-    <div class="chat-panel__messages" id="chat-messages"></div>
-    <div class="chat-panel__quick-replies" id="chat-quick">
-      <button class="chat-panel__quick-reply" data-msg="Háblame de la colección Luz y Sombra" data-i18n="chat.q1">Luz y Sombra</button>
-      <button class="chat-panel__quick-reply" data-msg="¿Qué técnica utiliza Yana?" data-i18n="chat.q2">Técnica</button>
-      <button class="chat-panel__quick-reply" data-msg="¿Hay obras disponibles?" data-i18n="chat.q3">Disponibilidad</button>
-      <button class="chat-panel__quick-reply" data-msg="Cuéntame sobre las exposiciones" data-i18n="chat.q4">Exposiciones</button>
-    </div>
-    <div class="chat-panel__input-area">
-      <input type="text" id="chat-input" placeholder="Escribe tu pregunta…" data-i18n="chat.placeholder" aria-label="Escribe tu mensaje">
-      <button id="chat-send" data-i18n="chat.send">Enviar</button>
-    </div>
+<!-- ===== CHAT — izquierda abajo ===== -->
+<div class="chat-assistant">
+  <button class="chat-assistant__trigger" id="chat-trigger" aria-label="Abrir chat">
+    <img src="assets/logo.png" alt="" width="34" height="34">
+  </button>
+</div>
+<div class="chat-panel" id="chat-panel" role="dialog" aria-hidden="true">
+  <div class="chat-panel__header">
+    <img src="assets/logo.png" alt="" width="36" height="36">
+    <div class="chat-panel__header-info"><div class="chat-panel__header-name">Yana Yavorskaya</div><div class="chat-panel__header-status">Estudio</div></div>
+    <button class="chat-panel__close" id="chat-close" aria-label="Cerrar chat">✕</button>
   </div>
+  <div class="chat-panel__messages" id="chat-messages"></div>
+  <div class="chat-panel__quick-replies" id="chat-quick">
+    <button class="chat-panel__quick-reply" data-msg="Háblame de la colección Luz y Sombra">Luz y Sombra</button>
+    <button class="chat-panel__quick-reply" data-msg="¿Hay obras disponibles?">Disponibilidad</button>
+    <button class="chat-panel__quick-reply" data-msg="¿Qué técnica utilizas?">Técnica</button>
+    <button class="chat-panel__quick-reply" data-msg="Cuéntame sobre las exposiciones">Exposiciones</button>
+  </div>
+  <div class="chat-panel__input-area">
+    <input type="text" id="chat-input" placeholder="Escribe tu pregunta…">
+    <button id="chat-send">Enviar</button>
+  </div>
+</div>
 
-  <!-- ============================================================
-       WHATSAPP — Botón flotante
-       ============================================================ -->
-  <a href="https://wa.me/34600000000?text=Hola%2C%20he%20visitado%20el%20Museo%20Digital%20y%20quisiera%20hacer%20una%20consulta%20privada." class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <span class="whatsapp-btn__tooltip" data-i18n="whatsapp.tooltip">Consultar por WhatsApp</span>
-  </a>
+<!-- ===== WHATSAPP — derecha abajo ===== -->
+<a href="https://wa.me/34600000000" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
-  <!-- ============================================================
-       SCRIPTS — Orden importa: DB → i18n → Museo
-       ============================================================ -->
-  <script src="js/db.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/museum.js"></script>
+<!-- ===== SCROLL UP — derecha, encima de WhatsApp ===== -->
+<button class="scroll-up" id="scroll-up" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script src="js/db.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/museum.js"></script>
 </body>
 </html>
