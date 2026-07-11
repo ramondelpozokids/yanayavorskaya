@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obras Disponibles — Yana Yavorskaya</title>
+  <link rel="stylesheet" href="css/museum.css">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <style>
+    .shop-page { padding: 8rem 0 4rem; min-height: 100vh; }
+    .shop-page h1 { margin-bottom: 0.5rem; }
+    .back-link { display: inline-block; margin-bottom: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
+    .back-link:hover { color: var(--accent); }
+    .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-lg); }
+    .shop-card { border: 1px solid var(--border); background: var(--bg); transition: transform var(--transition-medium), box-shadow var(--transition-medium); display: flex; flex-direction: column; }
+    .shop-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .shop-card__image { aspect-ratio: 3/4; overflow: hidden; background: var(--bg-alt); position: relative; }
+    .shop-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+    .shop-card:hover .shop-card__image img { transform: scale(1.04); }
+    .shop-card__badge { position: absolute; top: 1rem; left: 1rem; background: var(--accent); color: #fff; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.25rem 0.7rem; border-radius: 2px; }
+    .shop-card__badge--reservada { background: var(--text-tertiary); }
+    .shop-card__body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .shop-card__title { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.4rem; }
+    .shop-card__meta { font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.8rem; }
+    .shop-card__desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; flex: 1; }
+    .shop-card__footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
+    .shop-card__price { font-family: var(--serif); font-size: 1.2rem; color: var(--text); }
+    .shop-card__price-note { font-size: 0.6rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
+    .shop-card__action { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.5rem 1rem; border: 1px solid var(--accent); color: var(--accent); background: none; cursor: pointer; transition: all var(--transition-fast); font-family: var(--sans); }
+    .shop-card__action:hover { background: var(--accent); color: #fff; }
+    .shop-intro { max-width: 650px; margin-top: 0.5rem; }
+    .shop-intro p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
+    .shop-intro__note { margin-top: 1rem; padding: 1.2rem; border-left: 2px solid var(--accent); background: var(--bg-alt); font-size: 0.85rem; color: var(--text-tertiary); line-height: 1.6; }
+    .shop-intro__note strong { color: var(--accent); }
+    .shop-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: var(--spacing-md); }
+    .shop-filter { padding: 0.4rem 1rem; border: 1px solid var(--border); background: none; cursor: pointer; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); transition: all var(--transition-fast); font-family: var(--sans); }
+    .shop-filter:hover, .shop-filter.active { border-color: var(--accent); color: var(--accent); }
+    .shop-modal { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
+    .shop-modal.is-open { display: flex; }
+    .shop-modal__inner { background: var(--bg); max-width: 550px; width: 90%; padding: 2rem; border: 1px solid var(--border); text-align: center; position: relative; }
+    .shop-modal__title { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .shop-modal__text { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
+    .shop-modal__buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .shop-modal__close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-tertiary); }
+    @media(max-width:768px){ .shop-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="nav__inner">
+  <a href="index.html" class="nav__brand"><img src="assets/logo.png" alt="Yana" class="nav__brand-logo" width="48" height="45">Yana Yavorskaya</a>
+  <ul class="nav__links">
+    <li><a href="index.html#colecciones">Colecciones</a></li>
+    <li><a href="obras-disponibles.html">Obras</a></li>
+    <li><a href="noticias.html">Noticias</a></li>
+    <li><a href="sobre-mi.html">Bio</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</div></nav>
+
+<main class="container shop-page">
+  <a href="index.html" class="back-link">← Volver al inicio</a>
+  <p class="section__label">Galería privada</p>
+  <h1>Obras disponibles</h1>
+  <div class="shop-intro reveal">
+    <p>Cada obra incluye certificado de autenticidad firmado por la artista. Para adquirir cualquiera de estas piezas, contacta directamente con Yana.</p>
+    <div class="shop-intro__note">✦ <strong>Cómo comprar:</strong> pulsa «Consulta» en la obra que te interese. Recibirás información detallada, condiciones de envío y disponibilidad. Sin intermediarios. Directamente desde el estudio.</div>
+  </div>
+  <div class="shop-filters reveal">
+    <button class="shop-filter active" data-filter="all">Todas</button>
+    <button class="shop-filter" data-filter="disponible">Disponibles</button>
+    <button class="shop-filter" data-filter="reservada">Reservadas</button>
+  </div>
+  <div class="shop-grid reveal">
+
+    <article class="shop-card" data-status="disponible">
+      <div class="shop-card__image"><img src="assets/obras/amanecer-bruma.jpg" alt="Amanecer en la Bruma" loading="lazy"><span class="shop-card__badge">Disponible</span></div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Amanecer en la Bruma</h3><div class="shop-card__meta">2024 · Óleo sobre lienzo · 180 × 220 cm</div>
+        <p class="shop-card__desc">Obra central de la serie «Luz y Sombra». Captura el instante entre la noche y el día mediante veladuras de luz.</p>
+        <div class="shop-card__footer"><div><div class="shop-card__price">4.800 €</div><div class="shop-card__price-note">Certificado incluido</div></div><button class="shop-card__action" onclick="openInquiry('Amanecer en la Bruma','4.800')">Consulta</button></div>
+      </div>
+    </article>
+
+    <article class="shop-card" data-status="disponible">
+      <div class="shop-card__image"><img src="assets/obras/espiral-aurea.jpg" alt="Espiral Áurea" loading="lazy"><span class="shop-card__badge">Disponible</span></div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Espiral Áurea</h3><div class="shop-card__meta">2022 · Acrílico sobre lienzo · 200 × 200 cm</div>
+        <p class="shop-card__desc">Geometría sagrada en estado puro. La proporción áurea revelada en capas de acrílico translúcido.</p>
+        <div class="shop-card__footer"><div><div class="shop-card__price">5.200 €</div><div class="shop-card__price-note">Edición única</div></div><button class="shop-card__action" onclick="openInquiry('Espiral Áurea','5.200')">Consulta</button></div>
+      </div>
+    </article>
+
+    <article class="shop-card" data-status="reservada">
+      <div class="shop-card__image"><img src="assets/obras/memoria-horizonte.jpg" alt="Memoria del Horizonte" loading="lazy"><span class="shop-card__badge shop-card__badge--reservada">Reservada</span></div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Memoria del Horizonte</h3><div class="shop-card__meta">2020 · Óleo sobre lienzo · 190 × 240 cm</div>
+        <p class="shop-card__desc">Colección «Horizontes Interiores». Reservada para una colección privada en París.</p>
+        <div class="shop-card__footer"><div><div class="shop-card__price">Reservada</div><div class="shop-card__price-note">Disponible jul 2026</div></div><button class="shop-card__action" onclick="openInquiry('Memoria del Horizonte','')">Consultar</button></div>
+      </div>
+    </article>
+
+    <article class="shop-card" data-status="disponible">
+      <div class="shop-card__image"><img src="assets/obras/vesica-piscis.jpg" alt="Vesica Piscis" loading="lazy"><span class="shop-card__badge">Disponible</span></div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Vesica Piscis</h3><div class="shop-card__meta">2021 · Óleo y pan de oro · 140 × 180 cm</div>
+        <p class="shop-card__desc">Símbolo ancestral de la geometría sagrada. Pan de oro de 24 quilates aplicado a mano.</p>
+        <div class="shop-card__footer"><div><div class="shop-card__price">6.500 €</div><div class="shop-card__price-note">Pan de oro 24K</div></div><button class="shop-card__action" onclick="openInquiry('Vesica Piscis','6.500')">Consulta</button></div>
+      </div>
+    </article>
+
+    <article class="shop-card" data-status="disponible">
+      <div class="shop-card__image"><img src="assets/obras/tierra-callada.jpg" alt="Tierra Callada" loading="lazy"><span class="shop-card__badge">Disponible</span></div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">Tierra Callada</h3><div class="shop-card__meta">2019 · Óleo sobre lienzo · 160 × 200 cm</div>
+        <p class="shop-card__desc">De la serie «Horizontes Interiores». Un paisaje que respira entre lo visible y lo ausente.</p>
+        <div class="shop-card__footer"><div><div class="shop-card__price">3.900 €</div><div class="shop-card__price-note">Certificado incluido</div></div><button class="shop-card__action" onclick="openInquiry('Tierra Callada','3.900')">Consulta</button></div>
+      </div>
+    </article>
+
+    <article class="shop-card" data-status="disponible">
+      <div class="shop-card__image"><img src="assets/obras/flor-de-la-vida.jpg" alt="La Flor de la Vida" loading="lazy"><span class="shop-card__badge">Disponible</span></div>
+      <div class="shop-card__body">
+        <h3 class="shop-card__title">La Flor de la Vida</h3><div class="shop-card__meta">2021 · Técnica mixta · 160 × 160 cm</div>
+        <p class="shop-card__desc">Patrón geométrico universal. Pigmentos naturales preparados en el estudio.</p>
+        <div class="shop-card__footer"><div><div class="shop-card__price">4.200 €</div><div class="shop-card__price-note">Edición única</div></div><button class="shop-card__action" onclick="openInquiry('La Flor de la Vida','4.200')">Consulta</button></div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<div class="shop-modal" id="shop-modal" role="dialog" aria-hidden="true">
+  <div class="shop-modal__inner">
+    <button class="shop-modal__close" onclick="closeInquiry()" aria-label="Cerrar">✕</button>
+    <div class="invitation__crest">✦</div>
+    <h3 class="shop-modal__title" id="shop-modal-title">Consulta privada</h3>
+    <p class="shop-modal__text" id="shop-modal-text">Contacta con Yana para recibir toda la información.</p>
+    <div class="shop-modal__buttons">
+      <a href="https://wa.me/34600000000" class="soc-link soc-instagram" style="padding:0.6rem 1.5rem;font-size:0.8rem;border-radius:100px;" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:estudio@yanayavorskaya.com" style="padding:0.6rem 1.5rem;border:1px solid var(--accent);color:var(--accent);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;border-radius:100px;text-decoration:none;">Email</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container">
+  <div class="footer__social">
+    <a href="#" class="soc-icon soc-ig" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="#" class="soc-icon soc-x" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" class="soc-icon soc-pin" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+  </div>
+  <div class="footer__inner"><p class="footer__copy">© 2026 Yana Yavorskaya. Todos los derechos reservados.</p>
+  <ul class="footer__links"><li><a href="sobre-mi.html">Bio</a></li><li><a href="noticias.html">Noticias</a></li><li><a href="obras-disponibles.html">Obras</a></li><li><a href="legal/aviso-legal.html">Aviso Legal</a></li><li><a href="legal/privacidad.html">Privacidad</a></li><li><a href="legal/cookies.html">Cookies</a></li><li><a href="legal/terminos.html">Términos</a></li></ul></div>
+</div></footer>
+
+<script>
+function openInquiry(obra,precio) {
+  document.getElementById('shop-modal-title').textContent = obra;
+  var precioStr = precio ? ' (' + precio + ' €)' : '';
+  document.getElementById('shop-modal-text').textContent = 'Para recibir información sobre «' + obra + '»' + precioStr + ', contacta directamente con Yana por WhatsApp o email. Sin intermediarios.';
+  document.getElementById('shop-modal').classList.add('is-open');
+}
+function closeInquiry() { document.getElementById('shop-modal').classList.remove('is-open'); }
+document.getElementById('shop-modal').addEventListener('click',function(e){if(e.target===this)closeInquiry();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeInquiry();});
+document.querySelectorAll('.shop-filter').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.shop-filter').forEach(function(x){x.classList.remove('active')});this.classList.add('active');var f=this.dataset.filter;document.querySelectorAll('.shop-card').forEach(function(c){c.style.display=(f==='all'||c.dataset.status===f)?'':'none';});});});
+</script>
+</body>
+</html>
