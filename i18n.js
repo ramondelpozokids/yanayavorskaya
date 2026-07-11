@@ -128,8 +128,8 @@ const MuseoI18n = (() => {
     'obra.10.title': { es:'Umbral', en:'Threshold', fr:'Seuil', de:'Schwelle', ru:'Порог', it:'Soglia' },
 
     /* ============ PÁGINA (meta) ============ */
-    'page.title':       { es:'Yana Yavorskaya — Colección de Arte', en:'Yana Yavorskaya — Art Collection', fr:'Yana Yavorskaya — Collection d\'Art', de:'Yana Yavorskaya — Kunstsammlung', ru:'Яна Яворская — Коллекция Искусства', it:'Yana Yavorskayae — Collezione d\'Arte' },
-    'page.description': { es:'Yana Yavorskaya — Colección de arte contemporáneo. Obra original, exposiciones, galería virtual.', en:'Yana Yavorskaya — Contemporary art collection.', fr:'Yana Yavorskaya — Collection d\'art contemporain.', de:'Yana Yavorskaya — Zeitgenössische Kunstsammlung.', ru:'Яна Яворская — Коллекция современного искусства.', it:'Yana Yavorskayae — Collezione d\'arte contemporanea.' },
+    'page.title':       { es:'Yana Yavorskaya — Colección de Arte', en:'Yana Yavorskaya — Art Collection', fr:'Yana Yavorskaya — Collection d\'Art', de:'Yana Yavorskaya — Kunstsammlung', ru:'Яна Яворская — Коллекция Искусства', it:'Yana Yavorskaya — Collezione d\'Arte' },
+    'page.description': { es:'Yana Yavorskaya — Colección de arte contemporáneo. Obra original, exposiciones, galería virtual.', en:'Yana Yavorskaya — Contemporary art collection.', fr:'Yana Yavorskaya — Collection d\'art contemporain.', de:'Yana Yavorskaya — Zeitgenössische Kunstsammlung.', ru:'Яна Яворская — Коллекция современного искусства.', it:'Yana Yavorskaya — Collezione d\'arte contemporanea.' },
 
     /* ============ LEGALES ============ */
     'legal.back':           { es:'← Volver al inicio', en:'← Back', fr:'← Retour', de:'← Zurück', ru:'← Назад', it:'← Indietro' },
@@ -150,7 +150,7 @@ const MuseoI18n = (() => {
     'chat.q2':          { es:'Técnica', en:'Technique', fr:'Technique', de:'Technik', ru:'Техника', it:'Tecnica' },
     'chat.q3':          { es:'Disponibilidad', en:'Availability', fr:'Disponibilité', de:'Verfügbarkeit', ru:'Доступность', it:'Disponibilità' },
     'chat.q4':          { es:'Exposiciones', en:'Exhibitions', fr:'Expositions', de:'Ausstellungen', ru:'Выставки', it:'Mostre' },
-    'chat.greeting':    { es:'Bienvenida al Yana Yavorskaya. Soy la comisaria virtual de Yana Yavorskaya. ¿En qué puedo ayudarte?', en:'Welcome to the Yana Yavorskaya. I\'m the virtual curator. How may I help you?', fr:'Bienvenue au Yana Yavorskaya. Je suis la commissaire virtuelle. Puis-je vous aider ?', de:'Willkommen im Digitalen Museum. Ich bin die virtuelle Kuratorin. Wie kann ich helfen?', ru:'Добро пожаловать в Яна Яворская. Я виртуальный куратор. Чем могу помочь?', it:'Benvenuta al Yana Yavorskayae. Sono la curatrice virtuale. Come posso aiutarti?' },
+    'chat.greeting':    { es:'Bienvenida al estudio. Soy la comisaria virtual de Yana Yavorskaya. ¿En qué puedo ayudarte?', en:'Welcome. I\'m the virtual curator. How may I help you?', fr:'Bienvenue. Je suis la commissaire virtuelle. Puis-je vous aider ?', de:'Willkommen im Digitalen Museum. Ich bin die virtuelle Kuratorin. Wie kann ich helfen?', ru:'Добро пожаловать. Я виртуальный куратор. Чем могу помочь?', it:'Benvenuta. Sono la curatrice virtuale. Come posso aiutarti?' },
 
     /* ============ WHATSAPP ============ */
     'whatsapp.tooltip': { es:'Consultar por WhatsApp', en:'Inquire via WhatsApp', fr:'Consulter par WhatsApp', de:'Per WhatsApp anfragen', ru:'Связаться через WhatsApp', it:'Consulta via WhatsApp' }
@@ -211,27 +211,32 @@ const MuseoI18n = (() => {
   }
 
   function buildLangSwitcher() {
-    let c = document.getElementById('lang-switcher');
+    var c = document.getElementById('lang-switcher');
     if (!c) {
-      const nl = document.querySelector('.nav__links');
-      if (!nl) return;
+      var navInner = document.querySelector('.nav__inner');
+      if (!navInner) return;
       c = document.createElement('div'); c.id = 'lang-switcher'; c.className = 'lang-switcher';
-      const li = document.createElement('li'); li.appendChild(c); nl.appendChild(li);
+      var toggle = navInner.querySelector('.nav__toggle');
+      if (toggle) { navInner.insertBefore(c, toggle); }
+      else { navInner.appendChild(c); }
     }
     c.innerHTML = '';
-    const cd = LANGS[currentLang];
-    const btn = document.createElement('button'); btn.className = 'lang-switcher__current';
-    btn.setAttribute('aria-expanded', 'false'); btn.innerHTML = `${cd.flag} ${cd.code.toUpperCase()}`;
-    const dd = document.createElement('div'); dd.className = 'lang-switcher__dropdown'; dd.style.display = 'none';
-    btn.addEventListener('click', () => { const e = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !e); dd.style.display = e ? 'none' : 'flex'; });
-    Object.values(LANGS).forEach(l => {
-      if (l.code === currentLang) return;
-      const b = document.createElement('button'); b.innerHTML = `${l.flag} ${l.name}`;
-      b.addEventListener('click', () => { setLang(l.code); dd.style.display = 'none'; btn.setAttribute('aria-expanded', 'false'); });
+    var cd = LANGS[currentLang];
+    var btn = document.createElement('button'); btn.className = 'lang-switcher__current';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Cambiar idioma');
+    btn.innerHTML = '&#127760; ' + cd.code.toUpperCase() + ' <span class="lang-switcher__arrow">&#9662;</span>';
+    var dd = document.createElement('div'); dd.className = 'lang-switcher__dropdown'; dd.style.display = 'none';
+    btn.addEventListener('click', function(e) { e.stopPropagation(); var ex = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', !ex); dd.style.display = ex ? 'none' : 'flex'; });
+    Object.values(LANGS).forEach(function(l) {
+      var b = document.createElement('button');
+      if (l.code === currentLang) { b.style.fontWeight = '600'; b.style.color = 'var(--accent)'; }
+      b.innerHTML = '<span>' + l.flag + '</span> ' + l.name;
+      b.addEventListener('click', function(e) { e.stopPropagation(); setLang(l.code); dd.style.display = 'none'; btn.setAttribute('aria-expanded', 'false'); });
       dd.appendChild(b);
     });
     c.appendChild(btn); c.appendChild(dd);
-    document.addEventListener('click', (e) => { if (!c.contains(e.target)) { dd.style.display = 'none'; btn.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('click', function(e) { if (!c.contains(e.target)) { dd.style.display = 'none'; btn.setAttribute('aria-expanded', 'false'); } });
   }
 
   return { init, t, setLang, getLang, getLangs, LANGS, applyTranslations };

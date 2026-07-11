@@ -37,8 +37,8 @@ img{display:block;max-width:100%;height:auto}
 .container-narrow{max-width:900px}
 
 /* ===== NAV ===== */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:transparent;transition:background var(--transition-medium),transform var(--transition-medium),border var(--transition-medium);padding:0 var(--spacing-md);border-bottom:1px solid transparent}
-.nav--scrolled{background:rgba(250,250,248,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height);display:flex;align-items:center;background:rgba(250,250,248,0.96);border-bottom:1px solid var(--border);transition:background var(--transition-medium),transform var(--transition-medium);padding:0 var(--spacing-md)}
+.nav--scrolled{background:rgba(250,250,248,0.98);box-shadow:0 1px 8px rgba(0,0,0,0.04)}
 .nav--hidden{transform:translateY(-100%)}
 .nav__inner{width:100%;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .nav__brand{display:flex;align-items:center;gap:0.65rem;font-family:var(--serif);font-size:1.4rem;font-weight:400;letter-spacing:0.03em;color:var(--text)}
@@ -206,13 +206,13 @@ img{display:block;max-width:100%;height:auto}
 .toast{position:fixed;bottom:var(--spacing-lg);left:50%;transform:translateX(-50%) translateY(100px);background:var(--text);color:var(--bg);padding:0.7rem 1.4rem;font-size:0.78rem;letter-spacing:0.04em;z-index:300;opacity:0;transition:all var(--transition-medium)}
 .toast.is-visible{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ===== LANG SWITCHER ===== */
-.lang-switcher{position:relative;font-family:var(--sans)}
-.lang-switcher__current{background:var(--bg);border:1px solid var(--border);padding:0.4rem 0.8rem;font-size:0.7rem;cursor:pointer;letter-spacing:0.04em;color:var(--text);display:flex;align-items:center;gap:0.4rem;font-family:var(--sans);border-radius:100px;min-width:70px;justify-content:center}
+/* ===== LANG SWITCHER — bien visible ===== */
+.lang-switcher{position:relative;font-family:var(--sans);z-index:102}
+.lang-switcher__current{background:var(--bg);border:1px solid var(--border);padding:0.35rem 0.6rem 0.35rem 0.55rem;font-size:0.72rem;cursor:pointer;letter-spacing:0.04em;color:var(--text);display:flex;align-items:center;gap:0.3rem;font-family:var(--sans);border-radius:100px;white-space:nowrap;transition:all var(--transition-fast)}
 .lang-switcher__current:hover{border-color:var(--accent)}
-.lang-switcher__dropdown{position:absolute;top:100%;right:0;margin-top:0.4rem;background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-md);flex-direction:column;min-width:200px;z-index:50;display:none;border-radius:4px;overflow:hidden}
-.lang-switcher__dropdown button{display:block;width:100%;text-align:left;padding:0.6rem 1rem;background:none;border:none;border-bottom:1px solid var(--border-light);cursor:pointer;font-size:0.85rem;color:var(--text-secondary);font-family:var(--sans)}
-.lang-switcher__dropdown button:last-child{border-bottom:none}
+.lang-switcher__arrow{font-size:0.55rem;margin-left:0.1rem;color:var(--text-tertiary)}
+.lang-switcher__dropdown{position:absolute;top:100%;right:0;margin-top:0.5rem;background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-lg);flex-direction:column;min-width:200px;z-index:50;display:none;border-radius:6px;overflow:hidden;padding:0.3rem 0}
+.lang-switcher__dropdown button{display:flex;align-items:center;gap:0.55rem;width:100%;text-align:left;padding:0.65rem 1rem;background:none;border:none;cursor:pointer;font-size:0.85rem;color:var(--text-secondary);font-family:var(--sans);transition:all var(--transition-fast)}
 .lang-switcher__dropdown button:hover{background:var(--bg-alt);color:var(--text)}
 
 /* ===== ANIMATIONS ===== */
@@ -234,9 +234,9 @@ img{display:block;max-width:100%;height:auto}
   .footer__inner{flex-direction:column;text-align:center}
   .footer__links{justify-content:center}
   .invitation{padding:var(--spacing-lg) var(--spacing-md)}
-  .lang-switcher{width:100%}
-  .lang-switcher__current{width:100%;justify-content:center;padding:0.5rem}
-  .lang-switcher__dropdown{position:static;box-shadow:none;margin-top:0.3rem}
+  .lang-switcher{width:auto}
+  .lang-switcher__current{justify-content:center;padding:0.35rem 0.6rem}
+  .lang-switcher__dropdown{position:absolute;right:0;top:100%;margin-top:0.5rem;box-shadow:var(--shadow-lg)}
   .chat-panel{width:calc(100vw - 1rem);left:0.5rem;height:400px}
   .chat-assistant{bottom:1rem;left:1rem}
   .whatsapp-btn{bottom:1rem;right:1rem}
