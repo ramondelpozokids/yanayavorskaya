@@ -232,3 +232,108 @@
   /* ============ GO ============ */
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
+
+/* ============================================================
+   MODO NOCHE DE MUSEO & SIMULADOR DE ESCALA EN PARED
+   ============================================================ */
+(function() {
+  function initMuseumNightMode() {
+    var isNight = false;
+    try { isNight = localStorage.getItem('museo_night_mode') === 'true'; } catch(e) {}
+    if (isNight) {
+      document.body.classList.add('museum-night');
+    } else {
+      document.body.classList.remove('museum-night');
+    }
+    updateNightButton();
+  }
+
+  function updateNightButton() {
+    var btns = document.querySelectorAll('.nav__night-toggle');
+    var isNight = document.body.classList.contains('museum-night');
+    var _ = window.MuseoI18n && window.MuseoI18n.t ? window.MuseoI18n.t : function(k) { return k === 'nav.nightMode' ? 'Noche' : 'Día'; };
+    btns.forEach(function(btn) {
+      var icon = btn.querySelector('.night-icon');
+      var text = btn.querySelector('.night-text');
+      if (isNight) {
+        if (icon) icon.textContent = '☀️';
+        if (text) text.textContent = _('nav.dayMode') || 'Día';
+      } else {
+        if (icon) icon.textContent = '🌙';
+        if (text) text.textContent = _('nav.nightMode') || 'Noche';
+      }
+    });
+  }
+
+  window.toggleMuseumNightMode = function() {
+    document.body.classList.toggle('museum-night');
+    var isNight = document.body.classList.contains('museum-night');
+    try { localStorage.setItem('museo_night_mode', isNight ? 'true' : 'false'); } catch(e) {}
+    updateNightButton();
+  };
+
+  window.addEventListener('DOMContentLoaded', initMuseumNightMode);
+  window.addEventListener('museo:langChanged', updateNightButton);
+  initMuseumNightMode();
+})();
+
+/* Room Simulator logic */
+window.openRoomSimulator = function(title, sizeStr, imgSrc, price) {
+  var modal = document.getElementById('room-modal');
+  if (!modal) return;
+  document.getElementById('room-artwork-title').textContent = title || 'Obra original';
+  document.getElementById('room-artwork-size').textContent = sizeStr ? (sizeStr + ' — ' + (price ? price + ' €' : '')) : '';
+  document.getElementById('room-artwork-img').src = imgSrc || '';
+
+  # Parse width and height from sizeStr (e.g. "120 × 120 cm" or "100 × 80 cm")
+  var frame = document.getElementById('room-artwork-frame');
+  var w = 120, h = 100;
+  if (sizeStr) {
+    var nums = sizeStr.match(/(\d+)\s*[×xX]\s*(\d+)/);
+    if (nums && nums.length === 3) {
+      w = parseInt(nums[1], 10);
+      h = parseInt(nums[2], 10);
+    }
+  }
+  # Scale: in our 480px height room where 350px = 1.75m (1cm = 2.0px), sofa 440px = 2.20m (1cm = 2.0px)
+  var scalePx = 1.95;
+  frame.style.width = Math.round(w * scalePx) + 'px';
+  frame.style.height = Math.round(h * scalePx) + 'px';
+
+  # Reset to living room scene initially
+  var livingBtn = document.querySelector('.room-scene-btn[onclick*="living"]');
+  if (livingBtn) switchRoomScene('living', livingBtn);
+
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+};
+
+window.closeRoomSimulator = function() {
+  var modal = document.getElementById('room-modal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+};
+
+window.switchRoomScene = function(sceneType, btn) {
+  document.querySelectorAll('.room-scene-btn').forEach(function(b){ b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  
+  var container = document.getElementById('room-scene-container');
+  var sofa = document.getElementById('room-living-sofa');
+  var human = document.getElementById('room-human-silhouette');
+  if (!container) return;
+
+  container.className = 'room-scene room-scene--' + sceneType;
+  if (sceneType === 'living') {
+    if (sofa) sofa.style.display = 'flex';
+    if (human) human.style.display = 'none';
+  } else if (sceneType === 'gallery') {
+    if (sofa) sofa.style.display = 'none';
+    if (human) human.style.display = 'flex';
+  } else {
+    if (sofa) sofa.style.display = 'none';
+    if (human) human.style.display = 'none';
+  }
+};

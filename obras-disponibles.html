@@ -74,6 +74,7 @@
       <img src="assets/logo.png" alt="Yana Yavorskaya" class="nav__brand-logo" width="48" height="45">
       Yana Yavorskaya
     </a>
+    <button class="nav__night-toggle" id="night-toggle" onclick="toggleMuseumNightMode()" aria-label="Modo Noche de Museo" title="Cambiar a Modo Noche de Museo"><span class="night-icon">🌙</span> <span class="night-text" data-i18n="nav.nightMode">Noche</span></button>
     <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -563,6 +564,51 @@ collectCards();
 function openSitemap(e) { if(e) e.preventDefault(); var sm = document.getElementById('sitemap-modal'); if(sm) { sm.classList.add('is-open'); sm.setAttribute('aria-hidden','false'); } }
 function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(sm) { sm.classList.remove('is-open'); sm.setAttribute('aria-hidden','true'); } }
 </script>
+
+<!-- ===== MODAL SIMULADOR DE ESCALA EN PARED ===== -->
+<div class="shop-modal" id="room-modal" role="dialog" aria-hidden="true" style="z-index: 600;">
+  <div class="shop-modal__inner" style="max-width: 1100px; width: 96%; padding: 2.2rem; background: var(--bg); border: 1px solid var(--border); box-shadow: var(--shadow-lg);">
+    <button class="shop-modal__close" onclick="closeRoomSimulator()" aria-label="Cerrar">✕</button>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 1.2rem; margin-bottom: 1.5rem;">
+      <div>
+        <span style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); display: block; font-family: var(--sans);">Simulador Arquitectónico de Escala</span>
+        <h3 id="room-artwork-title" style="font-family: var(--serif); font-size: 1.9rem; font-weight: 300; margin: 0;"></h3>
+        <p id="room-artwork-size" style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"></p>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button class="room-scene-btn active" onclick="switchRoomScene('living', this)">🛋️ Salón Marfil</button>
+        <button class="room-scene-btn" onclick="switchRoomScene('concrete', this)">🏛️ Hormigón Loft</button>
+        <button class="room-scene-btn" onclick="switchRoomScene('gallery', this)">👤 Galería (Persona 1,75 m)</button>
+      </div>
+    </div>
+
+    <!-- Escenario Interactivo de Pared -->
+    <div id="room-scene-container" class="room-scene room-scene--living">
+      <div class="room-spotlight"></div>
+      
+      <div id="room-artwork-frame" class="room-artwork-frame">
+        <img id="room-artwork-img" src="" alt="Obra en pared" />
+      </div>
+
+      <div id="room-human-silhouette" class="room-human" style="display: none;">
+        <div class="human-head"></div>
+        <div class="human-body"></div>
+        <span class="human-label">Ref: 1,75 m</span>
+      </div>
+
+      <div id="room-living-sofa" class="room-sofa">
+        <div class="sofa-back"></div>
+        <div class="sofa-seat"></div>
+        <span class="sofa-label">Sofá diseño: 2,20 m ancho</span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-light); font-size: 0.82rem; color: var(--text-secondary);">
+      <div>📐 Escala visual de alta precisión fundamentada en las medidas reales. Incluye margen de caja americana.</div>
+      <button class="btn btn--primary" onclick="closeRoomSimulator(); openInquiry(document.getElementById('room-artwork-title').textContent, '')" style="padding: 0.9rem 2rem; font-size: 0.72rem; letter-spacing: 0.18em;">SOLICITAR ESTA PIEZA EN DIRECTO →</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
