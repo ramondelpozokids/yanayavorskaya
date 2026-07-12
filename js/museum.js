@@ -225,7 +225,7 @@
   function setupScrollUp() {
     const btn = document.getElementById('scroll-up');
     if (!btn) return;
-    window.addEventListener('scroll', () => { btn.classList.toggle('is-visible', window.scrollY > 500); }, {passive:true});
+    window.addEventListener('scroll', () => { btn.classList.toggle('is-visible', window.scrollY > 180); }, {passive:true});
     btn.addEventListener('click', () => { window.scrollTo({top:0,behavior:'smooth'}); });
   }
 

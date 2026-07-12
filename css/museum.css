@@ -797,3 +797,47 @@ vercel-live-feedback, #vercel-live-feedback, [id*="vercel-live"], [id*="vercel-t
 vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-toolbar"] {
   display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; left: -99999px !important;
 }
+
+
+/* STRICT SCROLL UP BOTTOM LEFT POSITIONING AND VISIBILITY */
+.scroll-up {
+  position: fixed !important;
+  left: 2rem !important;
+  right: auto !important;
+  bottom: 2rem !important;
+  z-index: 550 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: var(--bg) !important;
+  border: 1px solid var(--border) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: var(--shadow-md) !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.2s ease !important;
+}
+.scroll-up.is-visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.scroll-up:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--accent) !important;
+  background: var(--accent) !important;
+}
+.scroll-up:hover svg {
+  stroke: #fff !important;
+}
+.scroll-up svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-secondary);
+  fill: none;
+}
+@media (max-width: 768px) {
+  .scroll-up { left: 1.2rem !important; bottom: 1.2rem !important; }
+}
