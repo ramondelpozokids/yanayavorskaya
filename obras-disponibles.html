@@ -485,9 +485,9 @@ function renderLightbox() {
   infoHtml += '<div class="lb-status" style="color:' + statusColor + '">' + statusText + '</div>';
   infoHtml += '<div class="lb-desc">' + desc + '</div>';
   if (window.openRoomSimulator) {
-    infoHtml += '<button class="btn btn--secondary" onclick="openRoomSimulator('' + title + '','' + size + '','' + src + '','' + price + '')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.73rem;padding:0.9rem;border:1px solid var(--accent);color:var(--accent);background:transparent;font-weight:600;">📐 ' + roomText + '</button>';
+    infoHtml += '<button class="btn btn--secondary" onclick="openRoomSimulator(\'' + title.replace("'", "\'") + '\',\'' + size.replace("'", "\'") + '\',\'' + src.replace("'", "\'") + '\',\'' + price.replace("'", "\'") + '\')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.73rem;padding:0.9rem;border:1px solid var(--accent);color:var(--accent);background:transparent;font-weight:600;">📐 ' + roomText + '</button>';
   }
-  infoHtml += '<button class="btn btn--primary" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('' + title + '')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + reqText + '</button>';
+  infoHtml += '<button class="btn btn--primary" onclick="window.location.href=\'index.html#contacto?obra=' + encodeURIComponent(title) + '\'" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + reqText + '</button>';
   
   var lbInfo = document.getElementById('lb-info');
   if (lbInfo) lbInfo.innerHTML = infoHtml;
@@ -540,8 +540,6 @@ document.querySelectorAll('.shop-filter').forEach(function(b){
       }
     });
   });
-});
-});
 });
 
 collectCards();
