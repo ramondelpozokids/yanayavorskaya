@@ -1,4 +1,32 @@
 
+/* Unbreakable Scroll-Up Button */
+(function() {
+  function initUnbreakableScrollUp() {
+    var btn = document.getElementById('scroll-up');
+    if (!btn) return;
+    function checkScroll() {
+      if (window.scrollY > 100 || document.documentElement.scrollTop > 100) {
+        btn.classList.add('is-visible');
+      } else {
+        btn.classList.remove('is-visible');
+      }
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUnbreakableScrollUp);
+  } else {
+    initUnbreakableScrollUp();
+  }
+  window.addEventListener('load', initUnbreakableScrollUp);
+})();
+
+
 /* Nuclear Vercel Live Feedback Killer */
 (function() {
   function destroyVercel() {
@@ -82,17 +110,22 @@
   const state = { favoritos: new Set(), museumMode: false, museumIndex: 0, lastScrollY: 0, navVisible: true };
 
   /* ============ INIT ============ */
-  async function init() {
-    try { await MuseoDB.init(); const favs = await MuseoDB.getFavoritos(); favs.forEach(f => state.favoritos.add(f.id)); }
-    catch (_) { loadFavsLS(); }
+    async function init() {
+    try { await MuseoDB.init(); const favs = await MuseoDB.getFavoritos(); favs.forEach(f => state.favoritos.add(f.id)); } catch (_) { loadFavsLS(); }
     try { await MuseoI18n.init(); } catch (_) {}
-    window.addEventListener('museo:langChanged', () => { updateFavButtons(); try { MuseoI18n.applyTranslations(); } catch (_) {} });
+    try { window.addEventListener('museo:langChanged', () => { updateFavButtons(); try { MuseoI18n.applyTranslations(); } catch (_) {} }); } catch (_) {}
     try { const mp = await MuseoDB.getPreferencia('museumMode'); if (mp === 'true') state.museumMode = true; } catch (_) {}
-    setupNavigation(); setupScrollReveal(); setupMuseumMode(); setupFavorites();
-    setupContactForm(); setupSmoothScroll(); setupMuseumModeTrigger(); setupChatAssistant();
-    setupScrollUp();
-    updateFavButtons();
-    console.log('🏛️ Yana Yavorskaya inicializado');
+    try { setupNavigation(); } catch (e) { console.error('setupNavigation', e); }
+    try { setupScrollReveal(); } catch (e) { console.error('setupScrollReveal', e); }
+    try { setupMuseumMode(); } catch (e) { console.error('setupMuseumMode', e); }
+    try { setupFavorites(); } catch (e) { console.error('setupFavorites', e); }
+    try { setupContactForm(); } catch (e) { console.error('setupContactForm', e); }
+    try { setupSmoothScroll(); } catch (e) { console.error('setupSmoothScroll', e); }
+    try { setupMuseumModeTrigger(); } catch (e) { console.error('setupMuseumModeTrigger', e); }
+    try { setupChatAssistant(); } catch (e) { console.error('setupChatAssistant', e); }
+    try { setupScrollUp(); } catch (e) { console.error('setupScrollUp', e); }
+    try { updateFavButtons(); } catch (e) { console.error('updateFavButtons', e); }
+    console.log('🏛️ Yana Yavorskaya inicializado y blindado');
   }
 
   function loadFavsLS() { try { const r = localStorage.getItem('museo_favoritos'); if (r) JSON.parse(r).forEach(id => state.favoritos.add(id)); } catch (_) {} }

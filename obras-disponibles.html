@@ -75,7 +75,6 @@
       Yana Yavorskaya
     </a>
     <button class="nav__night-toggle" id="night-toggle" onclick="toggleMuseumNightMode()" aria-label="Modo Noche de Museo" title="Cambiar a Modo Noche de Museo"><span class="night-icon">🌙</span> <span class="night-text" data-i18n="nav.nightMode">Noche</span></button>
-    <a href="https://wa.me/34600889977?text=Hola%20Yana%20Yavorskaya" target="_blank" rel="noopener" class="nav__wa-clean" title="WhatsApp directo con Yana"><span style="color:#25D366;">🟢</span> <span data-i18n="nav.wa">+34 600 88 99 77</span></a>
     <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -87,6 +86,12 @@
       <li><a href="noticias.html" data-i18n="nav.noticias">Noticias</a></li>
       <li><a href="sobre-mi.html" data-i18n="nav.bio">Bio</a></li>
       <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+      <!-- IDIOMAS AL LADO DE CONTACTO -->
+      <li class="nav__item-lang" id="nav-item-lang-container" style="display: flex; align-items: center;">
+        <div id="lang-switcher" class="lang-switcher"></div>
+      </li>
+      <!-- WHATSAPP AL LADO DE IDIOMAS -->
+      <li style="display: flex; align-items: center;"><a href="https://wa.me/34600889977?text=Hola%20Yana%20Yavorskaya" target="_blank" rel="noopener" class="nav__wa-clean" title="WhatsApp directo con Yana"><span style="color:#25D366;">🟢</span> <span data-i18n="nav.wa">+34 600 88 99 77</span></a></li>
     </ul>
   </div>
 </nav>
