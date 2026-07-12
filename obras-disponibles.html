@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de obras originales de Yana Yavorskaya. Pintura contemporánea disponible con certificado de autenticidad. Consulta precios y disponibilidad.">
+  <link rel="canonical" href="https://yanayavorskaya.com/obras-disponibles">
+  <meta property="og:title" content="Obras disponibles — Yana Yavorskaya">
+  <meta property="og:description" content="12 obras originales disponibles. Pintura contemporánea con certificado firmado por la artista.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yanayavorskaya.com/obras-disponibles">
+  <meta property="og:image" content="https://yanayavorskaya.com/assets/obras/aurora-interior.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Obras — Yana Yavorskaya</title>
   <link rel="stylesheet" href="css/museum.css">
   <link rel="icon" href="assets/logo.png" type="image/png">
@@ -40,7 +48,7 @@
     .shop-filter { padding: 0.35rem 0.9rem; border: 1px solid var(--border); background: none; cursor: pointer; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); transition: all var(--transition-fast); font-family: var(--sans); }
     .shop-filter:hover, .shop-filter.active { border-color: var(--accent); color: var(--accent); }
     /* Lightbox premium */
-    .lb-overlay { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(10,10,10,0.95); align-items: center; justify-content: center; flex-direction: column; }
+    .lb-overlay { display: none; position: fixed; inset: 0; z-index: 400; background: #030303; align-items: center; justify-content: center; flex-direction: column; overflow: hidden; }
     .lb-overlay.is-open { display: flex; }
     .lb-close { position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); }
     .lb-close:hover { background: rgba(255,255,255,0.2); }
@@ -375,7 +383,9 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
 </main>
 
 <!-- ===== LIGHTBOX PREMIUM ===== -->
-<div class="lb-overlay" id="lb-overlay" role="dialog" aria-hidden="true">
+<div class="lb-overlay night-gallery" id="lb-overlay" role="dialog" aria-hidden="true">
+  <div class="night-gallery__ambient" aria-hidden="true"></div>
+  <div class="night-gallery__spotlight" aria-hidden="true"></div>
   <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
   <span class="lb-counter" id="lb-counter">1 / 6</span>
   <button class="lb-nav lb-prev" onclick="lbPrev()" aria-label="Anterior">←</button>

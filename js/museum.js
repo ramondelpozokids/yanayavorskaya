@@ -166,9 +166,28 @@
   }
 
   /* ============ MODO MUSEO ============ */
+  function setupNightSpotlight(root) {
+    if (!root || root._nightSpotlight) return;
+    root._nightSpotlight = true;
+    var spot = root.querySelector('.night-gallery__spotlight');
+    if (!spot) return;
+    function setSpot(x, y) {
+      spot.style.setProperty('--spot-x', x + '%');
+      spot.style.setProperty('--spot-y', y + '%');
+    }
+    root.addEventListener('mousemove', function(e) {
+      var r = root.getBoundingClientRect();
+      setSpot(((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100);
+    });
+    root.addEventListener('mouseleave', function() { setSpot(50, 38); });
+    setSpot(50, 38);
+  }
+
   function setupMuseumMode() {
     const ov = document.querySelector('.museum-mode'), cb = ov?.querySelector('.museum-mode__close'), pb = ov?.querySelector('.museum-mode__prev'), nb = ov?.querySelector('.museum-mode__next');
     if (!ov) return;
+    setupNightSpotlight(ov);
+    setupNightSpotlight(document.getElementById('lb-overlay'));
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && state.museumMode) closeMuseumMode(); if (state.museumMode && e.key === 'ArrowRight') nextArtwork(); if (state.museumMode && e.key === 'ArrowLeft') prevArtwork(); });
     cb?.addEventListener('click', closeMuseumMode); pb?.addEventListener('click', prevArtwork); nb?.addEventListener('click', nextArtwork);
   }
@@ -189,7 +208,7 @@
     el.style.opacity = '0';
     setTimeout(() => {
       el.style.backgroundImage = `url(${obra.img})`;
-      el.style.backgroundSize = 'cover';
+      el.style.backgroundSize = 'contain';
       el.style.backgroundPosition = 'center';
       el.style.opacity = '1';
     }, 350);

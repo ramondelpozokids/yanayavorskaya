@@ -151,15 +151,25 @@ img{display:block;max-width:100%;height:auto}
 .soc-fb{background:#1877F2}
 
 /* ===== MUSEUM MODE ===== */
-.museum-mode{position:fixed;inset:0;z-index:200;background:#000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--transition-slow)}
+.museum-mode{position:fixed;inset:0;z-index:200;background:#030303;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--transition-slow);overflow:hidden}
 .museum-mode.is-active{opacity:1;pointer-events:auto}
 .museum-mode__close{position:absolute;top:var(--spacing-md);right:var(--spacing-md);z-index:10;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);font-size:1.5rem;cursor:pointer;color:#fff;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%}
 .museum-mode__close:hover{background:rgba(255,255,255,0.2)}
-.museum-mode__artwork{width:min(85vh,90vw);height:min(85vh,90vw);background-size:contain;background-position:center;background-repeat:no-repeat;transition:opacity var(--transition-medium)}
-.museum-mode__nav{position:absolute;bottom:var(--spacing-lg);left:50%;transform:translateX(-50%);display:flex;gap:var(--spacing-md);align-items:center}
+.museum-mode__stage{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;width:min(88vw,920px);height:min(82vh,920px)}
+.museum-mode__artwork{width:100%;height:100%;background-size:contain;background-position:center;background-repeat:no-repeat;transition:opacity var(--transition-medium),filter var(--transition-medium);filter:brightness(1.1) contrast(1.05);box-shadow:0 0 90px rgba(255,248,230,0.18),0 35px 90px rgba(0,0,0,0.65)}
+.museum-mode__nav{position:absolute;bottom:var(--spacing-lg);left:50%;transform:translateX(-50%);display:flex;gap:var(--spacing-md);align-items:center;z-index:10}
 .museum-mode__nav button{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.2rem;color:#fff;transition:all var(--transition-fast);display:flex;align-items:center;justify-content:center}
 .museum-mode__nav button:hover{background:rgba(255,255,255,0.25)}
 .museum-mode__counter{font-size:0.75rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em}
+
+/* ===== NIGHT GALLERY — iluminación cenital + foco ===== */
+.night-gallery__ambient{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 85% 50% at 50% 6%,rgba(255,248,230,0.16) 0%,rgba(255,248,230,0.05) 38%,transparent 72%);opacity:0;transition:opacity 1s ease}
+.night-gallery__spotlight{position:absolute;inset:0;pointer-events:none;z-index:2;--spot-x:50%;--spot-y:38%;background:radial-gradient(circle 32vmax at var(--spot-x) var(--spot-y),rgba(255,252,245,0.24) 0%,rgba(255,252,245,0.09) 28%,transparent 58%);opacity:0;transition:opacity 0.9s ease}
+.museum-mode.is-active .night-gallery__ambient,.museum-mode.is-active .night-gallery__spotlight,.lb-overlay.is-open .night-gallery__ambient,.lb-overlay.is-open .night-gallery__spotlight{opacity:1}
+.lb-overlay.night-gallery{background:#030303 !important}
+.lb-overlay.is-open .lb-content{position:relative;z-index:5}
+.lb-overlay.is-open .lb-close,.lb-overlay.is-open .lb-nav,.lb-overlay.is-open .lb-counter{z-index:10}
+.lb-overlay.is-open .lb-image img{filter:brightness(1.1) contrast(1.05);box-shadow:0 0 70px rgba(255,248,230,0.16),0 25px 70px rgba(0,0,0,0.55);transition:filter var(--transition-medium),transform 0.3s ease,box-shadow var(--transition-medium)}
 
 /* ===== WHATSAPP = derecha abajo ===== */
 .whatsapp-btn{position:fixed;bottom:var(--spacing-lg);right:var(--spacing-lg);z-index:90;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform var(--transition-medium),box-shadow var(--transition-medium);cursor:pointer}
@@ -225,24 +235,30 @@ img{display:block;max-width:100%;height:auto}
   .artwork-detail{grid-template-columns:1fr;gap:var(--spacing-lg)}
   .collections-grid,.studio-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:768px){
-  :root{--spacing-xl:3rem;--spacing-2xl:5rem;--spacing-md:1rem}
-  .collections-grid,.studio-grid{grid-template-columns:1fr}
+@media(max-width:1024px){
   .nav__brand{font-size:1.15rem;margin-right:0!important;padding-right:0!important}
   .nav__brand-logo{height:2.2rem}
   .nav__links{position:fixed;top:0;right:-100%;width:80%;max-width:320px;height:100dvh;background:var(--bg);flex-direction:column;padding:6rem var(--spacing-md);gap:1.2rem;transition:right var(--transition-medium);box-shadow:var(--shadow-lg);z-index:99;flex-wrap:wrap!important;margin-left:0!important}
   .nav__links.is-open{right:0}
+  .nav__links a{min-height:44px;display:flex;align-items:center}
   .nav__toggle{display:block;z-index:101}
+}
+@media(max-width:768px){
+  :root{--spacing-xl:3rem;--spacing-2xl:5rem;--spacing-md:1rem}
+  .collections-grid,.studio-grid{grid-template-columns:1fr}
   .footer__inner{flex-direction:column;text-align:center}
   .footer__links{justify-content:center}
   .invitation{padding:var(--spacing-lg) var(--spacing-md)}
   .lang-switcher{width:auto}
-  .lang-switcher__current{justify-content:center;padding:0.35rem 0.6rem}
+  .lang-switcher__current{justify-content:center;padding:0.35rem 0.6rem;min-height:44px}
   .lang-switcher__dropdown{position:absolute;right:0;top:100%;margin-top:0.5rem;box-shadow:var(--shadow-lg)}
   .chat-panel{width:calc(100vw - 1rem);left:0.5rem;height:400px}
   .chat-assistant{bottom:1rem;left:1rem}
   .whatsapp-btn{bottom:1rem;right:1rem}
   .scroll-up{bottom:calc(1rem + 72px);right:1rem}
+  .chat-panel__quick-reply{min-height:44px;padding:0.45rem 0.85rem}
+  .chat-panel__input-area button{min-height:44px;min-width:44px;padding:0.55rem 1rem}
+  .contact-tabs button{min-height:44px}
 }
 
 /* ============================================================

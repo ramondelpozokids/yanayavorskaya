@@ -257,8 +257,12 @@ const MuseoI18n = (() => {
       var parts = el.getAttribute('data-i18n-attr').split(':');
       if (parts.length===2) el.setAttribute(parts[0].trim(), t(parts[1].trim()));
     });
-    document.title = t('page.title');
-    var md = document.querySelector('meta[name="description"]'); if (md) md.content = t('page.description');
+    var titleMeta = document.querySelector('meta[name="i18n-title"]');
+    if (titleMeta) {
+      document.title = t(titleMeta.getAttribute('content'));
+      var md = document.querySelector('meta[name="description"]');
+      if (md) md.content = t('page.description');
+    }
     document.documentElement.lang = currentLang;
   }
 

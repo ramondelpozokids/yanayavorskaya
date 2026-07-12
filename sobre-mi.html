@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Biografía y filosofía de Yana Yavorskaya, pintora contemporánea afincada en Madrid. Trayectoria artística, estudio y visión creativa.">
+  <link rel="canonical" href="https://yanayavorskaya.com/sobre-mi">
+  <meta property="og:title" content="Sobre mí — Yana Yavorskaya">
+  <meta property="og:description" content="Conoce a Yana Yavorskaya: biografía, filosofía artística y estudio en Madrid.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://yanayavorskaya.com/sobre-mi">
+  <meta property="og:image" content="https://yanayavorskaya.com/assets/obras/yana-portrait.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Sobre mí — Yana Yavorskaya</title>
   <link rel="stylesheet" href="css/museum.css">
   <link rel="icon" href="assets/logo.png" type="image/png">
@@ -24,7 +32,11 @@
     .bio-gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; }
     .back-link { display: inline-block; margin-bottom: 3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
     .back-link:hover { color: var(--accent); }
-    @media(max-width:768px){ .bio-hero { grid-template-columns: 1fr; } }
+    @media(max-width:768px){
+      .bio-hero { grid-template-columns: 1fr; }
+      .bio-split, .bio-row { grid-template-columns: 1fr !important; }
+      .bio-page h1 { font-size: clamp(2rem, 8vw, 3.5rem) !important; }
+    }
   </style>
   <meta name="vercel-toolbar" content="false">
 </head>
@@ -65,7 +77,7 @@
     <p style="font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--text-secondary);max-width:750px;" data-i18n="bio.quote">«Pintar es un acto de escucha interior en el que la materia, el silencio y el tiempo construyen un puente sensible con quien contempla la obra.»</p>
   </header>
 
-  <div style="display:grid;grid-template-columns:minmax(280px,1fr) 1.5fr;gap:3rem;align-items:start;margin-bottom:4rem;">
+  <div class="bio-split" style="display:grid;grid-template-columns:minmax(280px,1fr) 1.5fr;gap:3rem;align-items:start;margin-bottom:4rem;">
     <div>
       <img src="assets/obras/yana-portrait.jpg" alt="Yana Yavorskaya en su estudio de Madrid" style="width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%) contrast(105%);box-shadow:var(--shadow-md);">
       <div style="margin-top:0.5rem;font-size:0.7rem;text-align:center;color:var(--text-tertiary);font-family:var(--sans);letter-spacing:0.05em;">Yana Yavorskaya — Estudio de Madrid, 2026</div>
@@ -81,7 +93,7 @@
   </div>
 
   <div style="border-top:1px solid var(--border);padding-top:4rem;display:flex;flex-direction:column;gap:3.5rem;">
-    <section style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;">
+    <section class="bio-row" style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;">
       <div>
         <span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);display:block;margin-bottom:0.3rem;">01 — Los comienzos</span>
         <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:400;">Los primeros trazos</h3>
@@ -92,7 +104,7 @@
       </div>
     </section>
 
-    <section style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;">
+    <section class="bio-row" style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;">
       <div>
         <span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);display:block;margin-bottom:0.3rem;">02 — Filosofía & Sentido</span>
         <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:400;">Qué significa el arte para ella</h3>
@@ -103,7 +115,7 @@
       </div>
     </section>
 
-    <section style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;">
+    <section class="bio-row" style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;">
       <div>
         <span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);display:block;margin-bottom:0.3rem;">03 — Referentes & Mirada</span>
         <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:400;">Cuáles son sus influencias</h3>
@@ -114,7 +126,7 @@
       </div>
     </section>
 
-    <section style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;background:var(--bg-alt);padding:2.5rem;border:1px solid var(--border);">
+    <section class="bio-row" style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:baseline;background:var(--bg-alt);padding:2.5rem;border:1px solid var(--border);">
       <div>
         <span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);display:block;margin-bottom:0.3rem;">04 — El Taller & La Materia</span>
         <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:400;">Cómo nace un cuadro</h3>
