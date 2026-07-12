@@ -1,0 +1,82 @@
+================================================================================
+EXACT DIFFS AND DELETED LINES FOR @VERCEL/TOOLBAR REMOVAL
+================================================================================
+
+1. ARCHIVO: app/layout.tsx (Para proyectos con Next.js App Router)
+--------------------------------------------------------------------------------
+LÍNEAS A ELIMINAR O MODIFICAR EXACTAMENTE:
+
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -1,8 +1,4 @@
+ import "./globals.css";
+ import type { Metadata } from "next";
+-import { Toolbar } from "@vercel/toolbar/next";
+-import { VercelToolbar } from "@vercel/toolbar/next";
+-import { Analytics } from "@vercel/analytics/react";
+-import { SpeedInsights } from "@vercel/speed-insights/next";
+ 
+ export const metadata: Metadata = {
+   title: "Yana Yavorskaya | Artista Contemporánea",
+@@ -15,10 +11,6 @@
+     <html lang="es">
+       <body className="bg-white text-neutral-900 antialiased">
+         {children}
+-        {process.env.NODE_ENV === 'development' && <Toolbar />}
+-        <VercelToolbar />
+-        <Analytics />
+-        <SpeedInsights />
+       </body>
+     </html>
+   );
+ }
+
+================================================================================
+2. ARCHIVO: pages/_app.tsx (Para proyectos con Next.js Pages Router)
+--------------------------------------------------------------------------------
+LÍNEAS A ELIMINAR O MODIFICAR EXACTAMENTE:
+
+--- a/pages/_app.tsx
++++ b/pages/_app.tsx
+@@ -1,7 +1,5 @@
+ import "@/styles/globals.css";
+ import type { AppProps } from "next/app";
+-import { Toolbar } from "@vercel/toolbar/next";
+-import { VercelToolbar } from "@vercel/toolbar/next";
+ 
+ export default function App({ Component, pageProps }: AppProps) {
+   return (
+     <>
+       <Component {...pageProps} />
+-      <Toolbar />
+-      <VercelToolbar />
+     </>
+   );
+ }
+
+================================================================================
+3. ARCHIVO: components/providers.tsx (O componentes globales donde se inicialice)
+--------------------------------------------------------------------------------
+--- a/components/providers.tsx
++++ b/components/providers.tsx
+@@ -1,6 +1,5 @@
+ "use client";
+ import React from "react";
+-import { VercelToolbar } from "@vercel/toolbar/next";
+ 
+ export function Providers({ children }: { children: React.ReactNode }) {
+   return (
+     <>
+       {children}
+-      {process.env.NODE_ENV === "development" && <VercelToolbar />}
+     </>
+   );
+ }
+
+================================================================================
+COMANDO RECOMENDADO EN TERMINAL PARA DESINSTALAR EL PAQUETE:
+================================================================================
+npm uninstall @vercel/toolbar @vercel/speed-insights @vercel/analytics
+# o con pnpm/yarn:
+pnpm remove @vercel/toolbar @vercel/speed-insights @vercel/analytics
+yarn remove @vercel/toolbar @vercel/speed-insights @vercel/analytics
