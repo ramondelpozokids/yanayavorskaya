@@ -723,3 +723,77 @@ body.museum-night .room-spotlight {
   border-radius: 100px;
   white-space: nowrap;
 }
+
+
+/* ============================================================
+   GUARANTEE 100% VISIBILITY OF ALL SECTIONS (NO HIDDEN REVEALS)
+   ============================================================ */
+.reveal, [class*="reveal"], .section, .collections-grid, .studio-grid, .timeline, .shop-grid, .news-grid,
+.collection-card, .timeline__item, .shop-card, .news-card, .hero__content, .bio-hero, .invitation {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* ============================================================
+   SWAP CHAT ASSISTANT & SCROLL UP + CLEAN WHATSAPP NAV
+   ============================================================ */
+/* Chat Assistant strictly BOTTOM RIGHT */
+.chat-assistant {
+  left: auto !important;
+  right: var(--spacing-lg) !important;
+  bottom: var(--spacing-lg) !important;
+  z-index: 550 !important;
+}
+.chat-panel {
+  left: auto !important;
+  right: var(--spacing-lg) !important;
+  bottom: calc(var(--spacing-lg) + 70px) !important;
+  z-index: 560 !important;
+}
+
+/* Scroll Up strictly BOTTOM LEFT */
+.scroll-up {
+  right: auto !important;
+  left: var(--spacing-lg) !important;
+  bottom: var(--spacing-lg) !important;
+  z-index: 550 !important;
+}
+
+@media (max-width: 768px) {
+  .chat-assistant { right: 1.2rem !important; bottom: 1.2rem !important; }
+  .chat-panel { right: 1rem !important; left: 1rem !important; width: auto !important; bottom: 80px !important; }
+  .scroll-up { left: 1.2rem !important; bottom: 1.2rem !important; }
+}
+
+/* WhatsApp button cleanly placed inside navbar */
+.nav__wa-clean {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.7rem;
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  background: rgba(37, 211, 102, 0.12);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  margin-left: 0.4rem;
+  white-space: nowrap;
+}
+.nav__wa-clean:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+.nav__wa-clean:hover span { color: #fff !important; }
+
+/* Reinforce nuclear Vercel toolbar elimination */
+vercel-live-feedback, #vercel-live-feedback, [id*="vercel-live"], [id*="vercel-toolbar"],
+vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-toolbar"] {
+  display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; left: -99999px !important;
+}
