@@ -944,3 +944,31 @@ vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-
   display: flex !important;
   z-index: 999999 !important;
 }
+
+
+/* PREVENT OVERLAP: WHEN CHAT PANEL IS OPEN, HIDE SCROLL-UP AND CHAT TRIGGER COMPLETELY */
+body:has(#chat-panel.is-open) .scroll-up,
+body:has(#chat-panel.is-open) .chat-assistant {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
+/* ============================================================
+   STRICT OPTICAL SPACING BETWEEN NAV BRAND AND LINKS
+   ============================================================ */
+.nav__brand {
+  margin-right: 3.5rem !important;
+  padding-right: 1.5rem !important;
+  flex-shrink: 0 !important;
+}
+.nav__links {
+  margin-left: auto !important;
+  gap: 1.2rem !important;
+  flex-wrap: nowrap !important;
+}
+@media (max-width: 1300px) {
+  .nav__links { gap: 0.85rem !important; }
+  .nav__wa-clean span:last-child { display: none !important; } /* Show only green icon on laptop to save 120px */
+}

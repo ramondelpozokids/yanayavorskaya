@@ -16,6 +16,16 @@ const MuseoI18n = (() => {
   const _3={es:'Exposiciones',en:'Exhibitions',fr:'Expositions',de:'Ausstellungen',ru:'Выставки',it:'Mostre'};
   const DICT = {
 
+    /* === CHAT Q&A YANA YAVORSKAYA (SIN COMISARIA DIGITAL NI DUPLICADOS) === */
+    'chat.tooltip':{es:"Hablar con el Asistente Q&A",en:"Talk to Q&A Assistant",fr:"Parler à l'Assistant Q&R",de:"Mit F&A Assistent sprechen",ru:"Чат В&О",it:"Parla con l'Assistente Q&A"},
+    'chat.name':{es:"Yana Yavorskaya",en:"Yana Yavorskaya",fr:"Yana Yavorskaya",de:"Yana Yavorskaya",ru:"Яна Яворская",it:"Yana Yavorskaya"},
+    'chat.status':{es:"Asistente Q&A en vivo",en:"Live Q&A Assistant",fr:"Assistant Q&R en direct",de:"Live F&A Assistent",ru:"Онлайн Арт-ассистент",it:"Assistente Q&A in tempo reale"},
+    'chat.greeting':{es:"¡Hola! Bienvenido/a al estudio de Yana Yavorskaya. ¿En qué te puedo ayudar sobre las obras, colecciones o visitas?",en:"Hello! Welcome to Yana Yavorskaya's studio. How can I help you regarding the artworks, collections, or private viewings?",fr:"Bonjour ! Bienvenue à l'atelier de Yana Yavorskaya. Comment puis-je vous aider concernant les œuvres, collections ou visites ?",de:"Hallo! Willkommen im Atelier von Yana Yavorskaya. Wie kann ich Ihnen bezüglich der Werke, Sammlungen oder Besichtigungen helfen?",ru:"Здравствуйте! Добро пожаловать в студию Яны Яворской. Чем я могу помочь по картинам, коллекциям или визитам?",it:"Ciao! Benvenuto/a allo studio di Yana Yavorskaya. Come posso aiutarti riguardo le opere, collezioni o visite private?"},
+
+
+    /* === CHAT Q&A YANA YAVORSKAYA (SIN COMISARIA DIGITAL NI DUPLICADOS) === */
+
+
     /* === TRADUCCIONES 6 IDIOMAS MAESTRAS E INTEGRALES === */
     'nav.obras':{es:'Obras',en:'Works',fr:'Œuvres',de:'Werke',ru:'Работы',it:'Opere'},
     'nav.noticias':{es:'Noticias',en:'News',fr:'Actualités',de:'Aktuelles',ru:'Новости',it:'Notizie'},
@@ -62,9 +72,6 @@ const MuseoI18n = (() => {
     'contact.quote':{es:'«El estudio en Madrid abre sus puertas a coleccionistas, arquitectos y amantes del arte con cita previa programada.»',en:'«The studio in Madrid opens its doors to collectors, architects, and art lovers by scheduled private appointment.»',fr:"«L'atelier à Madrid ouvre ses portes aux collectionneurs, architectes et amateurs d'art sur rendez-vous privé.»",de:'«Das Atelier in Madrid öffnet Sammlern, Architekten und Kunstliebhabern nach vereinbartem Termin seine Türen.»',ru:'«Студия в Мадриде открывает двери коллекционерам, архитекторам и ценителям искусства по предварительной записи.»',it:"«Lo studio a Madrid apre le sue porte a collezionisti, architetti e amanti dell'arte su appuntamento privato.»"},
 
     /* Chat Q&A Assistant */
-    'chat.tooltip':{es:'Chat de Preguntas y Respuestas',en:'Questions & Answers Chat',fr:'Chat Questions et Réponses',de:'Fragen & Antworten Chat',ru:'Чат Вопросы и Ответы',it:'Chat Domande e Risposte'},
-    'chat.name':{es:'Asistente Q&A de Arte',en:'Art Q&A Assistant',fr:"Assistant Q&R d'Art",de:'Kunst F&A Assistent',ru:'Арт-ассистент В&О',it:"Assistente Q&A d'Arte"},
-    'chat.status':{es:'Preguntas frecuentes en vivo',en:'Live FAQ & information',fr:'FAQ en direct',de:'Live F&A und Infos',ru:'Онлайн ответы на вопросы',it:'FAQ in tempo reale'},
     
     /* CHAT Q&A & SYSTEM KEYS */
     'chat.default':{es:'Gracias por tu consulta. Puedes obtener información detallada o cotización pulsando "Solicitar información" en cualquier obra del catálogo, o escribiendo directamente al WhatsApp +34 600 88 99 77.',en:'Thank you for your inquiry. You can get detailed information or pricing by clicking "Request Information" on any artwork in the catalog, or by writing directly to WhatsApp +34 600 88 99 77.',fr:'Merci pour votre question. Vous pouvez obtenir des informations détaillées ou un devis en cliquant sur "Demander des informations" sur n\'importe quelle œuvre du catalogue, ou en écrivant au WhatsApp +34 600 88 99 77.',de:'Vielen Dank für Ihre Anfrage. Detaillierte Informationen oder Preise erhalten Sie, indem Sie bei einem Werk auf "Informationen anfordern" klicken oder direkt an WhatsApp +34 600 88 99 77 schreiben.',ru:'Спасибо за ваш вопрос. Вы можете получить подробную информацию или цену, нажав "Запросить информацию" на любой картине в каталоге, или написав в WhatsApp +34 600 88 99 77.',it:'Grazie per la tua domanda. Puoi ottenere informazioni dettagliate o quotazioni cliccando su "Richiedi informazioni" su qualsiasi opera nel catalogo, o scrivendo su WhatsApp +34 600 88 99 77.'},
@@ -75,7 +82,6 @@ const MuseoI18n = (() => {
     'chat.q3':{es:'Disponibilidad',en:'Availability',fr:'Disponibilité',de:'Verfügbarkeit',ru:'Доступность',it:'Disponibilità'},
     'chat.q4':{es:'Exposiciones',en:'Exhibitions',fr:'Expositions',de:'Ausstellungen',ru:'Выставки',it:'Mostre'},
 
-    'chat.greeting':{es:'¡Hola! Bienvenido/a. Soy el chat de preguntas y respuestas de Yana Yavorskaya. ¿Sobre qué aspecto de las obras, técnicas o visitas te gustaría informarte?',en:'Hello! Welcome. I am Yana Yavorskaya\'s Q&A chat assistant. What would you like to know about her artworks, techniques, or private viewings?',fr:'Bonjour et bienvenue ! Je suis le chat de questions-réponses de Yana Yavorskaya. Sur quel aspect des œuvres, techniques ou visites souhaitez-vous vous informer ?',de:'Hallo und willkommen! Ich bin der F&A-Chat-Assistent von Yana Yavorskaya. Worüber möchten Sie sich bezüglich der Werke, Techniken oder Besichtigungen informieren?',ru:'Здравствуйте и добро пожаловать! Я чат-помощник Яны Яворской для ответов на вопросы. Что бы вы хотели узнать о картинах, техниках или частных просмотрах?',it:'Ciao e benvenuto/a! Sono la chat di domande e risposte di Yana Yavorskaya. Su quale aspetto delle opere, tecniche o visite private vorresti informarti?'},
 
     'nav.brand':_0, 'nav.colecciones':_1, 'nav.estudio':_2, 'nav.exposiciones':_3,
     'nav.contacto':{es:'Contacto',en:'Contact',fr:'Contact',de:'Kontakt',ru:'Контакты',it:'Contatto'},
@@ -155,9 +161,6 @@ const MuseoI18n = (() => {
     'legal.privacy.title':{es:'Política de Privacidad',en:'Privacy Policy',fr:'Politique de Confidentialité',de:'Datenschutzerklärung',ru:'Политика конфиденциальности',it:'Informativa Privacy'},
     'legal.cookies.title':{es:'Política de Cookies',en:'Cookie Policy',fr:'Politique de Cookies',de:'Cookie-Richtlinie',ru:'Политика куки',it:'Politica Cookie'},
     'legal.terms.title':{es:'Términos y Condiciones',en:'Terms and Conditions',fr:'Conditions Générales',de:'AGB',ru:'Условия',it:'Termini e Condizioni'},
-    'chat.tooltip':{es:'Hablar con la comisaria',en:'Talk to the curator',fr:'Parler à la commissaire',de:'Mit der Kuratorin sprechen',ru:'Поговорить с куратором',it:'Parla con la curatrice'},
-    'chat.name':{es:'Comisaria Digital',en:'Digital Curator',fr:'Commissaire Numérique',de:'Digitale Kuratorin',ru:'Цифровой Куратор',it:'Curatrice Digitale'},
-    'chat.status':{es:'Disponible',en:'Available',fr:'Disponible',de:'Verfügbar',ru:'Доступен',it:'Disponibile'},
     'chat.placeholder':{es:'Escribe tu pregunta…',en:'Type your question…',fr:'Écrivez votre question…',de:'Schreiben Sie…',ru:'Напишите вопрос…',it:'Scrivi la tua domanda…'},
     'chat.send':{es:'Enviar',en:'Send',fr:'Envoyer',de:'Senden',ru:'Отправить',it:'Invia'},
     'chat.q1':{es:'Luz y Sombra',en:'Light & Shadow',fr:'Lumière et Ombre',de:'Licht & Schatten',ru:'Свет и Тень',it:'Luce e Ombra'},
@@ -174,7 +177,6 @@ const MuseoI18n = (() => {
     'chat.q3':{es:'Disponibilidad',en:'Availability',fr:'Disponibilité',de:'Verfügbarkeit',ru:'Доступность',it:'Disponibilità'},
     'chat.q4':{es:'Exposiciones',en:'Exhibitions',fr:'Expositions',de:'Ausstellungen',ru:'Выставки',it:'Mostre'},
 
-    'chat.greeting':{es:'Bienvenida al estudio. Soy la comisaria virtual. ¿En qué puedo ayudarte?',en:'Welcome to the studio. I\'m the virtual curator. How may I help you?',fr:'Bienvenue au studio. Je suis la commissaire virtuelle.',de:'Willkommen im Studio. Ich bin die virtuelle Kuratorin.',ru:'Добро пожаловать в студию. Я виртуальный куратор.',it:'Benvenuta allo studio. Sono la curatrice virtuale.'},
     'whatsapp.tooltip':{es:'Consultar por WhatsApp',en:'Inquire via WhatsApp',fr:'Consulter par WhatsApp',de:'Per WhatsApp anfragen',ru:'Связаться через WhatsApp',it:'Consulta via WhatsApp'},
     /* OBRAS DISPONIBLES */
     'shop.title':{es:'Obras disponibles',en:'Available works',fr:'Œuvres disponibles',de:'Verfügbare Werke',ru:'Доступные работы',it:'Opere disponibili'},

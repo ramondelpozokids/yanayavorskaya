@@ -276,8 +276,18 @@
     }
 
     // Clean old listeners by replacing trigger clone if needed or just adding cleanly
-    tr.onclick = function(e) { e.preventDefault(); e.stopPropagation(); pn.classList.add('is-open'); pn.setAttribute('aria-hidden', 'false'); };
-    if (cl) cl.onclick = function(e) { e.preventDefault(); e.stopPropagation(); pn.classList.remove('is-open'); pn.setAttribute('aria-hidden', 'true'); };
+    tr.onclick = function(e) {
+      e.preventDefault(); e.stopPropagation();
+      pn.classList.add('is-open'); pn.setAttribute('aria-hidden', 'false');
+      var su = document.getElementById('scroll-up'); if(su) su.style.setProperty('display', 'none', 'important');
+      var ca = document.querySelector('.chat-assistant'); if(ca) ca.style.setProperty('display', 'none', 'important');
+    };
+    if (cl) cl.onclick = function(e) {
+      e.preventDefault(); e.stopPropagation();
+      pn.classList.remove('is-open'); pn.setAttribute('aria-hidden', 'true');
+      var su = document.getElementById('scroll-up'); if(su) su.style.removeProperty('display');
+      var ca = document.querySelector('.chat-assistant'); if(ca) ca.style.removeProperty('display');
+    };
     if (snd) snd.onclick = function(e) { e.preventDefault(); sendMsg(); };
     if (inp) inp.onkeydown = function(e) { if (e.key === 'Enter') { e.preventDefault(); sendMsg(); } };
     
@@ -369,16 +379,22 @@ window.switchRoomScene = function(sceneType, btn) {
 };
 
 
-/* Auto-select artwork in Contact form when navigated with ?obra=... */
+/* Auto-select artwork in Contact form when navigated with sessionStorage or ?obra=... */
 (function() {
   function prefillContactObra() {
     try {
-      var params = new URLSearchParams(window.location.search);
-      var obra = params.get('obra');
+      var obra = null;
+      try {
+        obra = sessionStorage.getItem('consulta_obra');
+        if (obra) sessionStorage.removeItem('consulta_obra');
+      } catch(e) {}
+      if (!obra) {
+        var params = new URLSearchParams(window.location.search);
+        obra = params.get('obra');
+      }
       if (obra) {
         var sel = document.querySelector('#contacto select');
         if (sel) {
-          // Check if option exists, if not add it and select it
           var found = false;
           for (var i = 0; i < sel.options.length; i++) {
             if (sel.options[i].value.toLowerCase().includes(obra.toLowerCase()) || sel.options[i].text.toLowerCase().includes(obra.toLowerCase())) {
@@ -398,6 +414,13 @@ window.switchRoomScene = function(sceneType, btn) {
         var msgBox = document.querySelector('#contacto textarea');
         if (msgBox && !msgBox.value) {
           msgBox.value = 'Desearía recibir información sobre la disponibilidad, precio y opciones de envío de la obra original «' + obra + '». Muchas gracias.';
+        }
+        // Ensure smooth scroll down to #contacto if URL has #contacto
+        if (window.location.hash === '#contacto') {
+          setTimeout(function() {
+            var el = document.getElementById('contacto');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
         }
       }
     } catch(e) {}
