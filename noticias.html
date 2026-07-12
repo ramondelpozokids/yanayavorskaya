@@ -15,7 +15,7 @@
     .news-hero h1 { margin-bottom: 0.5rem; }
     .back-link { display: inline-block; margin-bottom: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
     .back-link:hover { color: var(--accent); }
-    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: var(--spacing-lg); }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--spacing-lg); }
     .news-card { border: 1px solid var(--border); background: var(--bg); transition: transform var(--transition-medium), box-shadow var(--transition-medium); }
     .news-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
     .news-card__image { aspect-ratio: 16/9; overflow: hidden; background: var(--bg-alt); }
@@ -351,8 +351,8 @@ function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(
   <div class="chat-panel__header">
     <img src="assets/logo.png" alt="" width="36" height="36">
     <div class="chat-panel__header-info">
-      <div class="chat-panel__header-name" data-i18n="chat.name">Asistente Q&A de Arte</div>
-      <div class="chat-panel__header-status" data-i18n="chat.status">Preguntas frecuentes en vivo</div>
+      <div class="chat-panel__header-name" data-i18n="chat.name">Yana Yavorskaya</div>
+      <div class="chat-panel__header-status" data-i18n="chat.status">Disponible</div>
     </div>
     <button class="chat-panel__close" id="chat-close" aria-label="Cerrar chat">✕</button>
   </div>
@@ -373,5 +373,6 @@ function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(
 <button class="scroll-up" id="scroll-up" aria-label="Volver arriba" title="Volver arriba">
   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
+<script src="js/museum.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
   <script>setTimeout(function(){MuseoI18n.init();},50);</script>
   <style>
     .shop-page { padding: 8rem 0 4rem; min-height: 100vh; }
-    .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-lg); }
+    .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-lg); }
     .shop-card { border: 1px solid var(--border); background: var(--bg); transition: transform var(--transition-medium), box-shadow var(--transition-medium); display: flex; flex-direction: column; }
     .shop-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
     .shop-card__image { aspect-ratio: 3/4; overflow: hidden; position: relative; cursor: pointer; }
@@ -63,7 +63,7 @@
     .back-link { display: inline-block; margin-bottom: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
     .back-link:hover { color: var(--accent); }
     .cert-block { margin-top: var(--spacing-lg); padding: 1.2rem; border: 1px solid var(--border); font-size: 0.8rem; color: var(--text-tertiary); text-align: center; }
-    @media(max-width:768px){ .shop-grid { grid-template-columns: 1fr; } .lb-content { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; } .lb-image { height: 40vh; } .lb-nav { width: 38px; height: 38px; font-size: 1rem; } }
+    @media(max-width:768px){ .shop-page { padding: 6rem 0 3rem; } .shop-grid { grid-template-columns: 1fr; } .shop-card__footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; } .shop-card__action { width: 100%; text-align: center; } .lb-content { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; } .lb-image { height: 40vh; } .lb-nav { width: 38px; height: 38px; font-size: 1rem; } }
   </style>
   <meta name="vercel-toolbar" content="false">
 </head>
@@ -124,7 +124,7 @@ Durante semanas trabajé el lienzo mediante finas capas superpuestas de acrílic
             <div class="shop-card__price">2.800 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Aurora Interior')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Aurora Interior') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -146,7 +146,7 @@ Cada estrato de óleo blanco de titanio mezclado con matices de azul cobalto y g
             <div class="shop-card__price">3.600 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Luz de Invierno III')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Luz de Invierno III') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -168,7 +168,7 @@ Trabajado con pigmentos minerales puros amasados sobre madera de abedul pulido p
             <div class="shop-card__price">2.400 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Silencios Urbanos: Nocturno')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Silencios Urbanos: Nocturno') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -190,7 +190,7 @@ En esta obra, los verdes musgo y los sienas naturales evocan los bosques de mi i
             <div class="shop-card__price">3.200 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Eco de la Memoria')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Eco de la Memoria') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -212,7 +212,7 @@ La inspiración nació en la costa del Atlántico tras una violenta tormenta oto
             <div class="shop-card__price">4.200 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('El Reposo del Viento')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('El Reposo del Viento') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -232,7 +232,7 @@ La inspiración nació en la costa del Atlántico tras una violenta tormenta oto
             <div class="shop-card__price">2.100 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Meditación en Ocre')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Meditación en Ocre') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -254,7 +254,7 @@ La composición se divide mediante una sutil línea horizontal de grafito puro."
             <div class="shop-card__price">3.500 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Horizontes Blancos')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Horizontes Blancos') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -276,7 +276,7 @@ Sobre la superficie desnuda del lino belga sin imprimar dispuse bloques rectangu
             <div class="shop-card__price">2.600 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Geometría del Silencio')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Geometría del Silencio') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -298,7 +298,7 @@ Pinté esta obra en jornadas continuas bajo la luz gris del cielo nublado de Mad
             <div class="shop-card__price">2.700 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Bruma de Otoño')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Bruma de Otoño') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -320,7 +320,7 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
             <div class="shop-card__price">3.100 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Tránsito Nocturno')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Tránsito Nocturno') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -340,7 +340,7 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
             <div class="shop-card__price">2.900 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Sombra y Luz V')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Sombra y Luz V') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -360,7 +360,7 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
             <div class="shop-card__price">3.400 €</div>
             <div class="shop-card__price-note">Original con certificado</div>
           </div>
-          <button class="shop-card__action" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('Alba sobre el Mar')">Solicitar información →</button>
+          <button class="shop-card__action" onclick="window.location.href='index.html?obra=' + encodeURIComponent('Alba sobre el Mar') + '#contacto'">Solicitar información →</button>
         </div>
       </div>
     </article>
@@ -479,7 +479,7 @@ function renderLightbox() {
   var statusColor = (c.dataset.status === 'disponible') ? 'var(--accent)' : '#999';
   infoHtml += '<div class="lb-status" style="color:' + statusColor + '">' + statusText + '</div>';
   infoHtml += '<div class="lb-desc">' + desc + '</div>';
-  infoHtml += '<button class="btn btn--primary" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('' + title + '')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + (window.MuseoI18n && MuseoI18n.t ? MuseoI18n.t("shop.requestInfo") : "SOLICITAR INFORMACIÓN") + '</button>';
+  infoHtml += '<button class="btn btn--primary" onclick="window.location.href=\'index.html?obra=' + encodeURIComponent(title) + '#contacto\'" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + (window.MuseoI18n && MuseoI18n.t ? MuseoI18n.t("shop.requestInfo") : "SOLICITAR INFORMACIÓN") + '</button>';
   
   var lbInfo = document.getElementById('lb-info');
   if (lbInfo) lbInfo.innerHTML = infoHtml;
@@ -504,18 +504,22 @@ document.getElementById('lb-img').addEventListener('click', function(e){
 
 /* ===== MODAL INQUIRY ===== */
 function openInquiry(obra, precio) {
+  var m = document.getElementById('shop-modal');
+  if (!m) { window.location.href = 'index.html?obra=' + encodeURIComponent(obra) + '#contacto'; return; }
   document.getElementById('shop-modal-title').textContent = obra;
   var precioStr = precio ? ' (' + precio + ' €)' : '';
   document.getElementById('shop-modal-text').textContent = 'Para recibir información sobre «' + obra + '»' + precioStr + ', contacta con Yana.';
-  document.getElementById('shop-modal').classList.add('is-open');
-  document.getElementById('shop-modal').setAttribute('aria-hidden','false');
+  m.classList.add('is-open');
+  m.setAttribute('aria-hidden','false');
   closeLightbox();
 }
 function closeInquiry() {
-  document.getElementById('shop-modal').classList.remove('is-open');
-  document.getElementById('shop-modal').setAttribute('aria-hidden','true');
+  var m = document.getElementById('shop-modal');
+  if (!m) return;
+  m.classList.remove('is-open');
+  m.setAttribute('aria-hidden','true');
 }
-document.getElementById('shop-modal').addEventListener('click', function(e){ if (e.target === this) closeInquiry(); });
+if (document.getElementById('shop-modal')) document.getElementById('shop-modal').addEventListener('click', function(e){ if (e.target === this) closeInquiry(); });
 
 /* ===== FILTROS ===== */
 document.querySelectorAll('.shop-filter').forEach(function(b){
@@ -532,8 +536,6 @@ document.querySelectorAll('.shop-filter').forEach(function(b){
       }
     });
   });
-});
-});
 });
 
 collectCards();
@@ -637,8 +639,8 @@ function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(
   <div class="chat-panel__header">
     <img src="assets/logo.png" alt="" width="36" height="36">
     <div class="chat-panel__header-info">
-      <div class="chat-panel__header-name" data-i18n="chat.name">Asistente Q&A de Arte</div>
-      <div class="chat-panel__header-status" data-i18n="chat.status">Preguntas frecuentes en vivo</div>
+      <div class="chat-panel__header-name" data-i18n="chat.name">Yana Yavorskaya</div>
+      <div class="chat-panel__header-status" data-i18n="chat.status">Disponible</div>
     </div>
     <button class="chat-panel__close" id="chat-close" aria-label="Cerrar chat">✕</button>
   </div>
@@ -659,5 +661,6 @@ function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(
 <button class="scroll-up" id="scroll-up" aria-label="Volver arriba" title="Volver arriba">
   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
+<script src="js/museum.js"></script>
 </body>
 </html>

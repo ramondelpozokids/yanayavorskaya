@@ -410,20 +410,6 @@ function selectCalTime(btn, timeStr) {
 </div>
 
 
-    <button class="chat-panel__close" id="chat-close" aria-label="Cerrar chat">✕</button>
-  </div>
-  <div class="chat-panel__messages" id="chat-messages"></div>
-  <div class="chat-panel__quick-replies" id="chat-quick">
-    <button class="chat-panel__quick-reply" data-msg="Háblame de la colección Luz y Sombra">Luz y Sombra</button>
-    <button class="chat-panel__quick-reply" data-msg="¿Hay obras disponibles?">Disponibilidad</button>
-    <button class="chat-panel__quick-reply" data-msg="¿Qué técnica utilizas?">Técnica</button>
-    <button class="chat-panel__quick-reply" data-msg="Cuéntame sobre las exposiciones">Exposiciones</button>
-  </div>
-  <div class="chat-panel__input-area">
-    <input type="text" id="chat-input" placeholder="Escribe tu pregunta…">
-    <button id="chat-send">Enviar</button>
-  </div>
-</div>
 
 
 
@@ -431,7 +417,6 @@ function selectCalTime(btn, timeStr) {
 
 <script src="js/db.js"></script>
 <script src="js/i18n.js"></script>
-<script src="js/museum.js"></script>
 <!-- ===== MAPA DEL SITIO MODAL ===== -->
 <div class="shop-modal" id="sitemap-modal" role="dialog" aria-hidden="true">
   <div class="shop-modal__inner" style="max-width: 780px;">
@@ -485,8 +470,8 @@ function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(
   <div class="chat-panel__header">
     <img src="assets/logo.png" alt="" width="36" height="36">
     <div class="chat-panel__header-info">
-      <div class="chat-panel__header-name" data-i18n="chat.name">Asistente Q&A de Arte</div>
-      <div class="chat-panel__header-status" data-i18n="chat.status">Preguntas frecuentes en vivo</div>
+      <div class="chat-panel__header-name" data-i18n="chat.name">Yana Yavorskaya</div>
+      <div class="chat-panel__header-status" data-i18n="chat.status">Disponible</div>
     </div>
     <button class="chat-panel__close" id="chat-close" aria-label="Cerrar chat">✕</button>
   </div>
@@ -507,5 +492,6 @@ function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(
 <button class="scroll-up" id="scroll-up" aria-label="Volver arriba" title="Volver arriba">
   <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
+<script src="js/museum.js"></script>
 </body>
 </html>
