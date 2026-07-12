@@ -353,11 +353,7 @@ vercel-toolbar, #vercel-toolbar, [data-vercel-toolbar], .vercel-toolbar, iframe[
 }
 
 /* LIGHTBOX PREMIUM 90% SCREEN */
-.lb-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 450;
+.lb-overlay { display: none; position: fixed; inset: 0; z-index: 999999 !important;
   background: rgba(10,10,10,0.96);
   align-items: center;
   justify-content: center;

@@ -485,9 +485,14 @@ function renderLightbox() {
   infoHtml += '<div class="lb-status" style="color:' + statusColor + '">' + statusText + '</div>';
   infoHtml += '<div class="lb-desc">' + desc + '</div>';
   if (window.openRoomSimulator) {
-    infoHtml += '<button class="btn btn--secondary" onclick="openRoomSimulator(\'' + title.replace("'", "\'") + '\',\'' + size.replace("'", "\'") + '\',\'' + src.replace("'", "\'") + '\',\'' + price.replace("'", "\'") + '\')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.73rem;padding:0.9rem;border:1px solid var(--accent);color:var(--accent);background:transparent;font-weight:600;">📐 ' + roomText + '</button>';
+    var st = title.replace(/'/g, "\'");
+    var ss = size.replace(/'/g, "\'");
+    var sc = src.replace(/'/g, "\'");
+    var sp = price.replace(/'/g, "\'");
+    infoHtml += '<button class="btn btn--secondary" onclick="openRoomSimulator(\'' + st + '\',\'' + ss + '\',\'' + sc + '\',\'' + sp + '\')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.73rem;padding:0.9rem;border:1px solid var(--accent);color:var(--accent);background:transparent;font-weight:600;">📐 ' + roomText + '</button>';
   }
-  infoHtml += '<button class="btn btn--primary" onclick="try{sessionStorage.setItem(\\'consulta_obra\\', \\'\' + title.replace("\'", "\\'") + \'\\');}catch(e){} window.location.href=\\'index.html#contacto\\';" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + reqText + '</button>';
+  var str = title.replace(/'/g, "\'");
+  infoHtml += '<button class="btn btn--primary" onclick="try{sessionStorage.setItem(\'consulta_obra\', \'' + str + '\');}catch(e){} window.location.href=\'index.html#contacto\';" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + reqText + '</button>';
   
   var lbInfo = document.getElementById('lb-info');
   if (lbInfo) lbInfo.innerHTML = infoHtml;
