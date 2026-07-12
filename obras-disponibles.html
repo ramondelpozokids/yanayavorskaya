@@ -65,18 +65,29 @@
     .cert-block { margin-top: var(--spacing-lg); padding: 1.2rem; border: 1px solid var(--border); font-size: 0.8rem; color: var(--text-tertiary); text-align: center; }
     @media(max-width:768px){ .shop-grid { grid-template-columns: 1fr; } .lb-content { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; } .lb-image { height: 40vh; } .lb-nav { width: 38px; height: 38px; font-size: 1rem; } }
   </style>
+  <meta name="vercel-toolbar" content="false">
 </head>
 <body>
-<nav class="nav"><div class="nav__inner">
-  <a href="index.html" class="nav__brand"><img src="assets/logo.png" alt="Yana" class="nav__brand-logo" width="48" height="45">Yana Yavorskaya</a>
-  <ul class="nav__links">
-    <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
-    <li><a href="obras-disponibles.html">Obras</a></li>
-    <li><a href="noticias.html">Noticias</a></li>
-    <li><a href="sobre-mi.html">Bio</a></li>
-    <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
-  </ul>
-</div></nav>
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <img src="assets/logo.png" alt="Yana Yavorskaya" class="nav__brand-logo" width="48" height="45">
+      Yana Yavorskaya
+    </a>
+    <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
+      <li><a href="index.html#estudio" data-i18n="nav.estudio">Estudio</a></li>
+      <li><a href="index.html#exposiciones" data-i18n="nav.exposiciones">Exposiciones</a></li>
+      <li><a href="obras-disponibles.html">Obras</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="sobre-mi.html">Bio</a></li>
+      <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
 
 <main class="container shop-page">
   <a href="index.html" class="back-link" data-i18n="legal.back">← Volver al inicio</a>
@@ -92,7 +103,7 @@
     <button class="shop-filter" data-filter="reservada" data-i18n="shop.filterReserv">Reservadas</button>
   </div>
 
-  <div class="shop-grid reveal">
+  <div class="shop-grid">
 
     <article class="shop-card" data-status="disponible" data-title="Aurora Interior" data-price="2.800" data-year="2026" data-tech="Acrílico y óleo sobre lienzo de lino de grano fino" data-size="100 × 80 cm" data-collection="Horizontes Suspendidos" data-status-text="Disponible" data-desc="Esta obra nació durante los últimos días del invierno, cuando las primeras luces del amanecer apenas logran atravesar la espesa bruma que envuelve el estudio al romper el día. Aurora Interior no intenta representar un paisaje físico reconocible, sino la arquitectura silenciosa de nuestro propio estado de ánimo en los instantes de tránsito.
 
@@ -373,19 +384,7 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
   </div>
 </div>
 
-<!-- ===== MODAL DE CONSULTA (legacy) ===== -->
-<div class="shop-modal" id="shop-modal" role="dialog" aria-hidden="true">
-  <div class="shop-modal__inner">
-    <button class="shop-modal__close" onclick="closeInquiry()" aria-label="Cerrar">✕</button>
-    <div class="invitation__crest">✦</div>
-    <h3 class="shop-modal__title" id="shop-modal-title" data-i18n="shop.modalTitle">Consulta privada</h3>
-    <p class="shop-modal__text" id="shop-modal-text" data-i18n="shop.modalText">Contacta con Yana para recibir toda la información.</p>
-    <div class="shop-modal__buttons">
-      <a href="https://wa.me/34600000000" class="soc-icon soc-ig" style="padding:0.6rem 1.5rem;font-size:0.8rem;border-radius:100px;width:auto;height:auto;" target="_blank" rel="noopener" data-i18n="shop.whatsapp">WhatsApp</a>
-      <a href="mailto:estudio@yanayavorskaya.com" style="padding:0.6rem 1.5rem;border:1px solid var(--accent);color:var(--accent);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;border-radius:100px;text-decoration:none;" data-i18n="shop.email">Email</a>
-    </div>
-  </div>
-</div>
+
 
 <footer class="footer"><div class="container">
   <div class="footer__social">

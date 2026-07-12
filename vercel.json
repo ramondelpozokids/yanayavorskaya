@@ -1,1 +1,1 @@
-{"cleanUrls": true, "trailingSlash": false}
+{"cleanUrls": true, "trailingSlash": false, "env": {"VERCEL_TOOLBAR": "false"}, "headers": [{"source": "/(.*)", "headers": [{"key": "X-Vercel-Toolbar", "value": "false"}]}]}

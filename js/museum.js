@@ -1,3 +1,16 @@
+
+/* Force kill any Vercel Toolbar */
+(function() {
+  function removeVercelToolbar() {
+    document.querySelectorAll('vercel-toolbar, #vercel-toolbar, [data-vercel-toolbar], .vercel-toolbar').forEach(function(el){
+      el.remove();
+    });
+  }
+  removeVercelToolbar();
+  setInterval(removeVercelToolbar, 500);
+  window.addEventListener('DOMContentLoaded', removeVercelToolbar);
+})();
+
 /* ============================================================
    MUSEO DIGITAL — Lógica principal + Chat Assistant
    Navegación, scroll, modo museo, favoritos, chat, i18n

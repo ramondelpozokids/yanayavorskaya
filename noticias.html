@@ -28,18 +28,29 @@
     .news-card__text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; }
     @media(max-width:768px){ .news-grid { grid-template-columns: 1fr; } }
   </style>
+  <meta name="vercel-toolbar" content="false">
 </head>
 <body>
-<nav class="nav"><div class="nav__inner">
-  <a href="index.html" class="nav__brand"><img src="assets/logo.png" alt="Yana" class="nav__brand-logo" width="48" height="45">Yana Yavorskaya</a>
-  <ul class="nav__links">
-    <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
-    <li><a href="obras-disponibles.html">Obras</a></li>
-    <li><a href="noticias.html">Noticias</a></li>
-    <li><a href="sobre-mi.html">Bio</a></li>
-    <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
-  </ul>
-</div></nav>
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <img src="assets/logo.png" alt="Yana Yavorskaya" class="nav__brand-logo" width="48" height="45">
+      Yana Yavorskaya
+    </a>
+    <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
+      <li><a href="index.html#estudio" data-i18n="nav.estudio">Estudio</a></li>
+      <li><a href="index.html#exposiciones" data-i18n="nav.exposiciones">Exposiciones</a></li>
+      <li><a href="obras-disponibles.html">Obras</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="sobre-mi.html">Bio</a></li>
+      <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
 
 <main class="container container-wide news-page">
   <a href="index.html" class="back-link" data-i18n="legal.back">← Volver al inicio</a>
@@ -64,7 +75,7 @@
       <button class="shop-filter" onclick="filterNews('Visitas a galerías', this)">Visitas a galerías</button>
     </div>
 
-<div class="news-grid reveal">
+<div class="news-grid">
 
     <article class="news-card" data-category="Ferias de arte">
       <div class="news-card__image"><img src="assets/obras/memoria-horizonte.jpg" alt="ARCO Madrid, el gran encuentro del arte contemporáneo" loading="lazy"></div>

@@ -26,18 +26,29 @@
     .back-link:hover { color: var(--accent); }
     @media(max-width:768px){ .bio-hero { grid-template-columns: 1fr; } }
   </style>
+  <meta name="vercel-toolbar" content="false">
 </head>
 <body>
-<nav class="nav"><div class="nav__inner">
-  <a href="index.html" class="nav__brand"><img src="assets/logo.png" alt="Yana" class="nav__brand-logo" width="48" height="45">Yana Yavorskaya</a>
-  <ul class="nav__links">
-    <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
-    <li><a href="obras-disponibles.html">Obras</a></li>
-    <li><a href="noticias.html">Noticias</a></li>
-    <li><a href="sobre-mi.html">Bio</a></li>
-    <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
-  </ul>
-</div></nav>
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand">
+      <img src="assets/logo.png" alt="Yana Yavorskaya" class="nav__brand-logo" width="48" height="45">
+      Yana Yavorskaya
+    </a>
+    <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
+      <li><a href="index.html#estudio" data-i18n="nav.estudio">Estudio</a></li>
+      <li><a href="index.html#exposiciones" data-i18n="nav.exposiciones">Exposiciones</a></li>
+      <li><a href="obras-disponibles.html">Obras</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="sobre-mi.html">Bio</a></li>
+      <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
 
 <main class="container container-wide bio-page">
   <a href="index.html" class="back-link">← Volver al inicio</a>
@@ -50,7 +61,7 @@
 
   <div style="display:grid;grid-template-columns:minmax(280px,1fr) 1.5fr;gap:3rem;align-items:start;margin-bottom:4rem;">
     <div>
-      <img src="assets/obras/aurora-interior.jpg" alt="Yana Yavorskaya en su estudio de Madrid" style="width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%) contrast(105%);box-shadow:var(--shadow-md);">
+      <img src="assets/obras/hero-bg.jpg" alt="Yana Yavorskaya en su estudio de Madrid" style="width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%) contrast(105%);box-shadow:var(--shadow-md);">
       <div style="margin-top:0.5rem;font-size:0.7rem;text-align:center;color:var(--text-tertiary);font-family:var(--sans);letter-spacing:0.05em;">Yana Yavorskaya — Estudio de Madrid, 2026</div>
     </div>
     <div style="font-family:var(--serif);font-size:1.2rem;color:var(--text-secondary);line-height:1.85;">

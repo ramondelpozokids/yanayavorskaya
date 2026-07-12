@@ -242,3 +242,149 @@ img{display:block;max-width:100%;height:auto}
   .whatsapp-btn{bottom:1rem;right:1rem}
   .scroll-up{bottom:calc(1rem + 72px);right:1rem}
 }
+
+/* ============================================================
+   MASTER FILTERS, LIGHTBOX & VERCEL TOOLBAR ELIMINATION
+   ============================================================ */
+
+/* ELIMINATE VERCEL TOOLBAR & THIRD-PARTY INJECTIONS */
+vercel-toolbar, #vercel-toolbar, [data-vercel-toolbar], .vercel-toolbar, iframe[src*="vercel"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* SHOP & NEWS FILTERS */
+.shop-filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  align-items: center;
+}
+.shop-filter {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  font-family: var(--sans);
+  border-radius: 2px;
+}
+.shop-filter:hover, .shop-filter.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ENSURE CARDS ARE ALWAYS VISIBLE (NO HIDDEN REVEAL ON GRID) */
+.shop-grid, .news-grid {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.shop-card, .news-card {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.shop-card:hover, .news-card:hover {
+  transform: translateY(-4px) !important;
+}
+
+/* SHOP MODAL (ONLY VISIBLE WHEN .is-open IS ADDED) */
+.shop-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(10,10,10,0.9);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.shop-modal.is-open {
+  display: flex !important;
+}
+.shop-modal__inner {
+  background: var(--bg);
+  color: var(--text);
+  max-width: 600px;
+  width: 100%;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.shop-modal__close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+}
+.shop-modal__title {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.shop-modal__text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+}
+.shop-modal__buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* LIGHTBOX PREMIUM 90% SCREEN */
+.lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 450;
+  background: rgba(10,10,10,0.96);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.lb-overlay.is-open {
+  display: flex !important;
+}
+.lb-content {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  width: 92%;
+  max-width: 1450px;
+  max-height: 90vh;
+  align-items: center;
+  padding: 2.5rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  overflow-y: auto;
+}
+@media (max-width: 992px) {
+  .lb-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-height: 92vh;
+  }
+}
