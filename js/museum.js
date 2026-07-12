@@ -228,30 +228,61 @@
   window.museoImport = async function (file) { try { const t = await file.text(); const d = JSON.parse(t); await MuseoDB.importAll(d); const f = await MuseoDB.getFavoritos(); state.favoritos = new Set(f.map(x => x.id)); updateFavButtons(); showToast(_('toast.importOk')); } catch (_) { showToast(_('toast.importError')); } };
 
   /* ============ CHAT ASSISTANT ============ */
-  function setupChatAssistant() {
+    function setupChatAssistant() {
     const tr = document.getElementById('chat-trigger'), pn = document.getElementById('chat-panel'), cl = document.getElementById('chat-close'), inp = document.getElementById('chat-input'), snd = document.getElementById('chat-send'), msgs = document.getElementById('chat-messages'), qk = document.getElementById('chat-quick');
     if (!tr || !pn || !msgs) return;
 
-    function reply(u) { const m = u.toLowerCase();
-      if (m.includes('luz')&&m.includes('sombra')) return 'La colección «Luz y Sombra» (2022–2024) explora la dualidad lumínica en 4 óleos monumentales. La obra central, «Amanecer en la Bruma» (180×220 cm), captura el instante entre la noche y el día. ¿Te gustaría verla en Modo Museo?';
-      if (m.includes('geometr')) return '«Geometría Sagrada» (2020–2022) revela el orden oculto de la naturaleza mediante abstracción matemática. Incluye piezas con pan de oro. Yana estudió geometría sagrada durante dos años antes de pintar esta serie.';
-      if (m.includes('horizonte')||m.includes('interior')) return '«Horizontes Interiores» (2018–2020) es la colección más íntima. Paisajes que difuminan lo visto y lo sentido. «Memoria del Horizonte» estuvo en la Fondation Louis Vuitton.';
-      if (m.includes('técnica')||m.includes('oleo')||m.includes('pinta')) return 'Yana trabaja con óleo sobre lienzo de lino belga. Prepara sus pigmentos con aglutinantes naturales y aplica veladuras — a veces más de 40 capas. También usa pan de oro, acrílico y técnicas mixtas.';
-      if (m.includes('dispon')||m.includes('comprar')||m.includes('precio')) return 'Para disponibilidad y precios, usa el formulario de Consulta Privada o escribe por WhatsApp. Todas las consultas son confidenciales.';
-      if (m.includes('expos')||m.includes('galer')) return 'Ha expuesto en Gagosian (NY), Tate Modern (Londres), Fondation Louis Vuitton (París), Bienal de Venecia y ARCOmadrid. Próxima individual: 2026 en Hauser & Wirth.';
-      if (m.includes('estudio')||m.includes('taller')) return 'Estudio en Madrid con luz del norte. Trabaja en silencio. Prepara pigmentos cada mañana antes de tocar el lienzo. Visitas posibles mediante invitación.';
-      if (m.includes('hola')||m.includes('buenas')||m.includes('hello')||m.includes('bonjour')||m.includes('ciao')) return _('chat.greeting');
+    const _ = function(k) { try { return window.MuseoI18n && MuseoI18n.t ? MuseoI18n.t(k) : k; } catch(e) { return k; } };
+
+    function reply(u) {
+      const m = u.toLowerCase();
+      if (m.includes('luz')&&m.includes('sombra')) return 'La colección «Luz y Sombra» (2022–2024) explora la dualidad lumínica en 4 óleos monumentales. La obra central, «Amanecer en la Bruma» (180×220 cm), captura el instante entre la noche y el día.';
+      if (m.includes('geometr')) return '«Geometría Sagrada» (2020–2022) revela el orden oculto de la naturaleza mediante abstracción matemática. Incluye piezas con pan de oro.';
+      if (m.includes('horizonte')||m.includes('interior')) return '«Horizontes Interiores» (2018–2020) es la colección más íntima. Paisajes que difuminan lo visto y lo sentido.';
+      if (m.includes('técnica')||m.includes('oleo')||m.includes('pinta')) return 'Yana trabaja con óleo sobre lienzo de lino belga virgen. Prepara sus pigmentos con aglutinantes naturales y aplica veladuras y arena de cuarzo.';
+      if (m.includes('dispon')||m.includes('comprar')||m.includes('precio')||m.includes('informac')) return 'Para solicitar información, disponibilidad y precios, pulsa "Solicitar información" en cualquier obra del catálogo o contacta por WhatsApp al +34 600 88 99 77.';
+      if (m.includes('expos')||m.includes('galer')) return 'Ha expuesto en Gagosian (NY), Tate Modern (Londres), Fondation Louis Vuitton (París), Bienal de Venecia y ARCO Madrid.';
+      if (m.includes('estudio')||m.includes('taller')||m.includes('cita')) return 'El estudio está en Calle de Almagro 24 (Chamberí, Madrid). Puedes reservar cita previa desde la sección de Contacto.';
+      if (m.includes('hola')||m.includes('buenas')||m.includes('hello')||m.includes('bonjour')||m.includes('ciao')||m.includes('hallo')) return _('chat.greeting');
       return _('chat.default');
     }
-    function addMsg(txt, sender) { const d = document.createElement('div'); d.className = `chat-panel__message chat-panel__message--${sender}`; d.textContent = txt; msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; }
-    function sendMsg() { const txt = inp?.value.trim(); if (!txt) return; addMsg(txt, 'user'); if (inp) inp.value = ''; setTimeout(() => addMsg(reply(txt), 'bot'), 600 + Math.random() * 600); }
-    setTimeout(() => addMsg(_('chat.greeting'), 'bot'), 300);
-    tr.addEventListener('click', () => { pn.classList.add('is-open'); pn.setAttribute('aria-hidden', 'false'); });
-    cl?.addEventListener('click', () => { pn.classList.remove('is-open'); pn.setAttribute('aria-hidden', 'true'); });
-    snd?.addEventListener('click', sendMsg);
-    inp?.addEventListener('keydown', e => { if (e.key === 'Enter') sendMsg(); });
-    qk?.querySelectorAll('.chat-panel__quick-reply').forEach(b => { b.addEventListener('click', () => { addMsg(b.getAttribute('data-msg'), 'user'); setTimeout(() => addMsg(reply(b.getAttribute('data-msg')), 'bot'), 500); }); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && pn.classList.contains('is-open')) { pn.classList.remove('is-open'); pn.setAttribute('aria-hidden', 'true'); } });
+
+    function addMsg(txt, sender) {
+      const d = document.createElement('div');
+      d.className = `chat-panel__message chat-panel__message--${sender}`;
+      d.textContent = txt;
+      msgs.appendChild(d);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function sendMsg() {
+      const txt = inp?.value.trim();
+      if (!txt) return;
+      addMsg(txt, 'user');
+      if (inp) inp.value = '';
+      setTimeout(() => addMsg(reply(txt), 'bot'), 400 + Math.random() * 400);
+    }
+
+    if (msgs.children.length === 0) {
+      setTimeout(() => addMsg(_('chat.greeting'), 'bot'), 300);
+    }
+
+    # Clean old listeners by replacing trigger clone if needed or just adding cleanly
+    tr.onclick = function(e) { e.preventDefault(); e.stopPropagation(); pn.classList.add('is-open'); pn.setAttribute('aria-hidden', 'false'); };
+    if (cl) cl.onclick = function(e) { e.preventDefault(); e.stopPropagation(); pn.classList.remove('is-open'); pn.setAttribute('aria-hidden', 'true'); };
+    if (snd) snd.onclick = function(e) { e.preventDefault(); sendMsg(); };
+    if (inp) inp.onkeydown = function(e) { if (e.key === 'Enter') { e.preventDefault(); sendMsg(); } };
+    
+    if (qk) {
+      qk.querySelectorAll('.chat-panel__quick-reply').forEach(b => {
+        b.onclick = function(e) {
+          e.preventDefault();
+          const msg = b.getAttribute('data-msg');
+          addMsg(msg, 'user');
+          setTimeout(() => addMsg(reply(msg), 'bot'), 400);
+        };
+      });
+    }
   }
 
   /* ============ SCROLL UP ============ */

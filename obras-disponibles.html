@@ -426,15 +426,7 @@ function openLightbox(card) {
   if (!card) return;
   lbIndex = allCards.indexOf(card);
   if (lbIndex < 0) lbIndex = 0;
-  renderLightbox();
-  var ov = document.getElementById('lb-overlay');
-  if (ov) {
-    ov.classList.add('is-open');
-    ov.setAttribute('aria-hidden','false');
-    ov.style.setProperty('display', 'flex', 'important');
-    document.body.style.overflow = 'hidden';
-  }
-} catch(e) { console.error('renderLightbox error', e); }
+  try { renderLightbox(); } catch(e) { console.error('renderLightbox error', e); }
   var ov = document.getElementById('lb-overlay');
   if (ov) {
     ov.classList.add('is-open');
@@ -470,10 +462,14 @@ function renderLightbox() {
   var statusText = c.dataset.statusText || '';
   var desc = c.dataset.desc || '';
 
-  document.getElementById('lb-img').src = src;
-  document.getElementById('lb-img').alt = title;
-  document.getElementById('lb-img').classList.remove('zoomed');
-  document.getElementById('lb-counter').textContent = (lbIndex + 1) + ' / ' + allCards.length;
+  var lbImg = document.getElementById('lb-img');
+  if (lbImg) {
+    lbImg.src = src;
+    lbImg.alt = title;
+    lbImg.classList.remove('zoomed');
+  }
+  var lbCounter = document.getElementById('lb-counter');
+  if (lbCounter) lbCounter.textContent = (lbIndex + 1) + ' / ' + allCards.length;
 
   var infoHtml = '';
   infoHtml += '<h2>' + title + '</h2>';
@@ -484,7 +480,9 @@ function renderLightbox() {
   infoHtml += '<div class="lb-status" style="color:' + statusColor + '">' + statusText + '</div>';
   infoHtml += '<div class="lb-desc">' + desc + '</div>';
   infoHtml += '<button class="btn btn--primary" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('' + title + '')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + (window.MuseoI18n && MuseoI18n.t ? MuseoI18n.t("shop.requestInfo") : "SOLICITAR INFORMACIÓN") + '</button>';
-  document.getElementById('lb-info').innerHTML = infoHtml;
+  
+  var lbInfo = document.getElementById('lb-info');
+  if (lbInfo) lbInfo.innerHTML = infoHtml;
 }
 
 function lbPrev() { if (lbIndex > 0) { lbIndex--; renderLightbox(); } }
@@ -625,6 +623,35 @@ function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(
       <div>📐 Escala visual de alta precisión fundamentada en las medidas reales. Incluye margen de caja americana.</div>
       <button class="btn btn--primary" onclick="closeRoomSimulator(); openInquiry(document.getElementById('room-artwork-title').textContent, '')" style="padding: 0.9rem 2rem; font-size: 0.72rem; letter-spacing: 0.18em;">SOLICITAR ESTA PIEZA EN DIRECTO →</button>
     </div>
+  </div>
+</div>
+
+
+<!-- ===== CHAT ASSISTANT (BOTTOM RIGHT) ===== -->
+<div class="chat-assistant">
+  <button class="chat-assistant__trigger" id="chat-trigger" aria-label="Abrir chat">
+    <img src="assets/logo.png" alt="" width="34" height="34">
+  </button>
+</div>
+<div class="chat-panel" id="chat-panel" role="dialog" aria-hidden="true">
+  <div class="chat-panel__header">
+    <img src="assets/logo.png" alt="" width="36" height="36">
+    <div class="chat-panel__header-info">
+      <div class="chat-panel__header-name" data-i18n="chat.name">Asistente Q&A de Arte</div>
+      <div class="chat-panel__header-status" data-i18n="chat.status">Preguntas frecuentes en vivo</div>
+    </div>
+    <button class="chat-panel__close" id="chat-close" aria-label="Cerrar chat">✕</button>
+  </div>
+  <div class="chat-panel__messages" id="chat-messages"></div>
+  <div class="chat-panel__quick-replies" id="chat-quick">
+    <button class="chat-panel__quick-reply" data-msg="Háblame de la colección Luz y Sombra" data-i18n="chat.q1">Luz y Sombra</button>
+    <button class="chat-panel__quick-reply" data-msg="¿Hay obras disponibles?" data-i18n="chat.q3">Disponibilidad</button>
+    <button class="chat-panel__quick-reply" data-msg="¿Qué técnica utilizas?" data-i18n="chat.q2">Técnica</button>
+    <button class="chat-panel__quick-reply" data-msg="Cuéntame sobre las exposiciones" data-i18n="chat.q4">Exposiciones</button>
+  </div>
+  <div class="chat-panel__input-area">
+    <input type="text" id="chat-input" placeholder="Escribe tu pregunta…" data-i18n="chat.placeholder">
+    <button id="chat-send" data-i18n="chat.send">Enviar</button>
   </div>
 </div>
 
