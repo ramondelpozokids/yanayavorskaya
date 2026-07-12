@@ -934,3 +934,13 @@ vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-
 }
 
 .soc-ig svg { fill: none !important; stroke: #fff !important; }
+
+
+/* GUARANTEED HIGHEST Z-INDEX & DISPLAY FOR FULL-SCREEN LIGHTBOX (VER OBRA) */
+.lb-overlay {
+  z-index: 999999 !important;
+}
+.lb-overlay.is-open {
+  display: flex !important;
+  z-index: 999999 !important;
+}

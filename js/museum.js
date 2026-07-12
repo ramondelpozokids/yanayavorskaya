@@ -5,17 +5,25 @@
     var btn = document.getElementById('scroll-up');
     if (!btn) return;
     function checkScroll() {
-      if (window.scrollY > 100 || document.documentElement.scrollTop > 100) {
+      var sy = window.scrollY || window.pageYOffset || (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop) || 0;
+      if (sy > 150) {
         btn.classList.add('is-visible');
       } else {
         btn.classList.remove('is-visible');
       }
     }
     window.addEventListener('scroll', checkScroll, { passive: true });
+    document.addEventListener('scroll', checkScroll, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('scroll', checkScroll, { passive: true });
+    }
     checkScroll();
     btn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (document.documentElement) document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+      if (document.body) document.body.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
   if (document.readyState === 'loading') {
@@ -267,7 +275,7 @@
       setTimeout(() => addMsg(_('chat.greeting'), 'bot'), 300);
     }
 
-    # Clean old listeners by replacing trigger clone if needed or just adding cleanly
+    // Clean old listeners by replacing trigger clone if needed or just adding cleanly
     tr.onclick = function(e) { e.preventDefault(); e.stopPropagation(); pn.classList.add('is-open'); pn.setAttribute('aria-hidden', 'false'); };
     if (cl) cl.onclick = function(e) { e.preventDefault(); e.stopPropagation(); pn.classList.remove('is-open'); pn.setAttribute('aria-hidden', 'true'); };
     if (snd) snd.onclick = function(e) { e.preventDefault(); sendMsg(); };
@@ -307,7 +315,7 @@ window.openRoomSimulator = function(title, sizeStr, imgSrc, price) {
   document.getElementById('room-artwork-size').textContent = sizeStr ? (sizeStr + ' — ' + (price ? price + ' €' : '')) : '';
   document.getElementById('room-artwork-img').src = imgSrc || '';
 
-  # Parse width and height from sizeStr (e.g. "120 × 120 cm" or "100 × 80 cm")
+  // Parse width and height from sizeStr (e.g. "120 × 120 cm" or "100 × 80 cm")
   var frame = document.getElementById('room-artwork-frame');
   var w = 120, h = 100;
   if (sizeStr) {
@@ -317,12 +325,12 @@ window.openRoomSimulator = function(title, sizeStr, imgSrc, price) {
       h = parseInt(nums[2], 10);
     }
   }
-  # Scale: in our 480px height room where 350px = 1.75m (1cm = 2.0px), sofa 440px = 2.20m (1cm = 2.0px)
+  // Scale: in our 480px height room where 350px = 1.75m (1cm = 2.0px), sofa 440px = 2.20m (1cm = 2.0px)
   var scalePx = 1.95;
   frame.style.width = Math.round(w * scalePx) + 'px';
   frame.style.height = Math.round(h * scalePx) + 'px';
 
-  # Reset to living room scene initially
+  // Reset to living room scene initially
   var livingBtn = document.querySelector('.room-scene-btn[onclick*="living"]');
   if (livingBtn) switchRoomScene('living', livingBtn);
 
@@ -370,7 +378,7 @@ window.switchRoomScene = function(sceneType, btn) {
       if (obra) {
         var sel = document.querySelector('#contacto select');
         if (sel) {
-          # Check if option exists, if not add it and select it
+          // Check if option exists, if not add it and select it
           var found = false;
           for (var i = 0; i < sel.options.length; i++) {
             if (sel.options[i].value.toLowerCase().includes(obra.toLowerCase()) || sel.options[i].text.toLowerCase().includes(obra.toLowerCase())) {

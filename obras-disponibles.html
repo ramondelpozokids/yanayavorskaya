@@ -40,7 +40,7 @@
     .shop-filter { padding: 0.35rem 0.9rem; border: 1px solid var(--border); background: none; cursor: pointer; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); transition: all var(--transition-fast); font-family: var(--sans); }
     .shop-filter:hover, .shop-filter.active { border-color: var(--accent); color: var(--accent); }
     /* Lightbox premium */
-    .lb-overlay { display: none; position: fixed; inset: 0; z-index: 400; background: rgba(10,10,10,0.95); align-items: center; justify-content: center; flex-direction: column; }
+    .lb-overlay { display: none; position: fixed; inset: 0; z-index: 999999 !important; background: rgba(10,10,10,0.95); align-items: center; justify-content: center; flex-direction: column; }
     .lb-overlay.is-open { display: flex; }
     .lb-close { position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); }
     .lb-close:hover { background: rgba(255,255,255,0.2); }
@@ -423,6 +423,7 @@ function collectCards() {
 
 function openLightbox(card) {
   collectCards();
+  if (!card && allCards.length > 0) card = allCards[0];
   if (!card) return;
   lbIndex = allCards.indexOf(card);
   if (lbIndex < 0) lbIndex = 0;
@@ -432,6 +433,7 @@ function openLightbox(card) {
     ov.classList.add('is-open');
     ov.setAttribute('aria-hidden','false');
     ov.style.setProperty('display', 'flex', 'important');
+    ov.style.setProperty('z-index', '999999', 'important');
     document.body.style.overflow = 'hidden';
   }
 }
@@ -441,7 +443,7 @@ function closeLightbox() {
   if (ov) {
     ov.classList.remove('is-open');
     ov.setAttribute('aria-hidden','true');
-    ov.style.display = 'none';
+    ov.style.setProperty('display', 'none', 'important');
     document.body.style.overflow = '';
   }
   var img = document.getElementById('lb-img');
@@ -471,6 +473,9 @@ function renderLightbox() {
   var lbCounter = document.getElementById('lb-counter');
   if (lbCounter) lbCounter.textContent = (lbIndex + 1) + ' / ' + allCards.length;
 
+  var reqText = (window.MuseoI18n && MuseoI18n.t) ? MuseoI18n.t("shop.requestInfo") : "SOLICITAR INFORMACIÓN";
+  var roomText = (window.MuseoI18n && MuseoI18n.t) ? MuseoI18n.t("shop.viewInRoom") : "VER A ESCALA EN PARED / VIEW IN ROOM";
+
   var infoHtml = '';
   infoHtml += '<h2>' + title + '</h2>';
   infoHtml += '<div class="lb-collection">Colección ' + collection + '</div>';
@@ -479,7 +484,10 @@ function renderLightbox() {
   var statusColor = (c.dataset.status === 'disponible') ? 'var(--accent)' : '#999';
   infoHtml += '<div class="lb-status" style="color:' + statusColor + '">' + statusText + '</div>';
   infoHtml += '<div class="lb-desc">' + desc + '</div>';
-  infoHtml += '<button class="btn btn--primary" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('' + title + '')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + (window.MuseoI18n && MuseoI18n.t ? MuseoI18n.t("shop.requestInfo") : "SOLICITAR INFORMACIÓN") + '</button>';
+  if (window.openRoomSimulator) {
+    infoHtml += '<button class="btn btn--secondary" onclick="openRoomSimulator('' + title + '','' + size + '','' + src + '','' + price + '')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.73rem;padding:0.9rem;border:1px solid var(--accent);color:var(--accent);background:transparent;font-weight:600;">📐 ' + roomText + '</button>';
+  }
+  infoHtml += '<button class="btn btn--primary" onclick="window.location.href='index.html#contacto?obra=' + encodeURIComponent('' + title + '')" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + reqText + '</button>';
   
   var lbInfo = document.getElementById('lb-info');
   if (lbInfo) lbInfo.innerHTML = infoHtml;
