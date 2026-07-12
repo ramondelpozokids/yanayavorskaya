@@ -474,69 +474,7 @@ vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-
 /* ============================================================
    MODO NOCHE DE MUSEO (ILUMINACIÓN CENITAL Y PENUMBRA)
    ============================================================ */
-body.museum-night {
-  --bg: #0c0c0b !important;
-  --bg-alt: #161614 !important;
-  --text: #ededeb !important;
-  --text-secondary: #b0afab !important;
-  --text-tertiary: #757470 !important;
-  --border: #2a2a26 !important;
-  --border-light: #1f1f1c !important;
-  --shadow-sm: 0 1px 6px rgba(0,0,0,0.6) !important;
-  --shadow-md: 0 10px 35px rgba(0,0,0,0.8) !important;
-  --shadow-lg: 0 25px 80px rgba(0,0,0,0.95) !important;
-  background-color: #0c0c0b !important;
-  color: #ededeb !important;
-}
-body.museum-night .nav {
-  background: rgba(12, 12, 11, 0.94) !important;
-  border-bottom-color: #2a2a26 !important;
-}
-body.museum-night .nav--scrolled {
-  background: rgba(12, 12, 11, 0.98) !important;
-  box-shadow: 0 2px 18px rgba(0,0,0,0.85) !important;
-}
-body.museum-night .shop-card,
-body.museum-night .news-card,
-body.museum-night .lb-content,
-body.museum-night .shop-modal__inner {
-  background: #161614 !important;
-  border-color: #2a2a26 !important;
-  color: #ededeb !important;
-}
-body.museum-night .shop-card__body,
-body.museum-night .news-card__body {
-  background: #161614 !important;
-}
-body.museum-night .shop-filter {
-  background: #161614 !important;
-  border-color: #2a2a26 !important;
-  color: #b0afab !important;
-}
-body.museum-night .shop-filter:hover,
-body.museum-night .shop-filter.active {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: #fff !important;
-}
-
 /* Halogen Spotlight effect on hover in Night Mode */
-body.museum-night .shop-card__image::after,
-body.museum-night .news-card__image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 35%, rgba(255, 248, 220, 0.18) 0%, transparent 68%);
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1);
-  pointer-events: none;
-  z-index: 5;
-}
-body.museum-night .shop-card:hover .shop-card__image::after,
-body.museum-night .news-card:hover .news-card__image::after {
-  opacity: 1;
-}
-
 .nav__night-toggle {
   display: inline-flex;
   align-items: center;
@@ -557,12 +495,6 @@ body.museum-night .news-card:hover .news-card__image::after {
   border-color: var(--accent);
   color: var(--accent);
 }
-body.museum-night .nav__night-toggle {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(184, 134, 11, 0.16);
-}
-
 /* ============================================================
    SIMULADOR DE ESCALA EN PARED (VIEW IN ROOM)
    ============================================================ */
@@ -597,29 +529,18 @@ body.museum-night .nav__night-toggle {
 .room-scene--living {
   background: linear-gradient(180deg, #eae8e1 0%, #dbd8ce 80%, #c4c0b5 80%, #b8b3a8 100%);
 }
-body.museum-night .room-scene--living {
-  background: linear-gradient(180deg, #1f1f1d 0%, #171715 80%, #0c0c0b 80%, #0a0a09 100%);
-}
 .room-scene--concrete {
   background: linear-gradient(180deg, #8a8d91 0%, #6e7175 82%, #4d4f52 82%, #3d3e40 100%);
 }
 .room-scene--gallery {
   background: linear-gradient(180deg, #f7f7f5 0%, #ebebea 85%, #d1d1cf 85%, #b5b5b3 100%);
 }
-body.museum-night .room-scene--gallery {
-  background: linear-gradient(180deg, #242422 0%, #1c1c1b 85%, #121211 85%, #0c0c0b 100%);
-}
-
 .room-spotlight {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.45) 0%, transparent 65%);
   pointer-events: none;
 }
-body.museum-night .room-spotlight {
-  background: radial-gradient(circle at 50% 35%, rgba(255,245,210,0.22) 0%, transparent 65%);
-}
-
 .room-artwork-frame {
   position: relative;
   z-index: 10;
@@ -963,4 +884,51 @@ vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-
 .lang-switcher__dropdown button:hover {
   background: var(--bg-alt) !important;
   color: var(--text) !important;
+}
+
+
+/* STRICT SCROLL UP BOTTOM LEFT & CHAT BOTTOM RIGHT OVERRIDE */
+@media (max-width: 99999px) {
+  .scroll-up {
+    position: fixed !important;
+    left: 1.8rem !important;
+    right: auto !important;
+    bottom: 1.8rem !important;
+    z-index: 9999 !important;
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 50% !important;
+    background: var(--bg) !important;
+    border: 1px solid var(--border) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.18) !important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.2s ease, background 0.2s ease !important;
+  }
+  .scroll-up.is-visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .scroll-up:hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--accent) !important;
+    background: var(--accent) !important;
+  }
+  .scroll-up:hover svg {
+    stroke: #fff !important;
+  }
+}
+@media (max-width: 768px) {
+  @media (max-width: 99999px) {
+    .scroll-up {
+      left: 1.2rem !important;
+      bottom: 1.2rem !important;
+      width: 42px !important;
+      height: 42px !important;
+    }
+  }
 }

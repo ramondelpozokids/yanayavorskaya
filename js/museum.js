@@ -266,49 +266,7 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 
-/* ============================================================
-   MODO NOCHE DE MUSEO & SIMULADOR DE ESCALA EN PARED
-   ============================================================ */
-(function() {
-  function initMuseumNightMode() {
-    var isNight = false;
-    try { isNight = localStorage.getItem('museo_night_mode') === 'true'; } catch(e) {}
-    if (isNight) {
-      document.body.classList.add('museum-night');
-    } else {
-      document.body.classList.remove('museum-night');
-    }
-    updateNightButton();
-  }
 
-  function updateNightButton() {
-    var btns = document.querySelectorAll('.nav__night-toggle');
-    var isNight = document.body.classList.contains('museum-night');
-    var _ = window.MuseoI18n && window.MuseoI18n.t ? window.MuseoI18n.t : function(k) { return k === 'nav.nightMode' ? 'Noche' : 'Día'; };
-    btns.forEach(function(btn) {
-      var icon = btn.querySelector('.night-icon');
-      var text = btn.querySelector('.night-text');
-      if (isNight) {
-        if (icon) icon.textContent = '☀️';
-        if (text) text.textContent = _('nav.dayMode') || 'Día';
-      } else {
-        if (icon) icon.textContent = '🌙';
-        if (text) text.textContent = _('nav.nightMode') || 'Noche';
-      }
-    });
-  }
-
-  window.toggleMuseumNightMode = function() {
-    document.body.classList.toggle('museum-night');
-    var isNight = document.body.classList.contains('museum-night');
-    try { localStorage.setItem('museo_night_mode', isNight ? 'true' : 'false'); } catch(e) {}
-    updateNightButton();
-  };
-
-  window.addEventListener('DOMContentLoaded', initMuseumNightMode);
-  window.addEventListener('museo:langChanged', updateNightButton);
-  initMuseumNightMode();
-})();
 
 /* Room Simulator logic */
 window.openRoomSimulator = function(title, sizeStr, imgSrc, price) {

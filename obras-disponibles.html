@@ -74,7 +74,6 @@
       <img src="assets/logo.png" alt="Yana Yavorskaya" class="nav__brand-logo" width="48" height="45">
       Yana Yavorskaya
     </a>
-    <button class="nav__night-toggle" id="night-toggle" onclick="toggleMuseumNightMode()" aria-label="Modo Noche de Museo" title="Cambiar a Modo Noche de Museo"><span class="night-icon">🌙</span> <span class="night-text" data-i18n="nav.nightMode">Noche</span></button>
     <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -86,11 +85,11 @@
       <li><a href="noticias.html" data-i18n="nav.noticias">Noticias</a></li>
       <li><a href="sobre-mi.html" data-i18n="nav.bio">Bio</a></li>
       <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
-      <!-- IDIOMAS AL LADO DE CONTACTO -->
-      <li class="nav__item-lang" id="nav-item-lang-container" style="display: flex; align-items: center;">
+      <!-- SELECTOR DE 6 IDIOMAS AL LADO DE CONTACTO -->
+      <li class="nav__item-lang" id="nav-item-lang-container" style="display: flex; align-items: center; margin: 0 0.4rem;">
         <div id="lang-switcher" class="lang-switcher"></div>
       </li>
-      <!-- WHATSAPP AL LADO DE IDIOMAS -->
+      <!-- BOTÓN WHATSAPP AL LADO DE IDIOMAS -->
       <li style="display: flex; align-items: center;"><a href="https://wa.me/34600889977?text=Hola%20Yana%20Yavorskaya" target="_blank" rel="noopener" class="nav__wa-clean" title="WhatsApp directo con Yana"><span style="color:#25D366;">🟢</span> <span data-i18n="nav.wa">+34 600 88 99 77</span></a></li>
     </ul>
   </div>
@@ -104,10 +103,15 @@
     <p data-i18n="shop.intro">Cada obra incluye certificado de autenticidad firmado por la artista. Para adquirir cualquiera de estas piezas, contacta directamente con Yana.</p>
     <div class="shop-intro__note" data-i18n="shop.howto">✦ Cómo adquirir una obra: pulsa en cualquier imagen para verla a pantalla completa con toda su historia. Después, si te interesa, contacta con Yana. Sin intermediarios. Directamente desde el estudio.</div>
   </div>
-  <div class="shop-filters reveal">
-    <button class="shop-filter active" data-filter="all" data-i18n="shop.filterAll">Todas</button>
+  <div class="shop-filters" style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 2rem 0;">
+    <button class="shop-filter active" data-filter="all" data-i18n="shop.filterAll">Todas las obras</button>
     <button class="shop-filter" data-filter="disponible" data-i18n="shop.filterAvail">Disponibles</button>
     <button class="shop-filter" data-filter="reservada" data-i18n="shop.filterReserv">Reservadas</button>
+    <button class="shop-filter" data-filter="vendida" data-i18n="shop.filterSold">Vendidas (Prestigio)</button>
+    <button class="shop-filter" data-filter="Horizontes Suspendidos">Horizontes Suspendidos</button>
+    <button class="shop-filter" data-filter="Luz de Invierno">Luz de Invierno</button>
+    <button class="shop-filter" data-filter="Silencios Urbanos">Silencios Urbanos</button>
+    <button class="shop-filter" data-filter="Naturaleza Latente">Naturaleza Latente</button>
   </div>
 
   <div class="shop-grid">
@@ -428,19 +432,29 @@ function collectCards() {
 
 function openLightbox(card) {
   collectCards();
+  if (!card) return;
   lbIndex = allCards.indexOf(card);
   if (lbIndex < 0) lbIndex = 0;
-  renderLightbox();
-  document.getElementById('lb-overlay').classList.add('is-open');
-  document.getElementById('lb-overlay').setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
+  try { renderLightbox(); } catch(e) { console.error('renderLightbox error', e); }
+  var ov = document.getElementById('lb-overlay');
+  if (ov) {
+    ov.classList.add('is-open');
+    ov.setAttribute('aria-hidden','false');
+    ov.style.setProperty('display', 'flex', 'important');
+    document.body.style.overflow = 'hidden';
+  }
 }
 
 function closeLightbox() {
-  document.getElementById('lb-overlay').classList.remove('is-open');
-  document.getElementById('lb-overlay').setAttribute('aria-hidden','true');
-  document.body.style.overflow = '';
-  document.getElementById('lb-img').classList.remove('zoomed');
+  var ov = document.getElementById('lb-overlay');
+  if (ov) {
+    ov.classList.remove('is-open');
+    ov.setAttribute('aria-hidden','true');
+    ov.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  var img = document.getElementById('lb-img');
+  if (img) img.classList.remove('zoomed');
 }
 
 function renderLightbox() {
