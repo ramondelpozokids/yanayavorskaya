@@ -388,3 +388,84 @@ vercel-toolbar, #vercel-toolbar, [data-vercel-toolbar], .vercel-toolbar, iframe[
     max-height: 92vh;
   }
 }
+
+
+/* ============================================================
+   NUCLEAR VERCEL TOOLBAR & LIVE FEEDBACK ELIMINATION
+   ============================================================ */
+vercel-live-feedback, #vercel-live-feedback, [id*="vercel-live"], [id*="vercel-toolbar"], [class*="vercel-toolbar"],
+vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], iframe[id*="vercel"], div[id*="vercel-toolbar"],
+button[aria-label*="Vercel"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  z-index: -999999 !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+
+/* ============================================================
+   SWAP CHAT ASSISTANT & SCROLL UP + NAV WHATSAPP BUTTON
+   ============================================================ */
+
+/* Chat Assistant on BOTTOM RIGHT */
+.chat-assistant {
+  left: auto !important;
+  right: var(--spacing-lg) !important;
+  bottom: var(--spacing-lg) !important;
+  z-index: 390 !important;
+}
+.chat-panel {
+  left: auto !important;
+  right: var(--spacing-lg) !important;
+  bottom: calc(var(--spacing-lg) + 70px) !important;
+  z-index: 410 !important;
+}
+
+/* Scroll Up on BOTTOM LEFT */
+.scroll-up {
+  right: auto !important;
+  left: var(--spacing-lg) !important;
+  bottom: var(--spacing-lg) !important;
+  z-index: 390 !important;
+}
+
+@media (max-width: 768px) {
+  .chat-assistant { right: 1.2rem !important; bottom: 1.2rem !important; }
+  .chat-panel { right: 1rem !important; left: 1rem !important; width: auto !important; bottom: 80px !important; }
+  .scroll-up { left: 1.2rem !important; bottom: 1.2rem !important; }
+}
+
+/* WhatsApp button in Navigation */
+.nav__wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: var(--text);
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  margin-left: 0.2rem;
+}
+.nav__wa-btn:hover {
+  background: #25D366;
+  color: #fff !important;
+  border-color: #25D366;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+.nav__wa-btn:hover span { color: #fff !important; }
+
+/* Reinforce nuclear Vercel floating button elimination */
+vercel-live-feedback, #vercel-live-feedback, [id*="vercel-live"], [id*="vercel-toolbar"],
+vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-toolbar"] {
+  display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; left: -99999px !important;
+}

@@ -1,4 +1,33 @@
 
+/* Nuclear Vercel Live Feedback Killer */
+(function() {
+  function destroyVercel() {
+    var selectors = [
+      'vercel-live-feedback', '#vercel-live-feedback', '[id*="vercel-live"]',
+      '[id*="vercel-toolbar"]', 'vercel-toolbar', '.vercel-toolbar',
+      'iframe[src*="vercel.live"]', 'iframe[id*="vercel"]', 'div[class*="vercel-toolbar"]'
+    ];
+    selectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        el.remove();
+      });
+    });
+    // Also remove from any shadowRoot if accessible
+    document.querySelectorAll('*').forEach(function(el) {
+      if (el.shadowRoot) {
+        selectors.forEach(function(sel) {
+          el.shadowRoot.querySelectorAll(sel).forEach(function(subEl) { subEl.remove(); });
+        });
+      }
+    });
+  }
+  destroyVercel();
+  setInterval(destroyVercel, 300);
+  window.addEventListener('DOMContentLoaded', destroyVercel);
+  window.addEventListener('load', destroyVercel);
+})();
+
+
 /* Force kill any Vercel Toolbar */
 (function() {
   function removeVercelToolbar() {

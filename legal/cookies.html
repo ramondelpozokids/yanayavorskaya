@@ -71,5 +71,48 @@
   <script src="../js/db.js"></script>
   <script src="../js/i18n.js"></script>
   <script>MuseoI18n.init();</script>
+<!-- ===== MAPA DEL SITIO MODAL ===== -->
+<div class="shop-modal" id="sitemap-modal" role="dialog" aria-hidden="true">
+  <div class="shop-modal__inner" style="max-width: 750px;">
+    <button class="shop-modal__close" onclick="closeSitemap()" aria-label="Cerrar">✕</button>
+    <div class="invitation__crest">✦</div>
+    <h3 class="shop-modal__title" style="margin-bottom: 1.5rem;">Mapa del sitio</h3>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: left; font-family: var(--sans); font-size: 0.85rem;">
+      <div>
+        <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--accent); display:block; margin-bottom: 0.5rem;">Galería & Obras</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem;">
+          <li><a href="obras-disponibles.html">Catálogo Completo (12 obras)</a></li>
+          <li><a href="index.html#colecciones">Colección Luz y Sombra</a></li>
+          <li><a href="index.html#colecciones">Colección Geometría Sagrada</a></li>
+          <li><a href="index.html#colecciones">Colección Horizontes Interiores</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--accent); display:block; margin-bottom: 0.5rem;">Estudio & Ensayos</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem;">
+          <li><a href="sobre-mi.html">Biografía & Filosofía</a></li>
+          <li><a href="index.html#estudio">El Estudio en Madrid</a></li>
+          <li><a href="noticias.html">Noticias del Estudio (15 artículos)</a></li>
+          <li><a href="index.html#exposiciones">Exposiciones Internacionales</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--accent); display:block; margin-bottom: 0.5rem;">Contacto & Legal</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem;">
+          <li><a href="index.html#contacto">Citas Privadas & Contacto</a></li>
+          <li><a href="legal/aviso-legal.html">Aviso Legal</a></li>
+          <li><a href="legal/privacidad.html">Privacidad</a></li>
+          <li><a href="legal/cookies.html">Cookies</a></li>
+          <li><a href="legal/terminos.html">Términos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function openSitemap(e) { if(e) e.preventDefault(); var sm = document.getElementById('sitemap-modal'); if(sm) { sm.classList.add('is-open'); sm.setAttribute('aria-hidden','false'); } }
+function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(sm) { sm.classList.remove('is-open'); sm.setAttribute('aria-hidden','true'); } }
+</script>
+
 </body>
 </html>

@@ -16,7 +16,7 @@ const MuseoI18n = (() => {
   const _3={es:'Exposiciones',en:'Exhibitions',fr:'Expositions',de:'Ausstellungen',ru:'Выставки',it:'Mostre'};
   const DICT = {
     'nav.brand':_0, 'nav.colecciones':_1, 'nav.estudio':_2, 'nav.exposiciones':_3,
-    'nav.contacto':{es:'Consulta',en:'Inquiry',fr:'Consultation',de:'Anfrage',ru:'Запрос',it:'Consultazione'},
+    'nav.contacto':{es:'Contacto',en:'Contact',fr:'Contact',de:'Kontakt',ru:'Контакты',it:'Contatto'},
     'nav.toggle':{es:'Abrir menú',en:'Open menu',fr:'Ouvrir le menu',de:'Menü öffnen',ru:'Открыть меню',it:'Apri menu'},
     'nav.close':{es:'Cerrar menú',en:'Close menu',fr:'Fermer le menu',de:'Menü schließen',ru:'Закрыть меню',it:'Chiudi menu'},
     'hero.artist':_0,

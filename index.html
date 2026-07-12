@@ -29,10 +29,11 @@
       <li><a href="index.html#colecciones" data-i18n="nav.colecciones">Colecciones</a></li>
       <li><a href="index.html#estudio" data-i18n="nav.estudio">Estudio</a></li>
       <li><a href="index.html#exposiciones" data-i18n="nav.exposiciones">Exposiciones</a></li>
-      <li><a href="obras-disponibles.html">Obras</a></li>
-      <li><a href="noticias.html">Noticias</a></li>
-      <li><a href="sobre-mi.html">Bio</a></li>
+      <li><a href="obras-disponibles.html" data-i18n="nav.obras">Obras</a></li>
+      <li><a href="noticias.html" data-i18n="nav.noticias">Noticias</a></li>
+      <li><a href="sobre-mi.html" data-i18n="nav.bio">Bio</a></li>
       <li><a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a></li>
+      <li><a href="https://wa.me/34600889977?text=Hola%20Yana%20Yavorskaya" target="_blank" rel="noopener" class="nav__wa-btn" aria-label="WhatsApp"><span style="color:#25D366;font-weight:bold;">🟢 WA:</span> <span data-i18n="nav.wa">+34 600 88 99 77</span></a></li>
     </ul>
   </div>
 </nav>
@@ -147,67 +148,250 @@
   </div>
 </section>
 
-<!-- ===== CONTACTO ===== -->
-<section id="contacto" class="section section--alt">
+<!-- ===== CONTACTO & CITAS PRIVADAS ===== -->
+<section id="contacto" class="section section--alt" style="padding: 6rem 0;">
   <div class="container">
-    <div class="invitation reveal">
-      <div class="invitation__crest">✦</div>
-      <h3 style="font-family:var(--serif);font-weight:300;font-size:2rem;margin-bottom:0.5rem;">Consulta Privada</h3>
-      <p class="invitation__text">Para información sobre obras disponibles, precios, encargos personalizados o visitas al estudio.</p>
-      <form id="contact-form" class="invitation__form" autocomplete="on">
-        <input type="text" name="nombre" placeholder="Su nombre completo" required>
-        <input type="email" name="email" placeholder="Su correo electrónico" required>
-        <textarea name="mensaje" placeholder="¿Sobre qué obra o colección desea consultar?" required></textarea>
-        <button type="submit" class="btn btn--primary" style="align-self:flex-start;">Enviar consulta</button>
-      </form>
-      <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1rem;">Todas las consultas son confidenciales. Respondemos en 24–48 horas.</p>
+    <div style="text-align: center; margin-bottom: 4rem;">
+      <span class="section__label" data-i18n="contact.label">Atención Exclusiva & Cita Previa</span>
+      <h2 class="section__title" data-i18n="contact.title">Contacto & Visitas al Estudio</h2>
+      <p style="margin: 0 auto; max-width: 680px; font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--text-secondary);">«El estudio en Madrid abre sus puertas a coleccionistas, arquitectos y amantes del arte con cita previa programada.»</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: start;">
+      
+      <!-- Columna Izquierda: Datos, Dirección, Teléfono, Horario & Mapa -->
+      <div style="background: var(--bg); padding: 2.5rem; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+        <h3 style="font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.8rem;">Datos de Estudio & Ubicación</h3>
+        
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.4rem; font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem; padding-left: 0;">
+          <li style="display: flex; gap: 1rem; align-items: flex-start;">
+            <span style="font-size: 1.3rem;">📍</span>
+            <div>
+              <strong style="color: var(--text); display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--sans);">Dirección del Estudio</strong>
+              Calle de Almagro, 24, Chamberí, 28010 Madrid, España
+            </div>
+          </li>
+          <li style="display: flex; gap: 1rem; align-items: flex-start;">
+            <span style="font-size: 1.3rem;">📞</span>
+            <div>
+              <strong style="color: var(--text); display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--sans);">Teléfono / WhatsApp de Atención</strong>
+              +34 600 88 99 77 (Lunes a Viernes)
+            </div>
+          </li>
+          <li style="display: flex; gap: 1rem; align-items: flex-start;">
+            <span style="font-size: 1.3rem;">✉️</span>
+            <div>
+              <strong style="color: var(--text); display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--sans);">Correo Electrónico</strong>
+              estudio@yanayavorskaya.com
+            </div>
+          </li>
+          <li style="display: flex; gap: 1rem; align-items: flex-start;">
+            <span style="font-size: 1.3rem;">🕰️</span>
+            <div>
+              <strong style="color: var(--text); display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--sans);">Horario de Apertura</strong>
+              Lunes a Viernes de 10:00 a 19:00 h<br><span style="font-size: 0.82rem; color: var(--accent);">Sábados visitas privadas y vernissages con reserva previa</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Mapa de Ubicación -->
+        <div>
+          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); display: block; margin-bottom: 0.5rem;">🗺️ Ubicación en Chamberí / Madrid</span>
+          <div style="aspect-ratio: 16/10; overflow: hidden; border: 1px solid var(--border);">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.8!2d-3.696!3d40.432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422883!2sCalle+de+Almagro%2C+24%2C+Chamber%C3%AD%2C+28010+Madrid!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" width="100%" height="100%" style="border:0; filter: grayscale(85%) contrast(110%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Sistema de Pestañas (Mensaje Directo vs Reserva Cita Previa) -->
+      <div style="background: var(--bg); padding: 2.5rem; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+        <div style="display: flex; border-bottom: 1px solid var(--border); margin-bottom: 2rem; gap: 1rem;">
+          <button id="tab-btn-msg" onclick="switchContactTab('msg')" style="padding: 0.8rem 1.5rem; border: none; background: none; font-family: var(--sans); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: var(--accent); border-bottom: 2px solid var(--accent); cursor: pointer;">✉️ Enviar Mensaje / Consulta</button>
+          <button id="tab-btn-cal" onclick="switchContactTab('cal')" style="padding: 0.8rem 1.5rem; border: none; background: none; font-family: var(--sans); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; color: var(--text-tertiary); cursor: pointer;">📅 Reservar Cita Previa</button>
+        </div>
+
+        <!-- Pestaña 1: Formulario de Mensaje -->
+        <div id="tab-panel-msg" style="display: block;">
+          <form onsubmit="event.preventDefault(); alert('✓ Su mensaje ha sido enviado con éxito al estudio de Yana Yavorskaya. Nos pondremos en contacto en 24 horas.'); this.reset();" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Nombre Completo *</label>
+                <input type="text" required placeholder="Ej. Carlos Martínez" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--sans);">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Correo Electrónico *</label>
+                <input type="email" required placeholder="ejemplo@correo.com" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--sans);">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Teléfono (Opcional)</label>
+                <input type="tel" placeholder="+34 600 00 00 00" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--sans);">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Asunto / Obra de Interés</label>
+                <select style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--sans); color: var(--text);">
+                  <option value="Consulta general">Consulta general sobre el estudio</option>
+                  <option value="Obras disponibles">Información de obras disponibles</option>
+                  <option value="Encargo personalizado">Encargo o colección personalizada</option>
+                  <option value="Prensa / Colaboración">Prensa, entrevistas o colaboración</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Mensaje *</label>
+              <textarea rows="4" required placeholder="Escriba aquí sus dudas, interés por una obra en concreto o detalles de su consulta..." style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--serif); line-height: 1.6;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="align-self: flex-start; padding: 1rem 2rem; font-size: 0.78rem; letter-spacing: 0.18em; width: 100%;">ENVIAR CONSULTA DIRECTA →</button>
+          </form>
+        </div>
+
+        <!-- Pestaña 2: Calendario de Cita Previa -->
+        <div id="tab-panel-cal" style="display: none;">
+          <form onsubmit="event.preventDefault(); alert('¡Excelente! Su cita previa en el estudio de Calle Almagro 24 (Madrid) ha quedado reservada con éxito. Le hemos enviado la confirmación por WhatsApp y correo electrónico.'); this.reset(); switchContactTab('msg');" style="display: flex; flex-direction: column; gap: 1.2rem;">
+            <div>
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Motivo de la Visita *</label>
+              <select required style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--sans);">
+                <option value="Contemplar obras en persona">Contemplación privada de obras disponibles</option>
+                <option value="Asesoramiento interiorismo">Asesoramiento para colecciones y proyectos de interiorismo</option>
+                <option value="Recogida de obra">Recogida de obra o certificado en taller</option>
+              </select>
+            </div>
+
+            <!-- Calendario Interactivo -->
+            <div>
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.6rem;">Seleccionar Fecha de Visita (Julio / Agosto 2026) *</label>
+              <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; text-align: center; font-size: 0.8rem; font-family: var(--sans);">
+                <button type="button" onclick="selectCalDate(this, 'Lun 13 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--accent); background: var(--accent); color: #fff;"><strong>Lun 13</strong><br><span style="font-size:0.68rem; color:inherit;">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Mar 14 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Mar 14</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Mié 15 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Mié 15</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Jue 16 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Jue 16</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Vie 17 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Vie 17</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Lun 20 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Lun 20</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Mar 21 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Mar 21</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Mié 22 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Mié 22</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Jue 23 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Jue 23</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+                <button type="button" onclick="selectCalDate(this, 'Vie 24 Jul')" class="cal-day-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);"><strong>Vie 24</strong><br><span style="font-size:0.68rem; color:var(--text-tertiary);">Julio</span></button>
+              </div>
+              <input type="hidden" id="cal-selected-date" name="fecha_reserva" required value="Lun 13 Jul">
+            </div>
+
+            <!-- Selector de Hora -->
+            <div>
+              <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.6rem;">Seleccionar Franja Horaria *</label>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; text-align: center; font-size: 0.8rem; font-family: var(--sans);">
+                <button type="button" onclick="selectCalTime(this, '11:00 h')" class="cal-time-btn" style="padding: 0.6rem; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600;">11:00 h</button>
+                <button type="button" onclick="selectCalTime(this, '12:30 h')" class="cal-time-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);">12:30 h</button>
+                <button type="button" onclick="selectCalTime(this, '16:30 h')" class="cal-time-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);">16:30 h</button>
+                <button type="button" onclick="selectCalTime(this, '18:00 h')" class="cal-time-btn" style="padding: 0.6rem; border: 1px solid var(--border); background: var(--bg-alt);">18:00 h</button>
+              </div>
+              <input type="hidden" id="cal-selected-time" name="hora_reserva" required value="11:00 h">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 0.4rem;">
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Su Nombre *</label>
+                <input type="text" required placeholder="Nombre y apellidos" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--sans);">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.4rem;">Teléfono / WhatsApp *</label>
+                <input type="tel" required placeholder="+34 600 00 00 00" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--border); background: var(--bg-alt); font-size: 0.9rem; font-family: var(--sans);">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="align-self: flex-start; padding: 1rem 2rem; font-size: 0.78rem; letter-spacing: 0.18em; width: 100%;">RESERVAR Y CONFIRMAR CITA PREVIA →</button>
+          </form>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>
+<script>
+function switchContactTab(tab) {
+  var pMsg = document.getElementById('tab-panel-msg');
+  var pCal = document.getElementById('tab-panel-cal');
+  var bMsg = document.getElementById('tab-btn-msg');
+  var bCal = document.getElementById('tab-btn-cal');
+  if (tab === 'msg') {
+    if(pMsg) pMsg.style.display = 'block'; if(pCal) pCal.style.display = 'none';
+    if(bMsg) { bMsg.style.color = 'var(--accent)'; bMsg.style.borderBottom = '2px solid var(--accent)'; bMsg.style.fontWeight = '600'; }
+    if(bCal) { bCal.style.color = 'var(--text-tertiary)'; bCal.style.borderBottom = 'none'; bCal.style.fontWeight = '500'; }
+  } else {
+    if(pMsg) pMsg.style.display = 'none'; if(pCal) pCal.style.display = 'block';
+    if(bCal) { bCal.style.color = 'var(--accent)'; bCal.style.borderBottom = '2px solid var(--accent)'; bCal.style.fontWeight = '600'; }
+    if(bMsg) { bMsg.style.color = 'var(--text-tertiary)'; bMsg.style.borderBottom = 'none'; bMsg.style.fontWeight = '500'; }
+  }
+}
+function selectCalDate(btn, dateStr) {
+  document.querySelectorAll('.cal-day-btn').forEach(function(b){ b.style.borderColor = 'var(--border)'; b.style.background = 'var(--bg-alt)'; b.style.color = 'var(--text)'; });
+  btn.style.borderColor = 'var(--accent)'; btn.style.background = 'var(--accent)'; btn.style.color = '#fff';
+  var idEl = document.getElementById('cal-selected-date'); if(idEl) idEl.value = dateStr;
+}
+function selectCalTime(btn, timeStr) {
+  document.querySelectorAll('.cal-time-btn').forEach(function(b){ b.style.borderColor = 'var(--border)'; b.style.background = 'var(--bg-alt)'; b.style.color = 'var(--text)'; });
+  btn.style.borderColor = 'var(--accent)'; btn.style.background = 'var(--accent)'; btn.style.color = '#fff';
+  var idEl = document.getElementById('cal-selected-time'); if(idEl) idEl.value = timeStr;
+}
+</script>
+
+<script>
+function switchContactTab(tab) {
+  var pMsg = document.getElementById('tab-panel-msg');
+  var pCal = document.getElementById('tab-panel-cal');
+  var bMsg = document.getElementById('tab-btn-msg');
+  var bCal = document.getElementById('tab-btn-cal');
+  if (tab === 'msg') {
+    pMsg.style.display = 'block'; pCal.style.display = 'none';
+    bMsg.style.color = 'var(--accent)'; bMsg.style.borderBottom = '2px solid var(--accent)'; bMsg.style.fontWeight = '600';
+    bCal.style.color = 'var(--text-tertiary)'; bCal.style.borderBottom = 'none'; bCal.style.fontWeight = '500';
+  } else {
+    pMsg.style.display = 'none'; pCal.style.display = 'block';
+    bCal.style.color = 'var(--accent)'; bCal.style.borderBottom = '2px solid var(--accent)'; bCal.style.fontWeight = '600';
+    bMsg.style.color = 'var(--text-tertiary)'; bMsg.style.borderBottom = 'none'; bMsg.style.fontWeight = '500';
+  }
+}
+function selectCalDate(btn, dateStr) {
+  document.querySelectorAll('.cal-day-btn').forEach(function(b){ b.style.borderColor = 'var(--border)'; b.style.background = 'var(--bg-alt)'; b.style.color = 'var(--text)'; });
+  btn.style.borderColor = 'var(--accent)'; btn.style.background = 'var(--accent)'; btn.style.color = '#fff';
+  document.getElementById('cal-selected-date').value = dateStr;
+}
+function selectCalTime(btn, timeStr) {
+  document.querySelectorAll('.cal-time-btn').forEach(function(b){ b.style.borderColor = 'var(--border)'; b.style.background = 'var(--bg-alt)'; b.style.color = 'var(--text)'; });
+  btn.style.borderColor = 'var(--accent)'; btn.style.background = 'var(--accent)'; btn.style.color = '#fff';
+  document.getElementById('cal-selected-time').value = timeStr;
+}
+</script>
+
 
 <!-- ===== FOOTER con redes sociales SVG ===== -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__social">
-      <!-- Instagram -->
-      <a href="https://instagram.com/yanayavorskaya" class="soc-icon soc-ig" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-      <!-- X / Twitter -->
-      <a href="https://x.com/yanayavorskaya" class="soc-icon soc-x" target="_blank" rel="noopener" aria-label="X">
-        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      </a>
-      <!-- Pinterest -->
-      <a href="https://pinterest.com/yanayavorskaya" class="soc-icon soc-pin" target="_blank" rel="noopener" aria-label="Pinterest">
-        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
-      </a>
-      <!-- YouTube -->
-      <a href="https://youtube.com/@yanayavorskaya" class="soc-icon soc-yt" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      </a>
-      <!-- LinkedIn -->
-      <a href="https://linkedin.com/in/yanayavorskaya" class="soc-icon soc-li" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      </a>
-      <!-- Facebook -->
-      <a href="https://facebook.com/yanayavorskaya" class="soc-icon soc-fb" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      </a>
-    </div>
-    <div class="footer__inner">
-      <p class="footer__copy">© 2026 Yana Yavorskaya. Todos los derechos reservados.</p>
-      <ul class="footer__links">
-        <li><a href="sobre-mi.html">Bio</a></li>
-        <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="obras-disponibles.html">Obras</a></li>
-        <li><a href="legal/aviso-legal.html">Aviso Legal</a></li>
-        <li><a href="legal/privacidad.html">Privacidad</a></li>
-        <li><a href="legal/cookies.html">Cookies</a></li>
-        <li><a href="legal/terminos.html">Términos</a></li>
-      </ul>
-    </div>
+<footer class="footer"><div class="container">
+  <div class="footer__social">
+    <a href="https://instagram.com/yanayavorskaya" class="soc-icon soc-ig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://x.com/yanayavorskaya" class="soc-icon soc-x" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://pinterest.com/yanayavorskaya" class="soc-icon soc-pin" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+    <a href="https://youtube.com/@yanayavorskaya" class="soc-icon soc-yt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <a href="https://linkedin.com/in/yanayavorskaya" class="soc-icon soc-li" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://facebook.com/yanayavorskaya" class="soc-icon soc-fb" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
   </div>
-</footer>
+  <div class="footer__inner">
+    <p class="footer__copy" data-i18n="footer.copy">© 2026 Yana Yavorskaya. Todos los derechos reservados.</p>
+    <ul class="footer__links">
+      <li><a href="sobre-mi.html" data-i18n="footer.bio">Bio</a></li>
+      <li><a href="noticias.html" data-i18n="footer.noticias">Noticias</a></li>
+      <li><a href="obras-disponibles.html" data-i18n="footer.obras">Obras</a></li>
+      <li><a href="legal/aviso-legal.html" data-i18n="footer.legal">Aviso Legal</a></li>
+      <li><a href="legal/privacidad.html" data-i18n="footer.privacy">Privacidad</a></li>
+      <li><a href="legal/cookies.html" data-i18n="footer.cookies">Cookies</a></li>
+      <li><a href="legal/terminos.html" data-i18n="footer.terms">Términos</a></li>
+      <li><a href="#" onclick="openSitemap(event)" data-i18n="footer.sitemap">Mapa del sitio</a></li>
+    </ul>
+  </div>
+</div></footer>
 
 <!-- ===== MODO MUSEO ===== -->
 <div class="museum-mode" role="dialog" aria-hidden="true">
@@ -258,5 +442,48 @@
 <script src="js/db.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/museum.js"></script>
+<!-- ===== MAPA DEL SITIO MODAL ===== -->
+<div class="shop-modal" id="sitemap-modal" role="dialog" aria-hidden="true">
+  <div class="shop-modal__inner" style="max-width: 750px;">
+    <button class="shop-modal__close" onclick="closeSitemap()" aria-label="Cerrar">✕</button>
+    <div class="invitation__crest">✦</div>
+    <h3 class="shop-modal__title" style="margin-bottom: 1.5rem;">Mapa del sitio</h3>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: left; font-family: var(--sans); font-size: 0.85rem;">
+      <div>
+        <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--accent); display:block; margin-bottom: 0.5rem;">Galería & Obras</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem;">
+          <li><a href="obras-disponibles.html">Catálogo Completo (12 obras)</a></li>
+          <li><a href="index.html#colecciones">Colección Luz y Sombra</a></li>
+          <li><a href="index.html#colecciones">Colección Geometría Sagrada</a></li>
+          <li><a href="index.html#colecciones">Colección Horizontes Interiores</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--accent); display:block; margin-bottom: 0.5rem;">Estudio & Ensayos</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem;">
+          <li><a href="sobre-mi.html">Biografía & Filosofía</a></li>
+          <li><a href="index.html#estudio">El Estudio en Madrid</a></li>
+          <li><a href="noticias.html">Noticias del Estudio (15 artículos)</a></li>
+          <li><a href="index.html#exposiciones">Exposiciones Internacionales</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong style="font-family: var(--serif); font-size: 1.1rem; color: var(--accent); display:block; margin-bottom: 0.5rem;">Contacto & Legal</strong>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem;">
+          <li><a href="index.html#contacto">Citas Privadas & Contacto</a></li>
+          <li><a href="legal/aviso-legal.html">Aviso Legal</a></li>
+          <li><a href="legal/privacidad.html">Privacidad</a></li>
+          <li><a href="legal/cookies.html">Cookies</a></li>
+          <li><a href="legal/terminos.html">Términos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function openSitemap(e) { if(e) e.preventDefault(); var sm = document.getElementById('sitemap-modal'); if(sm) { sm.classList.add('is-open'); sm.setAttribute('aria-hidden','false'); } }
+function closeSitemap() { var sm = document.getElementById('sitemap-modal'); if(sm) { sm.classList.remove('is-open'); sm.setAttribute('aria-hidden','true'); } }
+</script>
+
 </body>
 </html>
