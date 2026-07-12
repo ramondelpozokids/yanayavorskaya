@@ -16,11 +16,27 @@ const MuseoI18n = (() => {
   const _3={es:'Exposiciones',en:'Exhibitions',fr:'Expositions',de:'Ausstellungen',ru:'Выставки',it:'Mostre'};
   const DICT = {
 
-    /* === CHAT Q&A YANA YAVORSKAYA (SIN COMISARIA DIGITAL NI DUPLICADOS) === */
-    'chat.tooltip':{es:"Hablar con el Asistente Q&A",en:"Talk to Q&A Assistant",fr:"Parler à l'Assistant Q&R",de:"Mit F&A Assistent sprechen",ru:"Чат В&О",it:"Parla con l'Assistente Q&A"},
-    'chat.name':{es:"Yana Yavorskaya",en:"Yana Yavorskaya",fr:"Yana Yavorskaya",de:"Yana Yavorskaya",ru:"Яна Яворская",it:"Yana Yavorskaya"},
-    'chat.status':{es:"Asistente Q&A en vivo",en:"Live Q&A Assistant",fr:"Assistant Q&R en direct",de:"Live F&A Assistent",ru:"Онлайн Арт-ассистент",it:"Assistente Q&A in tempo reale"},
+    /* === CHAT ASSISTANT ÚNICO (HEADER IMAGEN 1 + TEXTOS IMAGEN 2) === */
+    'chat.tooltip':{es:'Hablar con la Comisaria Digital',en:'Talk to Digital Curator',fr:'Parler à la Commissaire',de:'Mit Kuratorin sprechen',ru:'Чат с куратором',it:'Parla con la Curatrice'},
+    'chat.name':{es:'Yana Yavorskaya',en:'Yana Yavorskaya',fr:'Yana Yavorskaya',de:'Yana Yavorskaya',ru:'Яна Яворская',it:'Yana Yavorskaya'},
+    'chat.status':{es:'Comisaria Digital · Disponible',en:'Digital Curator · Available',fr:'Commissaire · Disponible',de:'Kuratorin · Verfügbar',ru:'Куратор · Доступна',it:'Curatrice · Disponibile'},
     'chat.greeting':{es:"¡Hola! Bienvenido/a al estudio de Yana Yavorskaya. ¿En qué te puedo ayudar sobre las obras, colecciones o visitas?",en:"Hello! Welcome to Yana Yavorskaya's studio. How can I help you regarding the artworks, collections, or private viewings?",fr:"Bonjour ! Bienvenue à l'atelier de Yana Yavorskaya. Comment puis-je vous aider concernant les œuvres, collections ou visites ?",de:"Hallo! Willkommen im Atelier von Yana Yavorskaya. Wie kann ich Ihnen bezüglich der Werke, Sammlungen oder Besichtigungen helfen?",ru:"Здравствуйте! Добро пожаловать в студию Яны Яворской. Чем я могу помочь по картинам, коллекциям или визитам?",it:"Ciao! Benvenuto/a allo studio di Yana Yavorskaya. Come posso aiutarti riguardo le opere, collezioni o visite private?"},
+    'chat.instructions':{es:'Para solicitar información, disponibilidad y precios, pulsa «Solicitar información» en cualquier obra del catálogo o contacta por WhatsApp al +34 600 88 99 77.',en:'To request information, availability, or pricing, click «Request Information» on any artwork in the catalog or contact via WhatsApp at +34 600 88 99 77.',fr:'Pour demander des informations, la disponibilité ou les prix, cliquez sur «Demander des informations» sur n\'importe quelle œuvre ou contactez par WhatsApp au +34 600 88 99 77.',de:'Um Informationen, Verfügbarkeit oder Preise anzufordern, klicken Sie bei einem Werk auf «Informationen anfordern» oder schreiben Sie an WhatsApp +34 600 88 99 77.',ru:'Для получения информации, проверки наличия и цен нажмите «Запросить информацию» на любой работе или напишите в WhatsApp +34 600 88 99 77.',it:'Per richiedere informazioni, disponibilità e prezzi, clicca su «Richiedi informazioni» su qualsiasi opera o contatta via WhatsApp al +34 600 88 99 77.'},
+
+
+    /* === CHAT ASSISTANT ÚNICO (HEADER IMAGEN 1 + TEXTOS IMAGEN 2) === */
+    
+    
+    
+    
+    
+
+
+    /* === CHAT Q&A YANA YAVORSKAYA (SIN COMISARIA DIGITAL NI DUPLICADOS) === */
+    
+    
+    
+    
 
 
     /* === CHAT Q&A YANA YAVORSKAYA (SIN COMISARIA DIGITAL NI DUPLICADOS) === */

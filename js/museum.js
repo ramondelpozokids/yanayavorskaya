@@ -244,15 +244,62 @@
 
     function reply(u) {
       const m = u.toLowerCase();
-      if (m.includes('luz')&&m.includes('sombra')) return 'La colección «Luz y Sombra» (2022–2024) explora la dualidad lumínica en 4 óleos monumentales. La obra central, «Amanecer en la Bruma» (180×220 cm), captura el instante entre la noche y el día.';
-      if (m.includes('geometr')) return '«Geometría Sagrada» (2020–2022) revela el orden oculto de la naturaleza mediante abstracción matemática. Incluye piezas con pan de oro.';
-      if (m.includes('horizonte')||m.includes('interior')) return '«Horizontes Interiores» (2018–2020) es la colección más íntima. Paisajes que difuminan lo visto y lo sentido.';
-      if (m.includes('técnica')||m.includes('oleo')||m.includes('pinta')) return 'Yana trabaja con óleo sobre lienzo de lino belga virgen. Prepara sus pigmentos con aglutinantes naturales y aplica veladuras y arena de cuarzo.';
-      if (m.includes('dispon')||m.includes('comprar')||m.includes('precio')||m.includes('informac')) return 'Para solicitar información, disponibilidad y precios, pulsa "Solicitar información" en cualquier obra del catálogo o contacta por WhatsApp al +34 600 88 99 77.';
-      if (m.includes('expos')||m.includes('galer')) return 'Ha expuesto en Gagosian (NY), Tate Modern (Londres), Fondation Louis Vuitton (París), Bienal de Venecia y ARCO Madrid.';
-      if (m.includes('estudio')||m.includes('taller')||m.includes('cita')) return 'El estudio está en Calle de Almagro 24 (Chamberí, Madrid). Puedes reservar cita previa desde la sección de Contacto.';
-      if (m.includes('hola')||m.includes('buenas')||m.includes('hello')||m.includes('bonjour')||m.includes('ciao')||m.includes('hallo')) return _('chat.greeting');
-      return _('chat.default');
+      
+      // 1. Saludos
+      if (m.includes('hola')||m.includes('buenas')||m.includes('hello')||m.includes('bonjour')||m.includes('ciao')||m.includes('hallo')) {
+        return _('chat.greeting');
+      }
+
+      // 2. Precios, tarifas, cuánto cuesta y cómo comprar
+      if (m.includes('precio')||m.includes('cuesta')||m.includes('cost')||m.includes('tarif')||m.includes('comprar')||m.includes('adquirir')||m.includes('buy')||m.includes('disponib')) {
+        return 'Contamos con 12 obras originales disponibles en catálogo con precios entre 2.100 € y 4.200 € (ej. «Aurora Interior» 2.800 €, «Luz de Invierno III» 3.600 €, «Tránsito Nocturno» 3.100 €, «Meditación en Ocre» 2.100 €). Todas incluyen certificado de autenticidad firmado a mano por Yana y envío asegurado en caja de madera. Puedes tramitar tu consulta pulsando "Solicitar información" en la sección Obras o por WhatsApp al +34 600 88 99 77.';
+      }
+
+      // 3. Obras concretas por título
+      if (m.includes('aurora')) return '«Aurora Interior» (2026) · 100 × 80 cm · 2.800 €. Acrílico y óleo sobre lienzo de lino crudo belga. Explora la arquitectura silenciosa del tránsito invernal al amanecer.';
+      if (m.includes('invierno')) return '«Luz de Invierno III» (2025) · 120 × 120 cm · 3.600 €. Óleo sobre bastidor 3D. Siete veladuras de blanco titanio, azul cobalto y gris de Payne con profunda vibración lumínica.';
+      if (m.includes('silencio')||m.includes('nocturno')||m.includes('tránsito')) return 'En la serie «Silencios Urbanos» destacan «Silencios Urbanos: Nocturno» (90×110 cm, 2.400 €, sobre madera de abedul), «Tránsito Nocturno» (120×90 cm, 3.100 €) y «Geometría del Silencio» (100×100 cm, 2.600 €). Capturan la poesía monumental y nocturna de Madrid.';
+      if (m.includes('memoria')||m.includes('eco')) return '«Eco de la Memoria» (130×97 cm, 3.200 €) indaga en la nostalgia y los bosques de la infancia mediante veladuras casi blancas sobre verdes musgo al óleo.';
+      if (m.includes('viento')||m.includes('reposo')) return '«El Reposo del Viento» (150×100 cm, 4.200 €) incorpora arena de cuarzo en la imprimación acrílica y óleo gris piedra, inspirada en las estrías de la costa atlántica tras un temporal.';
+      if (m.includes('ocre')||m.includes('meditaci')) return '«Meditación en Ocre» (80×80 cm, 2.100 €) está trabajada con óleo y cera fría microcristalina sobre panel de madera en tonos terrosos y siena.';
+      if (m.includes('blanco')) return '«Horizontes Blancos» (140×90 cm, 3.500 €) es un ensayo minimalista sobre los matices del blanco (leche, marfil, caliza y titanio) dividido por una línea de grafito puro.';
+
+      // 4. Colecciones / Series
+      if (m.includes('colecci')||m.includes('serie')) {
+        return 'El catálogo se estructura en 4 colecciones conceptuales: «Horizontes Suspendidos» (abstracción lírica en lino crudo), «Luz de Invierno» (nitidez lumínica y veladuras al óleo), «Silencios Urbanos» (materia y arquitectura poética nocturna) y «Naturaleza Latente» (cera fría, ocres y memoria botánica).';
+      }
+
+      // 5. Estudio, Ubicación, Dirección, Horario y Citas
+      if (m.includes('estudio')||m.includes('taller')||m.includes('direcci')||m.includes('ubicaci')||m.includes('dónde')||m.includes('horario')||m.includes('cita')||m.includes('visita')) {
+        return 'El estudio principal de Yana Yavorskaya está ubicado en la Calle de Almagro, 24, Chamberí, 28010 Madrid. Horario: Lunes a Viernes de 10:00 a 19:00 h. Puedes reservar una cita previa para contemplar las obras en persona desde la sección Contacto o por WhatsApp al +34 600 88 99 77.';
+      }
+
+      // 6. Exposiciones Internacionales
+      if (m.includes('exposi')||m.includes('feria')||m.includes('arco')||m.includes('museo')||m.includes('currículum')||m.includes('trayectoria')) {
+        return 'Yana ha acumulado más de 40 exposiciones en 15 países, incluyendo Tate Modern (Londres, 2023), Gagosian Gallery (Nueva York, 2025), Fondation Louis Vuitton (París, 2022), Bienal de Venecia y las citas de ARCO Madrid y Art Madrid (Palacio de Cibeles, 2026). Próxima muestra solo: «Horizontes Suspendidos» en Madrid (Otoño 2026).';
+      }
+
+      // 7. Técnicas y Materiales
+      if (m.includes('técnica')||m.includes('material')||m.includes('óleo')||m.includes('acrílico')||m.includes('lino')||m.includes('pigmento')||m.includes('marco')) {
+        return 'Yana trabaja con lino belga virgen de grano fino, paneles de madera de abedul, arena de cuarzo y pigmentos minerales puros amasados con aceite de linaza purificado al sol y resina dammar. Superpone hasta 7 veladuras con largos tiempos de secado y enmarca en molduras de roble macizo tipo caja americana.';
+      }
+
+      // 8. Noticias y Ensayos
+      if (m.includes('noticia')||m.includes('blog')||m.includes('ensayo')||m.includes('artículo')||m.includes('escribe')) {
+        return 'En la sección Noticias puedes leer 15 ensayos editoriales escritos por Yana desde su taller sobre el secado lento del óleo («El silencio de los pigmentos»), cómo enfrentarse al lienzo en blanco, la luz de Velázquez en el Museo del Prado y sus crónicas sobre ferias europeas.';
+      }
+
+      // 9. Biografía / Sobre Mí
+      if (m.includes('bio')||m.includes('quién es')||m.includes('yana')||m.includes('filosofía')||m.includes('artista')) {
+        return 'Yana Yavorskaya es una artista contemporánea y pintora afincada en Madrid. Su filosofía concibe el cuadro como un refugio de serenidad y silencio compositivo frente a la aceleración digital: «Pintar es un acto de escucha interior en el que la materia, el silencio y el tiempo construyen un puente sensible con quien contempla la obra».';
+      }
+
+      // 10. Envíos y Logística
+      if (m.includes('envío')||m.includes('transporte')||m.includes('logística')||m.includes('país')||m.includes('internacional')) {
+        return 'Realizamos envíos nacionales e internacionales puerta a puerta con embalaje profesional de madera tratada y seguro a todo riesgo. Cada pieza viaja con su certificado de autenticidad formal en papel de lino algodonado firmado a mano por Yana.';
+      }
+
+      return _('chat.greeting');
     }
 
     function addMsg(txt, sender) {
@@ -268,14 +315,13 @@
       if (!txt) return;
       addMsg(txt, 'user');
       if (inp) inp.value = '';
-      setTimeout(() => addMsg(reply(txt), 'bot'), 400 + Math.random() * 400);
+      setTimeout(() => addMsg(reply(txt), 'bot'), 400 + Math.random() * 350);
     }
 
     if (msgs.children.length === 0) {
-      setTimeout(() => addMsg(_('chat.greeting'), 'bot'), 300);
+      setTimeout(() => addMsg(_('chat.greeting'), 'bot'), 250);
     }
 
-    // Clean old listeners by replacing trigger clone if needed or just adding cleanly
     tr.onclick = function(e) {
       e.preventDefault(); e.stopPropagation();
       pn.classList.add('is-open'); pn.setAttribute('aria-hidden', 'false');
