@@ -14,6 +14,7 @@
   <title>Obras — Yana Yavorskaya</title>
   <link rel="stylesheet" href="css/museum.css">
   <link rel="icon" href="assets/logo.png" type="image/png">
+  <script src="js/i18n-content.js"></script>
   <script src="js/db.js"></script>
   <script src="js/i18n.js"></script>
   <script>setTimeout(function(){MuseoI18n.init();},50);</script>
@@ -115,7 +116,7 @@
 
   <div class="shop-grid">
 
-    <article class="shop-card" data-status="disponible" data-title="Aurora Interior" data-price="2.800" data-year="2026" data-tech="Acrílico y óleo sobre lienzo de lino de grano fino" data-size="100 × 80 cm" data-collection="Horizontes Suspendidos" data-status-text="Disponible" data-desc="Esta obra nació durante los últimos días del invierno, cuando las primeras luces del amanecer apenas logran atravesar la espesa bruma que envuelve el estudio al romper el día. Aurora Interior no intenta representar un paisaje físico reconocible, sino la arquitectura silenciosa de nuestro propio estado de ánimo en los instantes de tránsito.
+    <article class="shop-card" data-obra-id="aurora" data-status="disponible" data-title="Aurora Interior" data-price="2.800" data-year="2026" data-tech="Acrílico y óleo sobre lienzo de lino de grano fino" data-size="100 × 80 cm" data-collection="Horizontes Suspendidos" data-status-text="Disponible" data-desc="Esta obra nació durante los últimos días del invierno, cuando las primeras luces del amanecer apenas logran atravesar la espesa bruma que envuelve el estudio al romper el día. Aurora Interior no intenta representar un paisaje físico reconocible, sino la arquitectura silenciosa de nuestro propio estado de ánimo en los instantes de tránsito.
 
 Durante semanas trabajé el lienzo mediante finas capas superpuestas de acrílico muy diluido, permitiendo que la trama del lino crudo respirara a través del pigmento, como si la propia tela fuera la piel de la obra.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -137,7 +138,7 @@ Durante semanas trabajé el lienzo mediante finas capas superpuestas de acrílic
       </div>
     </article>
 
-    <article class="shop-card" data-status="disponible" data-title="Luz de Invierno III" data-price="3.600" data-year="2025" data-tech="Óleo sobre lienzo bastidor 3D" data-size="120 × 120 cm" data-collection="Luz de Invierno" data-status-text="Disponible" data-desc="Forma parte del núcleo central de la serie Luz de Invierno, una investigación cromática y lumínica en la que he trabajado a lo largo de las últimas dos temporadas. En Madrid, los días despejados de enero y febrero ofrecen una luz excepcionalmente clara, cortante y prístina, capaz de perfilar los volúmenes con una nitidez casi escultórica.
+    <article class="shop-card" data-obra-id="luz3" data-status="disponible" data-title="Luz de Invierno III" data-price="3.600" data-year="2025" data-tech="Óleo sobre lienzo bastidor 3D" data-size="120 × 120 cm" data-collection="Luz de Invierno" data-status-text="Disponible" data-desc="Forma parte del núcleo central de la serie Luz de Invierno, una investigación cromática y lumínica en la que he trabajado a lo largo de las últimas dos temporadas. En Madrid, los días despejados de enero y febrero ofrecen una luz excepcionalmente clara, cortante y prístina, capaz de perfilar los volúmenes con una nitidez casi escultórica.
 
 Cada estrato de óleo blanco de titanio mezclado con matices de azul cobalto y gris de Payne necesitó días de secado antes de recibir la siguiente veladura.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -159,7 +160,7 @@ Cada estrato de óleo blanco de titanio mezclado con matices de azul cobalto y g
       </div>
     </article>
 
-    <article class="shop-card" data-status="disponible" data-title="Silencios Urbanos: Nocturno" data-price="2.400" data-year="2025" data-tech="Técnica mixta sobre panel de abedul pulido" data-size="90 × 110 cm" data-collection="Silencios Urbanos" data-status-text="Disponible" data-desc="A menudo se asocia la ciudad con el estruendo y la saturación sensorial, pero Silencios Urbanos: Nocturno explora exactamente lo contrario: esos instantes mágicos de la madrugada en los que las calles se vacían, los faroles proyectan sombras alargadas sobre el pavimento húmedo y la arquitectura urbana recupera una soledad monumental y poética.
+    <article class="shop-card" data-obra-id="silencios" data-status="disponible" data-title="Silencios Urbanos: Nocturno" data-price="2.400" data-year="2025" data-tech="Técnica mixta sobre panel de abedul pulido" data-size="90 × 110 cm" data-collection="Silencios Urbanos" data-status-text="Disponible" data-desc="A menudo se asocia la ciudad con el estruendo y la saturación sensorial, pero Silencios Urbanos: Nocturno explora exactamente lo contrario: esos instantes mágicos de la madrugada en los que las calles se vacían, los faroles proyectan sombras alargadas sobre el pavimento húmedo y la arquitectura urbana recupera una soledad monumental y poética.
 
 Trabajado con pigmentos minerales puros amasados sobre madera de abedul pulido para atrapar la luz de manera aterciopelada y profunda.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -181,7 +182,7 @@ Trabajado con pigmentos minerales puros amasados sobre madera de abedul pulido p
       </div>
     </article>
 
-    <article class="shop-card" data-status="reservada" data-title="Eco de la Memoria" data-price="3.200" data-year="2026" data-tech="Óleo sobre lienzo" data-size="130 × 97 cm" data-collection="Naturaleza Latente" data-status-text="Reservada" data-desc="¿Cómo guardamos los recuerdos? Rara vez permanecen intactos como fotografías nítidas; con el paso del tiempo, se transforman en impresiones afectivas, en manchas de color fragmentadas por la nostalgia y el olvido selectivo. Eco de la Memoria es un intento pictórico de rastrear ese proceso psicológico de erosión y persistencia sentimental.
+    <article class="shop-card" data-obra-id="eco" data-status="reservada" data-title="Eco de la Memoria" data-price="3.200" data-year="2026" data-tech="Óleo sobre lienzo" data-size="130 × 97 cm" data-collection="Naturaleza Latente" data-status-text="Reservada" data-desc="¿Cómo guardamos los recuerdos? Rara vez permanecen intactos como fotografías nítidas; con el paso del tiempo, se transforman en impresiones afectivas, en manchas de color fragmentadas por la nostalgia y el olvido selectivo. Eco de la Memoria es un intento pictórico de rastrear ese proceso psicológico de erosión y persistencia sentimental.
 
 En esta obra, los verdes musgo y los sienas naturales evocan los bosques de mi infancia bajo capas veladas que actúan como la niebla del tiempo.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -203,7 +204,7 @@ En esta obra, los verdes musgo y los sienas naturales evocan los bosques de mi i
       </div>
     </article>
 
-    <article class="shop-card" data-status="vendida" data-title="El Reposo del Viento" data-price="4.200" data-year="2024" data-tech="Acrílico, arena de cuarzo y óleo" data-size="150 × 100 cm" data-collection="Horizontes Suspendidos" data-status-text="Obra vendida" data-desc="Este lienzo de gran formato marca un punto de inflexión en mi trayectoria. Fue adquirido por una importante colección privada en París poco después de su presentación y sigue siendo para mí una de las composiciones donde mejor logré armonizar la fuerza elemental de los materiales con la delicadeza del gesto pictórico.
+    <article class="shop-card" data-obra-id="reposo" data-status="vendida" data-title="El Reposo del Viento" data-price="4.200" data-year="2024" data-tech="Acrílico, arena de cuarzo y óleo" data-size="150 × 100 cm" data-collection="Horizontes Suspendidos" data-status-text="Obra vendida" data-desc="Este lienzo de gran formato marca un punto de inflexión en mi trayectoria. Fue adquirido por una importante colección privada en París poco después de su presentación y sigue siendo para mí una de las composiciones donde mejor logré armonizar la fuerza elemental de los materiales con la delicadeza del gesto pictórico.
 
 La inspiración nació en la costa del Atlántico tras una violenta tormenta otoñal cuando el viento amaina y la brisa cesa por completo.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -225,7 +226,7 @@ La inspiración nació en la costa del Atlántico tras una violenta tormenta oto
       </div>
     </article>
 
-    <article class="shop-card" data-status="disponible" data-title="Meditación en Ocre" data-price="2.100" data-year="2025" data-tech="Óleo y cera fría sobre panel de madera" data-size="80 × 80 cm" data-collection="Naturaleza Latente" data-status-text="Disponible" data-desc="El ocre es uno de los pigmentos más antiguos utilizados por la humanidad; lleva en sus moléculas la memoria mineral de la tierra cocida al sol. Meditación en Ocre es una indagación en la calidez de los tonos terrosos y la capacidad que tienen para anclar nuestra mente en el momento presente, ofreciéndonos una sensación de centro, estabilidad y equilibrio térmico y emocional.">
+    <article class="shop-card" data-obra-id="ocre" data-status="disponible" data-title="Meditación en Ocre" data-price="2.100" data-year="2025" data-tech="Óleo y cera fría sobre panel de madera" data-size="80 × 80 cm" data-collection="Naturaleza Latente" data-status-text="Disponible" data-desc="El ocre es uno de los pigmentos más antiguos utilizados por la humanidad; lleva en sus moléculas la memoria mineral de la tierra cocida al sol. Meditación en Ocre es una indagación en la calidez de los tonos terrosos y la capacidad que tienen para anclar nuestra mente en el momento presente, ofreciéndonos una sensación de centro, estabilidad y equilibrio térmico y emocional.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
         <img src="assets/obras/meditacion-en-ocre.jpg" alt="Meditación en Ocre" loading="lazy">
         <div class="shop-card__overlay"><span>Ver obra +</span></div>
@@ -245,7 +246,7 @@ La inspiración nació en la costa del Atlántico tras una violenta tormenta oto
       </div>
     </article>
 
-    <article class="shop-card" data-status="disponible" data-title="Horizontes Blancos" data-price="3.500" data-year="2026" data-tech="Acrílico de alta densidad y grafito sobre lienzo" data-size="140 × 90 cm" data-collection="Horizontes Suspendidos" data-status-text="Disponible" data-desc="En el arte contemporáneo, el color blanco nunca es simple ausencia de color; es la suma de todos los reflejos del universo o, en palabras de Malévich, la nada suprema llena de infinitas promesas. Horizontes Blancos indaga en los infinitos matices del blanco: desde el blanco cálido de leche y marfil hasta el blanco helado de titanio y el blanco grisáceo de la piedra caliza.
+    <article class="shop-card" data-obra-id="horizontes" data-status="disponible" data-title="Horizontes Blancos" data-price="3.500" data-year="2026" data-tech="Acrílico de alta densidad y grafito sobre lienzo" data-size="140 × 90 cm" data-collection="Horizontes Suspendidos" data-status-text="Disponible" data-desc="En el arte contemporáneo, el color blanco nunca es simple ausencia de color; es la suma de todos los reflejos del universo o, en palabras de Malévich, la nada suprema llena de infinitas promesas. Horizontes Blancos indaga en los infinitos matices del blanco: desde el blanco cálido de leche y marfil hasta el blanco helado de titanio y el blanco grisáceo de la piedra caliza.
 
 La composición se divide mediante una sutil línea horizontal de grafito puro.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -267,7 +268,7 @@ La composición se divide mediante una sutil línea horizontal de grafito puro."
       </div>
     </article>
 
-    <article class="shop-card" data-status="disponible" data-title="Geometría del Silencio" data-price="2.600" data-year="2025" data-tech="Acrílico sobre lienzo de lino crudo" data-size="100 × 100 cm" data-collection="Silencios Urbanos" data-status-text="Disponible" data-desc="La abstracción geométrica suele asociarse a la rigidez matemática y la frialdad industrial, pero en mi trabajo busco humanizar la línea recta y el plano ortogonal dotándolos de un pulso orgánico, imperfecto y profundamente sensible. Geometría del Silencio es un ensayo visual sobre el orden en medio del caos moderno.
+    <article class="shop-card" data-obra-id="geometria" data-status="disponible" data-title="Geometría del Silencio" data-price="2.600" data-year="2025" data-tech="Acrílico sobre lienzo de lino crudo" data-size="100 × 100 cm" data-collection="Silencios Urbanos" data-status-text="Disponible" data-desc="La abstracción geométrica suele asociarse a la rigidez matemática y la frialdad industrial, pero en mi trabajo busco humanizar la línea recta y el plano ortogonal dotándolos de un pulso orgánico, imperfecto y profundamente sensible. Geometría del Silencio es un ensayo visual sobre el orden en medio del caos moderno.
 
 Sobre la superficie desnuda del lino belga sin imprimar dispuse bloques rectangulares con aristas vivas y vibrantes.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -289,7 +290,7 @@ Sobre la superficie desnuda del lino belga sin imprimar dispuse bloques rectangu
       </div>
     </article>
 
-    <article class="shop-card" data-status="vendida" data-title="Bruma de Otoño" data-price="2.700" data-year="2024" data-tech="Óleo sobre lienzo" data-size="110 × 80 cm" data-collection="Naturaleza Latente" data-status-text="Obra vendida" data-desc="El otoño tiene una cadencia melancólica y serena que siempre me ha cautivado profundamente como artista. Cuando el follaje verde estival cede su lugar a los pálidos ocres, óxidos y grises violáceos, la naturaleza parece prepararse para su largo descanso invernal con una dignidad sobrecogedora.
+    <article class="shop-card" data-obra-id="bruma" data-status="vendida" data-title="Bruma de Otoño" data-price="2.700" data-year="2024" data-tech="Óleo sobre lienzo" data-size="110 × 80 cm" data-collection="Naturaleza Latente" data-status-text="Obra vendida" data-desc="El otoño tiene una cadencia melancólica y serena que siempre me ha cautivado profundamente como artista. Cuando el follaje verde estival cede su lugar a los pálidos ocres, óxidos y grises violáceos, la naturaleza parece prepararse para su largo descanso invernal con una dignidad sobrecogedora.
 
 Pinté esta obra en jornadas continuas bajo la luz gris del cielo nublado de Madrid con trazos verticales fluidos.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -311,7 +312,7 @@ Pinté esta obra en jornadas continuas bajo la luz gris del cielo nublado de Mad
       </div>
     </article>
 
-    <article class="shop-card" data-status="disponible" data-title="Tránsito Nocturno" data-price="3.100" data-year="2026" data-tech="Óleo y grafito sobre lienzo" data-size="120 × 90 cm" data-collection="Silencios Urbanos" data-status-text="Disponible" data-desc="La noche no es negra; es una sinfonía compleja de azules de Prusia profundos, violetas oscuros, grises grafito y sutiles fulgores artificiales que rebotan en las paredes de vidrio y hormigón de la ciudad. Tránsito Nocturno es una indagación en la belleza del movimiento urbano congelado en la quietud de la oscuridad.
+    <article class="shop-card" data-obra-id="transito" data-status="disponible" data-title="Tránsito Nocturno" data-price="3.100" data-year="2026" data-tech="Óleo y grafito sobre lienzo" data-size="120 × 90 cm" data-collection="Silencios Urbanos" data-status-text="Disponible" data-desc="La noche no es negra; es una sinfonía compleja de azules de Prusia profundos, violetas oscuros, grises grafito y sutiles fulgores artificiales que rebotan en las paredes de vidrio y hormigón de la ciudad. Tránsito Nocturno es una indagación en la belleza del movimiento urbano congelado en la quietud de la oscuridad.
 
 El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco hueso y amarillo nápoles pálido.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
@@ -333,7 +334,7 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
       </div>
     </article>
 
-    <article class="shop-card" data-status="disponible" data-title="Sombra y Luz V" data-price="2.900" data-year="2025" data-tech="Acrílico sobre lienzo bastidor museo" data-size="100 × 100 cm" data-collection="Luz de Invierno" data-status-text="Disponible" data-desc="Toda la historia del arte es, en el fondo, una reflexión ininterrumpida sobre el diálogo eterno y necesario entre la luz y la sombra; ninguna de las dos puede existir ni afirmarse sin el contrapunto de su opuesta. En Sombra y Luz V, quinta entrega de esta sub-serie de investigación de taller, he llevado este dualismo a su máxima síntesis formal y poética repartiendo el lienzo en dos campos energéticos armónicos.">
+    <article class="shop-card" data-obra-id="sombra5" data-status="disponible" data-title="Sombra y Luz V" data-price="2.900" data-year="2025" data-tech="Acrílico sobre lienzo bastidor museo" data-size="100 × 100 cm" data-collection="Luz de Invierno" data-status-text="Disponible" data-desc="Toda la historia del arte es, en el fondo, una reflexión ininterrumpida sobre el diálogo eterno y necesario entre la luz y la sombra; ninguna de las dos puede existir ni afirmarse sin el contrapunto de su opuesta. En Sombra y Luz V, quinta entrega de esta sub-serie de investigación de taller, he llevado este dualismo a su máxima síntesis formal y poética repartiendo el lienzo en dos campos energéticos armónicos.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
         <img src="assets/obras/sombra-y-luz-v.jpg" alt="Sombra y Luz V" loading="lazy">
         <div class="shop-card__overlay"><span>Ver obra +</span></div>
@@ -353,7 +354,7 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
       </div>
     </article>
 
-    <article class="shop-card" data-status="vendida" data-title="Alba sobre el Mar" data-price="3.400" data-year="2024" data-tech="Óleo sobre lienzo" data-size="130 × 90 cm" data-collection="Horizontes Suspendidos" data-status-text="Obra vendida" data-desc="Pocas contemplaciones en la naturaleza son tan transformadoras para el espíritu humano como observar el instante preciso en el que el sol asciende sobre la línea del mar, tiñendo las aguas frías de la madrugada con destellos rosa pálido, albaricoque y oro suave. Alba sobre el Mar encapsula el recuerdo sensible de esas auroras mediterráneas y la promesa eterna de renovación del nuevo día.">
+    <article class="shop-card" data-obra-id="alba" data-status="vendida" data-title="Alba sobre el Mar" data-price="3.400" data-year="2024" data-tech="Óleo sobre lienzo" data-size="130 × 90 cm" data-collection="Horizontes Suspendidos" data-status-text="Obra vendida" data-desc="Pocas contemplaciones en la naturaleza son tan transformadoras para el espíritu humano como observar el instante preciso en el que el sol asciende sobre la línea del mar, tiñendo las aguas frías de la madrugada con destellos rosa pálido, albaricoque y oro suave. Alba sobre el Mar encapsula el recuerdo sensible de esas auroras mediterráneas y la promesa eterna de renovación del nuevo día.">
       <div class="shop-card__image" onclick="openLightbox(this.closest('.shop-card'))">
         <img src="assets/obras/alba-sobre-el-mar.jpg" alt="Alba sobre el Mar" loading="lazy">
         <div class="shop-card__overlay"><span>Ver obra +</span></div>
@@ -376,10 +377,9 @@ El proceso creativo incluyó frotado al óleo y un desgarro lumínico en blanco 
   </div>
 
   <!-- Bloques de certificado y envíos -->
-  <div class="cert-block reveal" style="text-align:center;max-width:700px;margin:var(--spacing-lg) auto 0;">
-    ✦ Todas las obras originales incluyen certificado de autenticidad firmado por la artista.<br>
-    Se realizan envíos nacionales e internacionales con embalaje profesional y seguro. Los gastos de envío se informarán durante el proceso de consulta.
-  </div>
+  <div class="cert-block reveal" style="text-align:center;max-width:700px;margin:var(--spacing-lg) auto 0;" data-i18n="shop.certBlock">✦ Todas las obras originales incluyen certificado de autenticidad firmado por la artista.
+
+Se realizan envíos nacionales e internacionales con embalaje profesional y seguro. Los gastos de envío se informarán durante el proceso de consulta.</div>
 </main>
 
 <!-- ===== LIGHTBOX PREMIUM ===== -->
@@ -481,15 +481,17 @@ function renderLightbox() {
   var lbCounter = document.getElementById('lb-counter');
   if (lbCounter) lbCounter.textContent = (lbIndex + 1) + ' / ' + allCards.length;
 
+  var collLabel = (window.MuseoI18n && MuseoI18n.t) ? MuseoI18n.t('shop.lbCollection') : 'Colección';
+  var reqBtn = (window.MuseoI18n && MuseoI18n.t) ? MuseoI18n.t('shop.requestBtn') : 'Solicitar información →';
   var infoHtml = '';
   infoHtml += '<h2>' + title + '</h2>';
-  infoHtml += '<div class="lb-collection">Colección ' + collection + '</div>';
+  infoHtml += '<div class="lb-collection">' + collLabel + ' ' + collection + '</div>';
   infoHtml += '<div class="lb-meta-row"><span>' + year + '</span><span>' + tech + '</span><span>' + size + '</span></div>';
   if (price) { infoHtml += '<div class="lb-price">' + price + ' €</div>'; }
   var statusColor = (c.dataset.status === 'disponible') ? 'var(--accent)' : '#999';
   infoHtml += '<div class="lb-status" style="color:' + statusColor + '">' + statusText + '</div>';
-  infoHtml += '<div class="lb-desc">' + desc + '</div>';
-  infoHtml += '<button class="btn btn--primary" onclick="window.location.href=\'index.html?obra=' + encodeURIComponent(title) + '#contacto\'" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + (window.MuseoI18n && MuseoI18n.t ? MuseoI18n.t("shop.requestInfo") : "SOLICITAR INFORMACIÓN") + '</button>';
+  infoHtml += '<div class="lb-desc">' + desc.replace(/\n/g, '<br>') + '</div>';
+  infoHtml += '<button class="btn btn--primary" onclick="window.location.href=\'index.html?obra=' + encodeURIComponent(title) + '#contacto\'" style="margin-bottom:0.5rem;width:100%;letter-spacing:0.15em;font-size:0.75rem;padding:0.9rem;">' + reqBtn + '</button>';
   
   var lbInfo = document.getElementById('lb-info');
   if (lbInfo) lbInfo.innerHTML = infoHtml;
@@ -497,6 +499,10 @@ function renderLightbox() {
 
 function lbPrev() { if (lbIndex > 0) { lbIndex--; renderLightbox(); } }
 function lbNext() { if (lbIndex < allCards.length - 1) { lbIndex++; renderLightbox(); } }
+window.refreshLightboxIfOpen = function() {
+  var ov = document.getElementById('lb-overlay');
+  if (ov && ov.classList.contains('is-open')) renderLightbox();
+};
 
 document.getElementById('lb-overlay').addEventListener('click', function(e){ if (e.target === this) closeLightbox(); });
 document.addEventListener('keydown', function(e){

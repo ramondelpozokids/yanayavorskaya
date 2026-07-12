@@ -246,11 +246,43 @@ const MuseoI18n = (() => {
   function getLang() { return currentLang; }
   function getLangs() { return LANGS; }
 
+  function applyShopCards() {
+    document.querySelectorAll('.shop-card[data-obra-id]').forEach(function(card) {
+      var id = card.getAttribute('data-obra-id');
+      if (!id) return;
+      var tech = t('obra.' + id + '.tech');
+      var desc = t('obra.' + id + '.desc');
+      var coll = t('obra.' + id + '.collection');
+      var size = card.dataset.size || '';
+      if (tech && tech.indexOf('obra.') !== 0) card.dataset.tech = tech;
+      if (desc && desc.indexOf('obra.') !== 0) card.dataset.desc = desc;
+      if (coll && coll.indexOf('obra.') !== 0) card.dataset.collection = coll;
+      var badge = card.querySelector('.shop-card__badge');
+      var st = card.dataset.status;
+      if (badge) {
+        badge.textContent = st === 'vendida' ? t('shop.sold') : st === 'reservada' ? t('shop.reservada') : t('shop.disponible');
+        card.dataset.statusText = badge.textContent;
+      }
+      var metaColl = card.querySelector('.shop-card__meta span:first-child');
+      if (metaColl && coll && coll.indexOf('obra.') !== 0) metaColl.textContent = coll;
+      var descEl = card.querySelector('.shop-card__desc');
+      if (descEl && tech && tech.indexOf('obra.') !== 0) descEl.textContent = tech + ' · ' + size;
+      var overlay = card.querySelector('.shop-card__overlay span');
+      if (overlay) overlay.textContent = t('shop.viewWork');
+      var note = card.querySelector('.shop-card__price-note');
+      if (note) note.textContent = t('shop.certNote');
+      var btn = card.querySelector('.shop-card__action');
+      if (btn) btn.textContent = t('shop.requestBtn');
+    });
+    if (typeof window.refreshLightboxIfOpen === 'function') window.refreshLightboxIfOpen();
+  }
+
   function applyTranslations() {
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var k = el.getAttribute('data-i18n'), tr = t(k);
-      if (!tr) return;
+      if (!tr || tr === k) return;
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.setAttribute('placeholder', tr);
+      else if (el.tagName === 'OPTION') el.textContent = tr;
       else el.textContent = tr;
     });
     document.querySelectorAll('[data-i18n-attr]').forEach(function(el) {
@@ -264,6 +296,11 @@ const MuseoI18n = (() => {
       if (md) md.content = t('page.description');
     }
     document.documentElement.lang = currentLang;
+    applyShopCards();
+  }
+
+  if (typeof window !== 'undefined' && window.MuseoI18nContent) {
+    Object.keys(window.MuseoI18nContent).forEach(function(k) { DICT[k] = window.MuseoI18nContent[k]; });
   }
 
   function buildLangSwitcher() {
