@@ -932,3 +932,5 @@ vercel-toolbar, .vercel-toolbar, iframe[src*="vercel.live"], div[class*="vercel-
     }
   }
 }
+
+.soc-ig svg { fill: none !important; stroke: #fff !important; }

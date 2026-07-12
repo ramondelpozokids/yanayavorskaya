@@ -328,3 +328,41 @@ window.switchRoomScene = function(sceneType, btn) {
     if (human) human.style.display = 'none';
   }
 };
+
+
+/* Auto-select artwork in Contact form when navigated with ?obra=... */
+(function() {
+  function prefillContactObra() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var obra = params.get('obra');
+      if (obra) {
+        var sel = document.querySelector('#contacto select');
+        if (sel) {
+          # Check if option exists, if not add it and select it
+          var found = false;
+          for (var i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].value.toLowerCase().includes(obra.toLowerCase()) || sel.options[i].text.toLowerCase().includes(obra.toLowerCase())) {
+              sel.selectedIndex = i;
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            var opt = document.createElement('option');
+            opt.value = 'Obra: ' + obra;
+            opt.text = 'Información sobre: «' + obra + '»';
+            sel.appendChild(opt);
+            sel.value = opt.value;
+          }
+        }
+        var msgBox = document.querySelector('#contacto textarea');
+        if (msgBox && !msgBox.value) {
+          msgBox.value = 'Desearía recibir información sobre la disponibilidad, precio y opciones de envío de la obra original «' + obra + '». Muchas gracias.';
+        }
+      }
+    } catch(e) {}
+  }
+  window.addEventListener('DOMContentLoaded', prefillContactObra);
+  window.addEventListener('load', prefillContactObra);
+})();
